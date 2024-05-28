@@ -10,7 +10,7 @@ All is not lost, I said to myself. My elder son had told me of the fabled Chrome
 
 The demo worked out in the end, albeit with a lot of plan Bs.
 
-After all this, the wheels in my head were turning. The school must have some retired Chromebooks gathering dust that could be reformatted with a standard Linux OS, right?. Wrong again. The devices are leased and get returned at the end of their useful lifespan. More e-waste. Yay!
+After all this, the wheels in my head were turning. The school must have some retired Chromebooks gathering dust that could be reformatted with a standard Linux OS, right? Wrong again. The devices are leased and get returned at the end of their useful lifespan. More e-waste. Yay!
 
 But wait! There must be a computer lab somewhere in the school with proper PCs or Macs attached to glorious 4K displays, right? Wrong. (This is the third time, in case you're keeping track.) School budgets being what they are, these more expensive computing options are nowhere to be found.
 
