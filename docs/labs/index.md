@@ -32,11 +32,23 @@ something new. Most will guide you through the first steps and leave
 the last bit for you to figure out on your own.
 
 ### Urban Planner
+You're working for the city. Your job is to install traffic signals
+to keep the citizens safe.
 1. Traffic Light
 2. Cross Traffic
 3. Walk Signal
 
+### Meteorologist for a Day
+Build a weather station that measures temperature, humidity, and
+barometric pressure. Make predictions on what tomorrow's weather
+will be based on the information you gather.
+1. Measure the Environment
+2. Share the Information
+3. Make Predictions
+
 ### An Internet of Our Own
+If you've ever wondered how those adorable cat pictures get to your
+web browser, this series of labs will show how it works.
 1. ESP32 WiFi Access Point
 2. ESP32 Web Server
 3. Consumer WiFi Router comparison
@@ -44,6 +56,9 @@ the last bit for you to figure out on your own.
 5. Domain Name Service
 
 ### Home Automation
+Keep your classroom lab comfortable year round with home automation.
+Just kidding! The school will never let you control the HVAC system,
+but it's fun to pretend.
 1. Home Assistant on Raspberry Pi
 2. Sensors Using ESPHome
 3. Sending Sensor Data Over MQTT
