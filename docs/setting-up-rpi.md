@@ -1,5 +1,5 @@
 # Building a Student Developer Machine on Raspberry Pi
-This page details the steps for setting up a Raspberry Pi board for MicroPython development using Visual Studio Code and the MPRemote VS Code extension. Some knowledge of Raspberry Pi is assumed, but most steps should have plenty of detail for the first time user. The steps are geared toward reusing older generations of donated Raspberry Pi hardware. The procedure is tested on a 32-bit Raspberry Pi 2 with 1G of RAM, but models 3 and above are preferred.
+This page details the steps for setting up a Raspberry Pi board for MicroPython development using Visual Studio Code and the MPRemote VS Code extension. Some knowledge of Raspberry Pi is assumed, but most steps should have plenty of detail for the first time user. The steps are geared toward reusing older generations of donated Raspberry Pi hardware. The procedure is tested on a 32-bit Raspberry Pi 2 with 1G of RAM, but model 3 and above is preferred.
 
 The steps here will require the following:
 * A PC or Mac with a Micro SD card slot (or appropriate adapter.)
