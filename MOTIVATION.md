@@ -12,6 +12,6 @@ The demo worked out in the end, albeit with a lot of plan Bs.
 
 After all this, the wheels in my head were turning. The school must have some retired Chromebooks gathering dust that could be reformatted with a standard Linux OS, right? Wrong again. The devices are leased and get returned at the end of their useful lifespan. More e-waste. Yay!
 
-But wait! There must be a computer lab somewhere in the school with proper PCs or Macs attached to glorious 4K displays, right? Wrong. (This is the third time, in case you're keeping track.) School budgets being what they are, these more expensive computing options are nowhere to be found.
+But wait! There has to be a computer lab somewhere in the school with proper PCs or Macs attached to glorious 4K displays, right? Wrong. (This is the third time, in case you're keeping track.) School budgets being what they are, these more expensive computing options are nowhere to be found.
 
 So I'm down, but not out. I've got a line on some older Raspberry Pi 3s and three months to put a plan together before students return. That's what this repository is all about.
