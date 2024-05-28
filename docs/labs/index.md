@@ -13,18 +13,18 @@ in these labs and apply it to a larger project.
 Labs are ordered from simple to more complex, but feel free to tackle
 them in any order you wish.
 
-1. [Intro to MicroPython on ESP32](Intro%20to%20MicroPython%20on%20ESP32.md) 
+1. [MicroPython on ESP32](MicroPython%20on%20ESP32.md) 
    Learn the basics of writing MicroPython programs on ESP32 hardware.
-2. [Intro to GPIO output](Intro%20to%20GPIO%20output.md)
+2. [GPIO output](GPIO%20Output.md)
    Interact with the outside world by controlling General Purpose Input/Output
    (GPIO) pins.
-3. [Intro to Displays](Intro%20to%20Displays.md)
+3. [Displays](Displays.md)
    Use a small OLED display to display numbers and text.
-4. Intro to I2C
-5. Intro to multiple Neopixels
-6. Intro to GPIO input
-7. Intro to GPIO interrupts
-8. Intro to Optical Sensors
+4. I2C Protocol
+5. Multiple Neopixels
+6. GPIO input
+7. GPIO interrupts
+8. Optical Sensors
 
 ## Project Labs
 These labs focus on building a project to do something useful. They
