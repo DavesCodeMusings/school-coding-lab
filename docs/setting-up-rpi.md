@@ -54,38 +54,38 @@ _Figure 3: Choosing a device of Raspberry Pi 2_
 
 ___
 
-![Imager Choose OS](https://github.com/DavesCodeMusings/mpremote-vscode/assets/61114342/a6fd173e-babd-4395-99a2-900c30eed8f9)
+![Imager Choose OS](images/Imager%20Choose%20OS.png)
 
 _Figure 4: Choosing a 32-bit OS for Raspbery Pi 2_
 
 ___
 
-![Imager Choose Storage](https://github.com/DavesCodeMusings/mpremote-vscode/assets/61114342/c100d298-17d7-4aec-bad3-0c6ebff6abeb)
+![Imager Choose Storage](images/Imager%20Choose%20Storage.png)
 
 
 _Figure 5: Choosing the Micro SD card_
 
 ___
 
-![Imager OS Customization General](https://github.com/DavesCodeMusings/mpremote-vscode/assets/61114342/b75b74bb-1a45-48e6-96b4-3f8572c35cb7)
+![Imager OS Customization General](images/Imager%20OS%20Customization%20General.png)
 
 _Figure 6: The General tab of customization (CTRL + SHIFT + X)_
 
 ___
 
-![Imager OS Customization Services](https://github.com/DavesCodeMusings/mpremote-vscode/assets/61114342/7c08db2b-a062-47e6-a3af-5f7504e89645)
+![Imager OS Customization Services](images/Imager%20OS%20Customization%20Services.png)
 
 _Figure 7: The Services tab for enabling Secure Shell (SSH) connections if desired_
 
 ___
 
-![Imager OS Customization Options Leave Default](https://github.com/DavesCodeMusings/mpremote-vscode/assets/61114342/8a05ead2-9972-46e5-9183-d7d41c843b03)
+![Imager OS Customization Options Leave Default](images/Imager%20OS%20Customization%20Options%20Leave%20Default.png)
 
 _Figure 8: Default options showing the Micro SD will be ejected when writing is finished_
 
 ___
 
-![Imager Writing](https://github.com/DavesCodeMusings/mpremote-vscode/assets/61114342/c8d3ca0a-c222-435d-b7dd-179cc420533b)
+![Imager Writing](images/Imager%20Writing.png)
 
 _Figure 9: Raspberry Pi Imager writing after all options have been selected_
 
