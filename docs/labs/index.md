@@ -44,7 +44,7 @@ barometric pressure. Make predictions on what tomorrow's weather
 will be based on the information you gather.
 1. Measure the Environment
 2. Share the Information
-3. Make Predictions
+3. Make Weather Predictions
 
 ### An Internet of Our Own
 If you've ever wondered how those adorable cat pictures get to your
