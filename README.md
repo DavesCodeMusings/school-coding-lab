@@ -1,2 +1,3 @@
-# school-coding-lab
-Creating a development environment on the cheap
+# School Coding Lab
+_Creating a student development environment on the cheap_
+
