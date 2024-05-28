@@ -24,6 +24,7 @@ them in any order you wish.
 5. Intro to multiple Neopixels
 6. Intro to GPIO input
 7. Intro to GPIO interrupts
+8. Intro to Optical Sensors
 
 ## Project Labs
 These labs focus on building a project to do something useful. They
@@ -37,6 +38,13 @@ to keep the citizens safe.
 1. Traffic Light
 2. Cross Traffic
 3. Walk Signal
+
+### Off to the Races
+Grab some Hot Wheels cars and let's see how fast they go.
+1. Detecting a Passing Car
+2. Determining Time Difference
+3. Calculating Speed
+4. Best Time Board
 
 ### Meteorologist for a Day
 Build a weather station that measures temperature, humidity, and
