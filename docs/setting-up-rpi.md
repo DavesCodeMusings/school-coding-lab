@@ -36,7 +36,7 @@ There are three things you must choose to create a Micro SD card for use with yo
 ### Raspberry Pi Imager Screenshots
 If a picture is worth a thousand words, this section is money in the bank. These screenshots give some examples of what to expect while using the Raspberry Pi Imager. Choices shown are for the older Raspberry Pi 2 hardware. If you're using a 2nd generation Pi 3 or later, you'll want to select a 64-bit OS.
 
-![Imager App on Windows](https://github.com/DavesCodeMusings/mpremote-vscode/assets/61114342/5f6525e1-2d22-4a0a-8d0e-3c7128e6bf6d)
+![Imager App on Windows](images/Imager%20App%20on%20Windows.png)
 
 _Figure 1: Finding the app (Windows OS example)_
 
