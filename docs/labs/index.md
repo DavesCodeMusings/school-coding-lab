@@ -18,10 +18,32 @@ them in any order you wish.
 2. [Intro to GPIO output](Intro%20to%20GPIO%20output.md)
    Interact with the outside world by controlling General Purpose Input/Output
    (GPIO) pins.
-3. [Intro to Displays]()
+3. [Intro to Displays](Intro%20to%20Displays.md)
+   Use a small OLED display to display numbers and text.
+4. Intro to I2C
+5. Intro to multiple Neopixels
+6. Intro to GPIO input
+7. Intro to GPIO interrupts
 
 ## Project Labs
 These labs focus on building a project to do something useful. They
 combine and build on the concepts in the Learning Labs to make
 something new. Most will guide you through the first steps and leave
 the last bit for you to figure out on your own.
+
+### Urban Planner
+1. Traffic Light
+2. Cross Traffic
+3. Walk Signal
+
+### An Internet of Our Own
+1. ESP32 WiFi Access Point
+2. ESP32 Web Server
+3. Consumer WiFi Router comparison
+4. Ethernet Switch
+5. Domain Name Service
+
+### Home Automation
+1. Home Assistant on Raspberry Pi
+2. Sensors Using ESPHome
+3. Sending Sensor Data Over MQTT
