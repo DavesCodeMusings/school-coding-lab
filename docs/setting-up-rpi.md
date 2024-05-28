@@ -42,13 +42,13 @@ _Figure 1: Finding the app (Windows OS example)_
 
 ___
 
-![Imager Start-Up](https://github.com/DavesCodeMusings/mpremote-vscode/assets/61114342/a7818dcc-4cc4-481c-89ed-d208b6213198)
+![Imager Start-Up](images/Imager%20Start-Up.png)
 
 _Figure 2: Raspberry Pi Imager started up and awaiting your choices_
 
 ___
 
-![Imager Choose Device](https://github.com/DavesCodeMusings/mpremote-vscode/assets/61114342/30cdebc0-1231-4fc2-b6ea-c64cbf04d6ad)
+![Imager Choose Device](images/Imager%20Choose%20Device.png)
 
 _Figure 3: Choosing a device of Raspberry Pi 2_
 
