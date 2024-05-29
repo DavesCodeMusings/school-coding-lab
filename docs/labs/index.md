@@ -13,9 +13,9 @@ in these labs and apply it to a larger project.
 Labs are ordered from simple to more complex, but feel free to tackle
 them in any order you wish.
 
-1. [MicroPython on ESP32](MicroPython%20on%20ESP32.md) 
+1. [MicroPython on ESP32](MicroPython_on_ESP32.md) 
    Learn the basics of writing MicroPython programs on ESP32 hardware.
-2. [GPIO output](GPIO%20Output.md)
+2. [GPIO output](GPIO_Output.md)
    Interact with the outside world by controlling General Purpose Input/Output
    (GPIO) pins.
 3. [Displays](Displays.md)
