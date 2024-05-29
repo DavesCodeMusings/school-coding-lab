@@ -4,7 +4,7 @@
 Plug your microcontroller into your Raspberry Pi workstation and get ready.
 This section is alabout learning by doing.
 
-## Learning Labs
+## Feature-Specific Labs
 The goal of these labs is to get you familiar with a piece of hardware
 or a particular coding technique. They produce a result, but it's not
 always super interesting on its own. The idea is to take what you learn
@@ -26,11 +26,11 @@ them in any order you wish.
 7. GPIO interrupts
 8. Optical Sensors
 
-## Project Labs
-These labs focus on building a project to do something useful. They
-combine and build on the concepts in the Learning Labs to make
-something new. Most will guide you through the first steps and leave
-the last bit for you to figure out on your own.
+## Project-Based Labs
+These labs focus on multiple development iterations to do something
+useful. They combine and build on the concepts in the Learning Labs to
+make something new. Most will guide you through the first steps and
+leave the last bit for you to figure out on your own.
 
 ### Urban Planner
 You're working for the city. Your job is to install traffic signals
