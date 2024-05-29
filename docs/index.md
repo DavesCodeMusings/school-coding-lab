@@ -12,3 +12,5 @@ Geeks and makers everywhere have probably purchased nearly every revision of Ras
 
 ## Okay, what's next?
 The first step is to [prepare Raspberry Pi hardware with the latest version of Raspberry Pi OS](setting-up-rpi.md).
+
+If you've already got your development environment set up, you're ready to move on to the [microcontroller labs](labs/index.md).
