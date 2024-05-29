@@ -129,99 +129,17 @@ $ sudo shutdown -r now
 The system will reboot now!
 ```
 
-## Installing MPRemote for MicroPython
-This section will concentrate on installing the MPRemote command-line tool that the MPRemote Visual Studio extension will use. The steps here assume you have Raspberry Pi OS installed and have applied the latest updates for the Raspberry Pi OS. If you haven't done that, see the sections above.
-
-All steps are shown using command-line, either from a terminal launched from the Raspberry Pi desktop or from a Secure Shell (SSH) connection.
-
-1. Install the pipx python package tool with the command `sudo apt-get install pipx`
-2. Install mpremote using pipx with the command `pipx install mpremote`
-3. Ensure mpremote can be run easily using the command `pipx ensurepath`
-4. Re-apply login settings with `source ~/.bashrc`
-5. Test with the command `mpremote` (This will give an error, because no MicroPython device is plugged in, but that's okay.)
-
-Successful installation and testing will look like the example below.
-
-```
-$ sudo apt-get install pipx
-Reading package lists... Done
-Building dependency tree... Done
-Reading state information... Done
-The following additional packages will be installed:
-Do you want to continue? [Y/n] y
-
-$ pipx install mpremote
-  installed package mpremote 1.22.0, installed using Python 3.11.2
-  These apps are now globally available
-    - mpremote
-
-$ pipx ensurepath
-Success!
-
-$ source ~/.bashrc
-
-$ mpremote
-failed to access /dev/ttyUSB0 (it may be in use by another program)
-```
-
-The failure message is due to no MicroPython device being plugged into USB. This is okay to ignore for now.
-
-## Optionally Installing ESPTool
-If you're using Espressif ESP32 devices as your microcontrollers, ESPTool provides the ability to flash their firmware with MicroPython. It's installed with pipx, similar to the way MPRemote is installed.
-
-```
-$ pipx install mpremote
-  installed package mpremote 1.22.0, installed using Python 3.11.2
-  These apps are now globally available
-    - esp_rfc2217_server.py
-    - espefuse.py
-    - espsecure.py
-    - esptool.py
-```
-
-## Installing Visual Studio Code
-Visual Studio Code installation is similar to installing other system software on Raspberry Pi OS. The command is simply:
-
-```
-sudo apt-get install code
-```
-
-For additional information about installing, see this guide for Visual Studio Code on Raspberry Pi OS:
-
-https://code.visualstudio.com/docs/setup/raspberry-pi
-
-For tutorials on how to use VS Code, see the Getting Started videos.
-
-https://code.visualstudio.com/docs/getstarted/introvideos
-
-## Installing the MPRemote VS Code Extension
-You have the option of installing from within Visual Studio Code, or you can install from the Raspberry Pi OS command-line.
-
-Use the following commands to install and verify extensions:
-* For MPRemote: `code --install-extension DavesCodeMusings.MPRemote`
-* To verify what extensions are installed: `code --list-extensions`
-
-An example of a successful command-line installation of extensions is shown here.
-
-```
-$ code --install-extension DavesCodeMusings.MPRemote
-Installing extensions...
-Installing extension 'davescodemusings.mpremote'...
-Extension 'davescodemusings.mpremote' v1.21.11 was successfully installed.
-
-$ code --list-extensions
-davescodemusings.mpremote
-```
-
 >## Optionally Enabling VNC Connection
->VSCode is a graphical user interface (GUI) program. If you want to use it remotely (i.e. without the monitor, keyboard, and mouse attached tot he Pi) you can enable remote access with VNC.
+>If you want to use your Raspberry Pi remotely (i.e. without the monitor, keyboard, and mouse attached tot he Pi) you can enable remote access with VNC.
 >
 >The following guide on raspberrypi.com explains how to do it:
 >
 >https://www.raspberrypi.com/documentation/computers/remote-access.html#enable-the-vnc-server-on-the-command-line
+>
+>If you're an expert, skip the article and run `sudo raspi-config`. VNC is under Interface Options.
 
 ## Next Steps
-Congratulations on getting your Raspberry Pi configured for MicroPython development using Visual Studio Code. And give yourself an extra pat on the back if you upcycled an older, discarded Pi for this purpose.
+Congratulations on getting your Raspberry Pi configured. And give yourself an extra pat on the back if you upcycled an older, discarded Pi for this purpose.
 
 Now you're ready to explore MicroPython programming on microcontrollers.
 
