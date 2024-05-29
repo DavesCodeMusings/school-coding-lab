@@ -60,8 +60,7 @@ web browser, this series of labs will show how it works.
 1. ESP32 WiFi Access Point
 2. ESP32 Web Server
 3. Consumer WiFi Router comparison
-4. Ethernet Switch
-5. Domain Name Service
+4. Domain Name Service
 
 ### Home Automation
 Keep your classroom lab comfortable year round with home automation.
