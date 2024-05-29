@@ -6,8 +6,7 @@ bugs or to suggest enhancements. Doing this in the beginning, instead
 of just a pull request, will help make sure everything fits and helps
 minimize wasted effort and rework.
 
-Plan to release your contributions to the Public Domain.
-
-Be prepared that not all contributions will be accepted.
-
-You're also free to fork the repo and do your own thing.
+Things to keep in mind:
+* Plan to release your contributions to the Public Domain.
+* Be prepared that not all contributions will be accepted.
+* You're also free to fork the repo and do your own thing.
