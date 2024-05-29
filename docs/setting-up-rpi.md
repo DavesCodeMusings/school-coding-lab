@@ -6,6 +6,8 @@ The steps here will require the following:
 * A network connection (WiFi or RJ-45, depending on model of Raspberry Pi.)
 * Access to the internet.
 
+> If your Raspberry Pi hardware was donated and you're not sure what you've got, see the page for [identifying Raspberry Pi](identifying-rpi.md) 
+
 ## Creating a Raspberry Pi OS Micro SD Card
 Raspberry Pi Operating System installation is different than a typical PC or Mac. The procedure for Raspberry Pi is to write an operating system image to a Micro SD card and then use the Micro SD card to boot the device. This requires the following steps:
 
