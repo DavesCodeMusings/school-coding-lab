@@ -2,7 +2,7 @@
 Schools have tight budgets. Chromebooks are not well suited for development work. Policies governing student internet access make it difficult to use publicly available resources. All these things combined are what led to the creation of this repository.
 
 ## What is it?
-The idea is simple. Take donated, discarded Raspberry Pi computers and upcycle them into useful development workstations for students. Add in some inexpensive ESP32C microcontrollers and let the students get creative.
+The idea is simple. Take donated, discarded Raspberry Pi computers and upcycle them into useful development workstations for students. Add in some inexpensive ESP32 microcontrollers and let the students get creative.
 
 ## Why?
 The purpose is to give students a safe space to wire up hardware, write code, network devices, and yes even break things, without worry.
