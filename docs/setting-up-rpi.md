@@ -225,12 +225,4 @@ Congratulations on getting your Raspberry Pi configured for MicroPython developm
 
 Now you're ready to explore MicroPython programming on microcontrollers.
 
-Information about MicroPython can be found on their web site:
-
-https://micropython.org/
-
-Documentation for Espressif's ESP32C development board is here:
-
-https://docs.espressif.com/projects/esp-idf/en/latest/esp32c3/hw-reference/esp32c3/user-guide-devkitc-02.html
-
-Happy Coding!
+[Move on to the labs](labs/index.md)
