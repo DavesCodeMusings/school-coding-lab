@@ -110,7 +110,7 @@ The first update can take a significant amount of time, particularly on older Ra
 1. Open a command prompt (either from the desktop or using SSH.)
 2. Update the list of available software with `sudo apt-get update`
 3. Install any available upgrades with `sudo apt-get upgrade`
-4. Reboot the system when finished.
+4. Reboot the system when finished with `sudo shutdown -r now`
 
 A successful update will look like the following example, though much of the output has been trimmed for brevity.
 
