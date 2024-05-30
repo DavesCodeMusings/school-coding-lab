@@ -45,4 +45,4 @@ Check in the program output area to see the results.
 
 ___
 
-And that's your five minute introduction to using Thonny to write MicroPython code. To learn more about Thonny, visit their home page at: https://thonny.org
+And that's your five minute introduction to using Thonny to write MicroPython code on your Raspberry Pi. To learn more about Thonny, visit their home page at: https://thonny.org
