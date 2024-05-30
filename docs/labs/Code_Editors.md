@@ -46,3 +46,6 @@ Check in the program output area to see the results.
 ___
 
 And that's your five minute introduction to using Thonny to write MicroPython code on your Raspberry Pi. To learn more about Thonny, visit their home page at: https://thonny.org
+
+## Next Steps
+Now that you know how to use Thonny, head back to the [labs page](index.md) and start coding!
