@@ -25,7 +25,7 @@ There are four main areas to be concerned with. From top to bottom, these are:
 
 ___
 
-Whenever you use the Load or Save buttons with a microcontroller attached, you'll be asked to select from the _This Computer_ or the _MicroPython Device_.
+Whenever you use the Load or Save buttons with a microcontroller attached, you'll be asked to select from _This Computer_ or the _MicroPython Device_.
 
 A sample screenshot is shown below.
 
