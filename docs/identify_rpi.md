@@ -14,7 +14,7 @@ _Public Domain image of Raspberry Pi 3_
 
 ___
 
-Most modern Raspberry Pis are about the size of a credit card and look like the photo with a few minor differences in the HDMI and USB port arrangement. If the board you're looking at is quite a bit smaller or has fewer than four USB ports, it probably won't be suitable.
+Most modern Raspberry Pis are about the size of a credit card and look like the photo with a few minor differences in the HDMI and USB port arrangement. If the board you're looking at is quite a bit smaller, has fewer than four USB ports, or has fewer than four mounting holes, it probably won't be suitable.
 
 The notable exception is the Raspberry Pi 400 which is a computer built into a red and white keyboard. It's less common, but if you've got one, hang on to it. It can do everything a Raspberry Pi 4 can do.
 
