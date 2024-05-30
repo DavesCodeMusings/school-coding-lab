@@ -136,7 +136,7 @@ The system will reboot now!
 >
 >https://www.raspberrypi.com/documentation/computers/remote-access.html#enable-the-vnc-server-on-the-command-line
 >
->If you're an expert, skip the article and run `sudo raspi-config`. VNC is under Interface Options.
+>If you're an expert, skip the article and run `sudo raspi-config`. VNC is under Interface Options. VNC screen size is under Display Options. 
 
 ## Next Steps
 Congratulations on getting your Raspberry Pi configured. And give yourself an extra pat on the back if you upcycled an older, discarded Pi for this purpose.
