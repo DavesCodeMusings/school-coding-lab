@@ -45,5 +45,4 @@ Check in the program output area to see the results.
 
 ___
 
-To learn more about Thonny, visit their home page at: https://thonny.org
-
+And that's your five minute introduction to using Thonny to write MicroPython code. To learn more about Thonny, visit their home page at: https://thonny.org
