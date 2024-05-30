@@ -1,4 +1,4 @@
-# Identifying the Raspberry Pi Model Number
+# How to Identify the Raspberry Pi Model Number
 Somebody found out you're doing a Raspberry Pi lab. They know a guy, who knows a kid, who's got a drawer full of old Pis at home. Those Pis are now in a box and it's sitting on your desk.
 
 As you begin to question the life choices that led you here, you might be wondering, _Is that box of Pis even any good?_
@@ -6,7 +6,7 @@ As you begin to question the life choices that led you here, you might be wonder
 Read on and find out.
 
 ## Visual Inspection
-You can tell a lot about the generation of Raspberry Pi just by looking at it.
+You can tell a lot about the generation of Raspberry Pi just by looking at it. All recent boards have the model number silkscreened under the GPIO header (the double row of pins on one edge.
 
 ### Raspberry Pi 3
 If it looks like the picture below, it's a Raspberry Pi 3. You can even see the white lettering silkscreened on the board indicating it's a Model B+.
