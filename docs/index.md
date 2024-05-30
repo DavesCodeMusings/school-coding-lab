@@ -11,6 +11,6 @@ The purpose is to give students a safe space to wire up hardware, write code, ne
 Geeks and makers everywhere have probably purchased nearly every revision of Raspberry Pi since their inception back in 2012. The environmentally conscious geeks among us probably have a draw full of old ones, because they don't want to contribute to e-waste. If it's a Pi 3 or better, it can be upcycled into a student development workstation.
 
 ## Okay, what's next?
-The first step is to [prepare Raspberry Pi hardware with the latest version of Raspberry Pi OS](setting-up-rpi.md).
+The first step is to [prepare Raspberry Pi hardware with the latest version of Raspberry Pi OS](set_up_rpi.md).
 
 If you've already got your development environment set up, you're ready to move on to the [microcontroller labs](labs/index.md).
