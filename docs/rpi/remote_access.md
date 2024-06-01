@@ -2,7 +2,7 @@
 Most of the time, you'll use a keyboard, mouse and monitor to access the Raspberry Pi computer you're using. But, you don't have to. You can also interact with it using a remote access client. We'll look at two methods of remote access, Virtual Network Computing (VNC) and Secure Shell (SSH).
 
 ## Finding Your Raspberry Pi's IP Address
-No matter which remote access method you choose, you'll need to know how to find your Raspberry Pi on the network. For this, you'll need its IP Address. Advanced users can use the command `ifconfig` or `ip addr` in a terminal window to find the IP address. But the easy way is to simply hover the mouse pointer over the up/down arrow in the upper right corner of the Raspberry Pi OS desktop.
+No matter which remote access method you choose, you'll need to know how to find your Raspberry Pi on the network. For this, you'll need its IP address. Advanced users can use the command `ifconfig` or `ip addr` in a terminal window to find the IP address. But the easy way is to simply hover the mouse pointer over the up/down arrow in the upper right corner of the Raspberry Pi OS desktop.
 
 ![IP Address](../images/IP_Address.png)
  
