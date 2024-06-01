@@ -27,7 +27,8 @@ For Chromebooks, we'll need to make SSH available through a web browser. This is
 > You can find your Raspberry Pi's IP address using the command `ifconfig` or by hovering over the up/down arrow in the upper right corner of the Raspberry Pi OS desktop.
 >
 > ![IP Address](../images/IP_Address.png)
-> _Figure 1: IP Address Shown on Raspberry Pi OS Desktop
+> 
+> _Figure 1: IP Address Shown on Raspberry Pi OS Desktop_
 
 ## Secure Shell in a Web Browser
 With the help of some software on the Raspberry Pi, you can access Secure Shell in a browser window. Even Chromebooks will let you use a web browser, so this should give you remote access to your Raspberry Pi, just without the graphical desktop.
