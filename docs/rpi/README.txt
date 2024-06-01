@@ -1,2 +1,2 @@
-This is where you will find documentation for setting up your
-Raspberry Pi development workstation.
+This is where you will find documentation for setting up things
+on your Raspberry Pi development workstation.
