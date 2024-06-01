@@ -30,13 +30,26 @@ If your list is a complete sentence, end it with a period. If it's a fragment, l
 ## Second Major Task
 The next high-level step goes here. Again, use the second-level heading for this. If you have sub-tasks that require more than a sentence or two to describe, use a third-level heading below this.
 
+### Finding Your Own Song
+There's nothing that says you have to use one of the songs above while washing your hands. In fact, there are plenty of web sites out there that offer lists. The important part is the timing. The Centers for Disease Control (CDC) recommend [at least twenty seconds](https://www.cdc.gov/clean-hands/about/index.html). Find a part of any song that speaks to your heart and check that it's at least this long.
+
+### Something Else to Note
+If you're going to have one level-three heading, it should be followed by another. Otherwise, it could have been part of the major task instead of being broken out into a separate sub-heading.
+
+### One More Thing
+When you use acronyms and initialisms, like CDC, spell them out first so your reader is not left wondering. Use links to external sources to help with this, particularly for things that are less common.
+
+## Third Major Task
+Try to limit your document to three to five tasks. More than that can become tedious to read. If you find it difficult to do, consider reducing the scope of your document.
+
 If you'll be giving an example that includes a number of system commands to be entered, put it in a code window like the one below.
 
 * Use $ prompts to indicate commands that do not require root-level access and # to indicate those that do.
 * Include enough output so the reader knows what a successful command result looks like, but trim anything that is excessively wordy.
 * Use blank lines to separate groupings of commands and their output. This makes it easier to read.
 
-Here's an example of updating the system. Some output has been trimmed for brevity.
+### Hands-On Typing Examples
+Here's an example of one way to update the system. Some output has been trimmed for brevity.
 
 ```
 $ sudo su -
@@ -52,25 +65,9 @@ Do you want to continue? [Y/n] y
 The system will reboot now!
 ```
 
-### Finding Your Own Song
-There's nothing that says you have to use one of the songs above while washing your hands. In fact, there are plenty of web sites out there that offer lists. The important part is the timing. The Centers for Disease Control (CDC) recommend [at least twenty seconds](https://www.cdc.gov/clean-hands/about/index.html). Find a part of any song that speaks to your heart and check that it's at least this long.
+### Screenshots
+Thonny has a toolbar with all the common functions you'll need. It looks like the example below.
 
-### Something Else to Note
-If you're going to have one level-three heading, it should be followed by another. Otherwise, it could have been part of the major task instead of being broken out into a separate sub-heading.
-
-### One More Thing
-When you use acronyms and initialisms, like CDC, spell them out first so your reader is not left wondering. Use links to external sources to help with this, particularly for things that are less common.
-
-## Third Major Task
-Try to limit your document to three to five tasks. More than that can become tedious to read. If you find it difficult to do, consider reducing the scope of your document.
-
-If you use screenshots or pictures, make sure to consider these aspects:
-* Use public domain images or images you've created yourself and are willing to release to public domain.
-* Separate your images from the test with horizontal bars above and below (three consecutive underscores in Markdown.)
-* Add a caption in italic text with Figure X: denoting the number of the image, folloed by a short description in title case.
-* Use relative links to a common image directory and filenames that reflect what the image is about.
-
-It should look something like the example below.
 ___
 
 ![Thonny Toolbar](images/Thonny_Toolbar.png)
@@ -78,6 +75,12 @@ ___
 _Figure 1: A Lovely Thonny Toolbar_
 
 ___
+
+If you use screenshots or pictures, make sure to consider these aspects:
+* Use public domain images or images you've created yourself and are willing to release to public domain.
+* Separate your images from the test with horizontal bars above and below (three consecutive underscores in Markdown.)
+* Add a caption in italic text with Figure X: denoting the number of the image, folloed by a short description in title case.
+* Use relative links to a common image directory and filenames that reflect what the image is about.
 
 ## Next Steps
 Please, do not end your document with a Conclusion section. This habit should die shortly after eight grade English, but yet it persists. You're wrting a document to teach a topic. Learning never stops. Your document should not stop either.
