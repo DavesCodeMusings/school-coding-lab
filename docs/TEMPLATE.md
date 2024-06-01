@@ -30,6 +30,26 @@ If your list is a complete sentence, end it with a period. If it's a fragment, l
 ## Second Major Task
 The next high-level step goes here. Again, use the second-level heading for this. If you have sub-tasks that require more than a sentence or two to describe, use a third-level heading below this.
 
+If you'll be giving an example that includes a number of system commands to be entered, put it in a code window like the one below.
+
+* Use $ prompts to indicate commands that do not require root-level access and # to indicate those that do.
+* Include enough output so the reader knows what a successful command result looks like, but trim anything that is excessively wordy.
+* Use blank lines to separate groupings of commands and their output. This makes it easier to read.
+
+```
+$ sudo apt-get upgrade
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following additional packages will be installed:
+Do you want to continue? [Y/n] y
+
+$ sudo su -
+
+# shutdown -r now
+The system will reboot now!
+```
+
 ### Finding Your Own Song
 There's nothing that says you have to use one of the songs above while washing your hands. In fact, there are plenty of web sites out there that offer lists. The important part is the timing. The Centers for Disease Control (CDC) recommend [at least twenty seconds](https://www.cdc.gov/clean-hands/about/index.html). Find a part of any song that speaks to your heart and check that it's at least this long.
 
