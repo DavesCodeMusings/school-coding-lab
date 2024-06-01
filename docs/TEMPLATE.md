@@ -25,7 +25,7 @@ You may also use one of the following alternatives in place of the ABCs song:
 * The chorus to Jolene by Dolly Parton
 * The chorus to Africa by Toto
 
-If your list is a complete sentence, end it with a period. If it's not, leave the period off.
+If your list is a complete sentence, end it with a period. If it's a fragment, leave the period off.
 
 ## Second Major Task
 The next high-level step goes here. Again, use the second-level heading for this. If you have sub-tasks that require more than a sentence or two to describe, use a third-level heading below this.
