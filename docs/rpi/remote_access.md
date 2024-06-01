@@ -16,7 +16,7 @@ To use VNC on your Raspberry Pi, you'll need to enable it first.
 > Note: VNC can use a different screen size than your regular monitor. To change it, use `sudo raspi-config` look under _Display Options_.
 
 ## Using Secure Shell to Access a Terminal
-The terminal window we've been using so much in the set up of your Raspberry Pi is also available remotely. It's more primative with no graphical desktop, but it does offer some flexibility. One big advantage is using a web-based Secure Shell terminal.
+The terminal window we've been using so much in the set up of your Raspberry Pi is also available remotely. It's more primative, with no graphical desktop, but it does offer some flexibility. One big advantage is using a web-based Secure Shell terminal.
 
 >If you used the Raspberry Pi Imager to write your Micro SD card and you checked the box for Enable SSH on the Services tab of OS Customization, Secure Shell is already available. If you forgot, use `sudo raspi-config` and look under _Interface Options_ for _SSH_ and activate it there.
 
