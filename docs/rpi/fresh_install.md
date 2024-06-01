@@ -87,7 +87,7 @@ _Figure 8: Default options showing the Micro SD will be ejected when writing is 
 
 ___
 
-![Imager Writing](images/Imager%20Writing.png)
+![Imager Writing](../images/Imager%20Writing.png)
 
 _Figure 9: Raspberry Pi Imager writing after all options have been selected_
 
