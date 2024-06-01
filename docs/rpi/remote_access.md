@@ -9,7 +9,7 @@ No matter which remote access method you choose, you'll need to know how to find
 _Figure 1: IP Address Shown on Raspberry Pi OS Desktop_
 
 ## Using VNC to Access Your Desktop
-The advantage of VNC is, it's nearly identical to the experience of sitting in front of you monitor and keyboard. The drawback is, it requires a VNC client to be installed on the computer you want to use to access the Raspberry Pi. On Windows, Mac, or Linux, you can install VNC Viewer from RealVNC to access your Raspberry Pi. If you're using a Chromebook, you're out of luck.
+The advantage of VNC is, it's nearly identical to the experience of sitting in front of your monitor and keyboard. The drawback is, it requires a VNC client to be installed on the computer you want to use to access the Raspberry Pi. On Windows, Mac, or Linux, you can install VNC Viewer from RealVNC to access your Raspberry Pi. If you're using a Chromebook, you're out of luck.
 
 >Technically, you can use Chromebook's Linux Mode to install a Linux-based VNC client, but if you had access to Linux Mode on your Chromebook, you probably wouldn't be building a Raspberry Lab.
 
