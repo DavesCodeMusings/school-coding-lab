@@ -1,4 +1,4 @@
-# How to Identify the Raspberry Pi Model Number
+# How to Identify Your Raspberry Pi Model Number
 Somebody found out you're doing a Raspberry Pi lab. They know a guy, who knows a kid, who's got a drawer full of old Pis at home. Those Pis are now in a box and it's sitting on your desk.
 
 As you begin to question the life choices that led you here, you might be wondering, _Is that box of Pis even any good?_
@@ -10,7 +10,7 @@ You can tell a lot about the generation of Raspberry Pi just by looking at it. A
 
 ![Raspberry Pi 3 Photo](images/Raspberry_Pi_3.jpg)
 
-_Public Domain image of Raspberry Pi 3_
+_Public Domain Image of Raspberry Pi 3_
 
 ___
 
