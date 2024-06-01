@@ -10,3 +10,7 @@ Things to keep in mind:
 * Plan to release your contributions to the Public Domain.
 * Be prepared that not all contributions will be accepted.
 * You're also free to fork the repo and do your own thing.
+
+If you want to contribute tutorial-style documentation, please see
+the [style guide template](docs/TEMPLATE.md) to get an idea of how
+to format your contribution.
