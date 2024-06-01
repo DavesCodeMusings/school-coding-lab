@@ -1,19 +1,26 @@
 # Accessing Your Raspberry Pi from Another Machine
 Most of the time, you'll use a keyboard, mouse and monitor to access the Raspberry Pi computer you're using. But, you don't have to. You can also interact with it using a remote access client. We'll look at two methods of remote access, Virtual Network Computing (VNC) and Secure Shell (SSH).
 
+## Finding Your Raspberry Pi's IP Address
+No matter which remote access method you choose, you'll need to know how to find your Raspberry Pi on the network. For this, you'll need its IP Address. Advanced users can use the command `ifconfig` or `ip addr` in a terminal window to find the IP address. But the easy way is to simply hover the mouse pointer over the up/down arrow in the upper right corner of the Raspberry Pi OS desktop.
+
+![IP Address](../images/IP_Address.png)
+ 
+_Figure 1: IP Address Shown on Raspberry Pi OS Desktop_
+
 ## Using VNC to Access Your Desktop
-The advantage of VNC is, it's nearly identical to the experience of sitting in front of you monitor and keyboard. The drawback is, you need a VNC client installed on the computer you want to use to access the Raspberry Pi.
+The advantage of VNC is, it's nearly identical to the experience of sitting in front of you monitor and keyboard. The drawback is, it requires a VNC client to be installed on the computer you want to use to access the Raspberry Pi. On Windows, you can install VNC Viewer from RealVNC to access your Raspberry Pi. If you're using a Chromebook, you're out of luck.
 
-On Windows, you can install VNC Viewer from RealVNC to access your Raspberry Pi. If you're using a Chromebook, you're out of luck. Technically, you can use Chromebook's Linux Mode to install a VNC client, but if you had access to Linux Mode on your Chromebook, you probably wouldn't be building a Raspberry Lab.
+>Technically, you can use Chromebook's Linux Mode to install a Linux-based VNC client, but if you had access to Linux Mode on your Chromebook, you probably wouldn't be building a Raspberry Lab.
 
-To use VNC on your Raspberry Pi, you'll need to enable it first.
+To access your Raspberry Pi with VNC, you'll need to enable it first.
 1. Open a terminal window.
 2. Type the command: `sudo raspi-config` and hit Enter.
 3. Choose _Interface Options_
 4. Choose _VNC_
 5. Say _Yes_ to enable.
 
-> Note: VNC can use a different screen size than your regular monitor. To change it, use `sudo raspi-config` look under _Display Options_.
+VNC can use a different screen size than your regular monitor. If you want to change it, look under _Display Options_ in raspi-config.
 
 ## Using Secure Shell to Access a Terminal
 The terminal window we've been using so much in the set up of your Raspberry Pi is also available remotely. It's more primative, with no graphical desktop, but it does offer some flexibility. One big advantage is using a web-based Secure Shell terminal.
@@ -23,12 +30,6 @@ The terminal window we've been using so much in the set up of your Raspberry Pi 
 Like VNC, you'll need a client program to access your Raspberry Pi via Secure Shell. With Windows, Linux, and Mac machines, this capability is built into the operating system. Just open a terminal window and type `ssh 192.168.1.1`; where 192.168.1.1 is the IP address of your Raspberry Pi. With Chromebooks and no access to Linux Mode, things are more difficult. (Are you sensing a theme here?)
 
 For Chromebooks, we'll need to make SSH available through a web browser. This is covered next.
-
-> You can find your Raspberry Pi's IP address using the command `ifconfig` or by hovering the mouse pointer over the up/down arrow in the upper right corner of the Raspberry Pi OS desktop.
->
-> ![IP Address](../images/IP_Address.png)
-> 
-> _Figure 1: IP Address Shown on Raspberry Pi OS Desktop_
 
 ## Secure Shell in a Web Browser
 With the help of some software on the Raspberry Pi, you can access Secure Shell in a browser window. Even Chromebooks will let you use a web browser, so this should give you remote access to your Raspberry Pi, just without the graphical desktop.
