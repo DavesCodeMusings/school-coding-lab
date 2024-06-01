@@ -41,4 +41,4 @@ Replace 192.168.1.1 with the IP address of your Raspberry Pi, but keep the :4200
 
 ![Shell in a Box](../images/Shell_in_a_box.png)
 
-_Figure 2: Shell in a Box, in a Browser
+_Figure 2: Shell in a Box, in a Browser_
