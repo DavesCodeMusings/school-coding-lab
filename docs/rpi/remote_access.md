@@ -24,7 +24,7 @@ Like VNC, you'll need a client program to access your Raspberry Pi via Secure Sh
 
 For Chromebooks, we'll need to make SSH available through a web browser. This is covered next.
 
-> You can find your Raspberry Pi's IP address using the command `ifconfig` or by hovering over the up/down arrow in the upper right corner of the Raspberry Pi OS desktop.
+> You can find your Raspberry Pi's IP address using the command `ifconfig` or by hovering the mouse pointer over the up/down arrow in the upper right corner of the Raspberry Pi OS desktop.
 >
 > ![IP Address](../images/IP_Address.png)
 > 
@@ -35,4 +35,10 @@ With the help of some software on the Raspberry Pi, you can access Secure Shell 
 
 The software package we need is called _shellinabox_ and it can be installed with the command `sudo apt-get install shellinabox`.
 
-Once it
+Once it's installed, it should start up automatically and you can access Secure Shell using a web browser address similar to _https://192.168.1.1:4200_
+
+Replace 192.168.1.1 with the IP address of your Raspberry Pi, but keep the :4200 part. You should be asked for a username and password. Once you're logged in, your browser will look similar to the screenshot below.
+
+![Shell in a Box](../images/Shell_in_a_box.png)
+
+_Figure 2: Shell in a Box, in a Browser
