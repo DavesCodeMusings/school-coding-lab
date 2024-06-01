@@ -48,6 +48,8 @@ Once the information is entered, you have the option to save it. This makes it f
 ### Raspberry Pi Imager Screenshots
 If a picture is worth a thousand words, this section is money in the bank. These screenshots give some examples of what to expect while using the Raspberry Pi Imager. Choices shown are for the older Raspberry Pi 2 hardware. If you're using a 2nd generation Pi 3 or later, you'll want to select a 64-bit OS.
 
+___
+
 ![Imager App on Windows](../images/Imager%20App%20on%20Windows.png)
 
 _Figure 1: Finding the app (Windows OS example)_
@@ -100,6 +102,8 @@ ___
 ![Imager Writing](../images/Imager%20Writing.png)
 
 _Figure 9: Raspberry Pi Imager writing after all options have been selected_
+
+___
 
 ## Booting Your Raspberry Pi
 After writing the Raspberry Pi OS image, you can remove the Micro SD card from your PC and insert it into the slot on the Raspberry Pi.
