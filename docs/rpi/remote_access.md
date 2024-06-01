@@ -1,5 +1,5 @@
 # Accessing Your Raspberry Pi from Another Machine
-Most of the time, you'll use a keyboard, mouse and monitor to access the computer you're using. But, you don't have to. You can also interact with a computer like the Raspberry Pi using a remote access client. We'll look at two methods of remote access, Virtual Network Computing (VNC) and Secure Shell (SSH).
+Most of the time, you'll use a keyboard, mouse and monitor to access the Raspberry Pi computer you're using. But, you don't have to. You can also interact with it using a remote access client. We'll look at two methods of remote access, Virtual Network Computing (VNC) and Secure Shell (SSH).
 
 ## Using VNC to Access Your Desktop
 The advantage of VNC is, it's nearly identical to the experience of sitting in front of you monitor and keyboard. The drawback is, you need a VNC client installed on the computer you want to use to access the Raspberry Pi.
