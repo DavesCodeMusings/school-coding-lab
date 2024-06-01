@@ -68,6 +68,7 @@ If you use screenshots or pictures, make sure to consider these aspects:
 * Add a caption in italic text with Figure X: denoting the number of the image, folloed by a short description in title case.
 * Use relative links to a common image directory and filenames that reflect what the image is about.
 
+It should look something like the example below.
 ___
 
 ![Thonny Toolbar](images/Thonny_Toolbar.png)
