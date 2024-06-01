@@ -38,50 +38,50 @@ There are three things you must choose to create a Micro SD card for use with yo
 ### Raspberry Pi Imager Screenshots
 If a picture is worth a thousand words, this section is money in the bank. These screenshots give some examples of what to expect while using the Raspberry Pi Imager. Choices shown are for the older Raspberry Pi 2 hardware. If you're using a 2nd generation Pi 3 or later, you'll want to select a 64-bit OS.
 
-![Imager App on Windows](images/Imager%20App%20on%20Windows.png)
+![Imager App on Windows](../images/Imager%20App%20on%20Windows.png)
 
 _Figure 1: Finding the app (Windows OS example)_
 
 ___
 
-![Imager Start-Up](images/Imager%20Start-Up.png)
+![Imager Start-Up](../images/Imager%20Start-Up.png)
 
 _Figure 2: Raspberry Pi Imager started up and awaiting your choices_
 
 ___
 
-![Imager Choose Device](images/Imager%20Choose%20Device.png)
+![Imager Choose Device](../images/Imager%20Choose%20Device.png)
 
 _Figure 3: Choosing a device of Raspberry Pi 2_
 
 ___
 
-![Imager Choose OS](images/Imager%20Choose%20OS.png)
+![Imager Choose OS](../images/Imager%20Choose%20OS.png)
 
 _Figure 4: Choosing a 32-bit OS for Raspbery Pi 2_
 
 ___
 
-![Imager Choose Storage](images/Imager%20Choose%20Storage.png)
+![Imager Choose Storage](../images/Imager%20Choose%20Storage.png)
 
 
 _Figure 5: Choosing the Micro SD card_
 
 ___
 
-![Imager OS Customization General](images/Imager%20OS%20Customization%20General.png)
+![Imager OS Customization General](../images/Imager%20OS%20Customization%20General.png)
 
 _Figure 6: The General tab of customization (CTRL + SHIFT + X)_
 
 ___
 
-![Imager OS Customization Services](images/Imager%20OS%20Customization%20Services.png)
+![Imager OS Customization Services](../images/Imager%20OS%20Customization%20Services.png)
 
 _Figure 7: The Services tab for enabling Secure Shell (SSH) connections if desired_
 
 ___
 
-![Imager OS Customization Options Leave Default](images/Imager%20OS%20Customization%20Options%20Leave%20Default.png)
+![Imager OS Customization Options Leave Default](../images/Imager%20OS%20Customization%20Options%20Leave%20Default.png)
 
 _Figure 8: Default options showing the Micro SD will be ejected when writing is finished_
 
