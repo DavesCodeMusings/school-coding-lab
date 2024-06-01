@@ -129,14 +129,8 @@ $ sudo shutdown -r now
 The system will reboot now!
 ```
 
->## Optionally Enabling VNC Connection
->If you want to use your Raspberry Pi remotely (i.e. without the monitor, keyboard, and mouse attached tot he Pi) you can enable remote access with VNC.
->
->The following guide on raspberrypi.com explains how to do it:
->
->https://www.raspberrypi.com/documentation/computers/remote-access.html#enable-the-vnc-server-on-the-command-line
->
->If you're an expert, skip the article and run `sudo raspi-config`. VNC is under Interface Options. VNC screen size is under Display Options. 
+>## Optionally Enabling Remote Access
+> You can skip this if you'll always be using a keyboard, mouse, and monitor with your Raspberry Pi. But if you might need to access the Pi from another machine, see the [guide for setting up remote access](remote_access.md)
 
 ## Next Steps
 Congratulations on getting your Raspberry Pi configured. And give yourself an extra pat on the back if you upcycled an older, discarded Pi for this purpose.
