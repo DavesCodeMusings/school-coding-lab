@@ -147,4 +147,4 @@ Congratulations on getting your Raspberry Pi configured. And give yourself an ex
 
 Now you're ready to explore MicroPython programming on microcontrollers.
 
-[Move on to the labs](labs/index.md)
+[Move on to the microcontroller labs](labs/index.md)
