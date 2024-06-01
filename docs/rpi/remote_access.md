@@ -44,4 +44,4 @@ Replace 192.168.1.1 with the IP address of your Raspberry Pi, but keep the :4200
 _Figure 2: Shell in a Box, in a Browser_
 
 ## Next Steps
-Remote access through Secure Shell can be handy for automating system tasks from a central management machine. This is an advanced topic, but if you're interested, take a look at [Ansible Community Edition](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html).
+Remote access is handy for running administrative tasks without having to be sitting at the machine. With Secure Shell access to the Raspberry Pi, you also have the option of automating system tasks from a central management machine. This is an advanced topic, but is worth learning if you're trying to manage more than a handful of Raspberry Pis. If you're interested, take a look at [Ansible Community Edition](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html).
