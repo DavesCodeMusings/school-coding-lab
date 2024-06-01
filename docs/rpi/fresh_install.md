@@ -35,6 +35,16 @@ There are three things you must choose to create a Micro SD card for use with yo
 3. Choose the storage device. This is the easiest step. It is the Micro SD card on your system and is often the only device in the list.
 4. Choose additional configuration options. Press CTRL + SHIFT + X to bring up the super secret options page. Visit each tab and fill in as appropriate.
 
+#### The OS Customization General Tab
+Careful consideration of the information on the General tab can make your life much easier, so don't skip it.
+
+1. _Set hostname_ determines what the machine will be called. It can be almost anything you want, but it should be no more than a dozen or so alphanumeric characters and it must be unique (i.e. you can't name everything raspberrypi.)
+2. _Set username and password_ is used to create the first user account. This account is allowed to run `sudo` commands. Make the username something generic, like admin or supervisor, rather than a person's name. You can add individual accounts for people later on. Make the password something not easily guessed.
+3. _Configure wireless LAN_ will ger you automatically connected to the network you specify. Don't forget to set the country code in addition to the SSID and password.
+4. _Set locale settings_ makes sure you're in the right time zone and your clock is correct. It also ensures you don't get strange characters from your keyboard by configuring for your language.
+
+Once the information is entered, you have the option to save it. This makes it faster to create multiple Micro SD cards if you have more than one Pi.
+
 ### Raspberry Pi Imager Screenshots
 If a picture is worth a thousand words, this section is money in the bank. These screenshots give some examples of what to expect while using the Raspberry Pi Imager. Choices shown are for the older Raspberry Pi 2 hardware. If you're using a 2nd generation Pi 3 or later, you'll want to select a 64-bit OS.
 
