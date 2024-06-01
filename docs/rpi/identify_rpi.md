@@ -8,13 +8,15 @@ Read on and find out.
 ## Visual Inspection
 You can tell a lot about the generation of Raspberry Pi just by looking at it. All recent boards have the model number silkscreened under the GPIO header (the double row of pins on the top edge.) The one in the picture below is a Raspberry Pi 3 Model B V1.2.
 
-![Raspberry Pi 3 Photo](images/Raspberry_Pi_3.jpg)
+___
+
+![Raspberry Pi 3 Photo](../images/Raspberry_Pi_3.jpg)
 
 _Public Domain Image of Raspberry Pi 3_
 
 ___
 
-Most modern Raspberry Pis are about the size of a credit card and look like the photo with a few minor differences in the HDMI and USB port arrangement. If the board you're looking at is quite a bit smaller, has fewer than four USB ports, or has fewer than four mounting holes, it probably won't be suitable.
+Most modern Raspberry Pis are about the size of a credit card and look like the photo with a few minor differences in the HDMI and USB port arrangement. If the board you're looking at is quite a bit smaller, has fewer than four USB ports, or has fewer than four mounting holes, it probably won't be suitable for building a lab computer.
 
 The notable exception is the Raspberry Pi 400 which is a computer built into a red and white keyboard. It's less common, but if you've got one, hang on to it. It can do everything a Raspberry Pi 4 can do.
 
@@ -28,7 +30,7 @@ You'll need to use a Micro SD card with Raspberry Pi OS for this.
 3. Display the contents of the file: /proc/cpuinfo
 4. Take note of the last few lines. 
 
-Here's an example of a Raspberry Pi 3 like the one in the photo:
+Here's an example from a Raspberry Pi 3 like the one in the photo:
 ```
 $ cat /proc/cpuinfo
 [output removed for brevity]
