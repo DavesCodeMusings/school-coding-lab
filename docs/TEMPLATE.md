@@ -40,7 +40,21 @@ When you use acronyms and initialisms, like CDC, spell them out first so your re
 ## Third Major Task
 Try to limit your document to three to five tasks. More than that can become tedious to read. If you find it difficult to do, consider reducing the scope of your document.
 
+If you use screenshots or pictures, make sure to consider these aspects:
+* Use public domain images or images you've created yourself and are willing to release to public domain.
+* Separate your images from the test with horizontal bars above and below (three consecutive underscores in Markdown.)
+* Add a caption in italic text with Figure X: denoting the number of the image, folloed by a short description in title case.
+* Use relative links to a common image directory and filenames that reflect what the image is about.
+
+___
+
+![Thonny Toolbar](images/Thonny_Toolbar.png)
+
+_Figure 1: A Lovely Thonny Toolbar_
+
+___
+
 ## Next Steps
 Please, do not end your document with a Conclusion section. This habit should die shortly after eight grade English, but yet it persists. You're wrting a document to teach a topic. Learning never stops. Your document should not stop either.
 
-Do the reader a favor and point them to additional topics that logically follow what your document covers. They can be something you've written or a link to an external source.
+Do the reader a favor and point them to additional topics that logically follow what your document covers. They can be something you've written or a link to an external source. For an example, look at the [Raspberry Pi First-Time Install document](rpi/fresh_install.md).
