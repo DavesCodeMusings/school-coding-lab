@@ -18,3 +18,4 @@ To use VNC on your Raspberry Pi, you'll need to enable it first.
 ## Using Secure Shell to Access a Terminal
 The terminal window we've been using so much in the set up of your Raspberry Pi is also available remotely. It's more primative with no graphical desktop, but it does offer some flexibility. One big advantage is using a web-based Secure Shell terminal.
 
+If you used the Raspberry Pi Imager to write your Micro SD card and you chose the option for Enable SSH
