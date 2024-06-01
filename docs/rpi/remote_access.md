@@ -18,4 +18,17 @@ To use VNC on your Raspberry Pi, you'll need to enable it first.
 ## Using Secure Shell to Access a Terminal
 The terminal window we've been using so much in the set up of your Raspberry Pi is also available remotely. It's more primative with no graphical desktop, but it does offer some flexibility. One big advantage is using a web-based Secure Shell terminal.
 
-If you used the Raspberry Pi Imager to write your Micro SD card and you chose the option for Enable SSH
+>If you used the Raspberry Pi Imager to write your Micro SD card and you checked the box for Enable SSH on the Services tab of OS Customization, Secure Shell is already available. If you forgot, use `sudo raspi-config` and look under _Interface Options_ for _SSH_ and activate it there.
+
+Like VNC, you'll need a client program to access your Raspberry Pi via Secure Shell. With Windows, Linux, and Mac machines, this capability is built into the operating system. Just open a terminal window and type `ssh 192.168.1.1`; where 192.168.1.1 is the IP address of your Raspberry Pi. With Chromebooks and no access to Linux Mode, things are more difficult. (Are you sensing a theme here?)
+
+> You can find your Raspberry Pi's IP address using the command `ifconfig` or by hovering over the up/down arrow in the upper right corner of the Raspberry Pi OS desktop.
+
+For Chromebooks, we'll need to make SSH available through a web browser. This is covered next.
+
+## Secure Shell in a Web Browser
+With the help of some software on the Raspberry Pi, you can access Secure Shell in a browser window. Even Chromebooks will let you use a web browser, so this should give you remote access to your Raspberry Pi, just without the graphical desktop.
+
+The software package we need is called _shellinabox_ and it can be installed with the command `sudo apt-get install shellinabox`.
+
+Once it
