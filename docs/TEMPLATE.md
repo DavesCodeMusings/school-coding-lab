@@ -36,15 +36,17 @@ If you'll be giving an example that includes a number of system commands to be e
 * Include enough output so the reader knows what a successful command result looks like, but trim anything that is excessively wordy.
 * Use blank lines to separate groupings of commands and their output. This makes it easier to read.
 
+Here's an example of updating the system. Some output has been trimmed for brevity.
+
 ```
-$ sudo apt-get upgrade
+$ sudo su -
+
+# apt-get upgrade
 Reading package lists... Done
 Building dependency tree... Done
 Reading state information... Done
 The following additional packages will be installed:
 Do you want to continue? [Y/n] y
-
-$ sudo su -
 
 # shutdown -r now
 The system will reboot now!
