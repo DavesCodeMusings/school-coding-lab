@@ -1,0 +1,20 @@
+---
+services:
+  code-server:
+    build: .
+    container_name: code-server
+    hostname: code-server
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Chicago
+      - DEFAULT_WORKSPACE=/src
+    volumes:
+      - config:/config
+      - /usr/src:/src
+    ports:
+      - 8443:8443
+    restart: unless-stopped
+
+volumes:
+  config:
