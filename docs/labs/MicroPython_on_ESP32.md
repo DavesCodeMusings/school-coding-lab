@@ -82,6 +82,58 @@ From here on out, we'll be concentrating on writing MicroPython programs.
 ## Running MicroPython with MPRemote
 After preparing the microcontroller with MicroPython, you're ready to start running programs.
 
-TODO:
-* hello.py
-* hw_specs.py
+### Hello World
+The first program in nearly any programming language course is Hello World. It's not very fancy, it simply prints the message _Hello World_. Running Hello World on the ESP32C3 microcontroller is done with the help of a program called MPRemote.
+
+Here's how it works.
+1. Start by locating the hello.py program. It should be in the same directory where you found the MicroPython binary image.
+2. Change directory (cd) to where hello.py is.
+3. Run the program with the command: `mpremote run hello.py`
+
+If all goes well, you should see the output below.
+
+```
+$ mpremote run hello.py
+Hello World!
+```
+
+So what just happened here? The hello.py program is located on the Raspberry Pi, but it ran on the ESP32C3 microcontroller.
+
+It's just a regular Python program, so you could run it on the Raspberry Pi as well. See the example below.
+
+```
+$ python3 hello.py
+Hello World!
+```
+
+Both mpremote and python3 produced the same results: _Hello World_. So how do you know it really ran on the ESP32C3 microcontroller?
+
+The next program will show CPU, RAM, and flash memory. It's called _hw_specs.py_ and it only runs on microcontrollers and not Raspberry Pi.
+
+Running on the microcontroller should look something like this:
+
+```
+$ mpremote run hw_specs.py
+CPU:       esp32
+Speed:    160MHz
+RAM:       197KB
+Flash:       4MB
+MicroPy:  1.23.0
+```
+
+Running directly on the Raspberry Pi gives an error.
+
+```
+$ python3 hw_specs.py
+Traceback (most recent call last):
+  File "/home/student/Downloads/hw_specs.py", line 2, in <module>
+    from machine import freq
+ModuleNotFoundError: No module named 'machine'
+```
+
+>The _machine_ module in the error above is what causes it to fail. Only microcontrollers use the machine module. We'll learn more about modules in the upcoming labs.
+
+## Next Steps
+Now that you have MicroPython flashed onto your microcontroller and you know how to run programs with _mpremote_, you're ready to start writing your own programs.
+
+TODO: List some options here.
