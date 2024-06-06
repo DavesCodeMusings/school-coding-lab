@@ -38,7 +38,7 @@ Here's an example of a successful flash with esptool.py:
 $ cd Downloads
 
 $ ls
-ESP32_GENERIC_C3-20240602-v1.23.0.bin  hw_specs.py
+ESP32_GENERIC_C3-20240602-v1.23.0.bin  hello.py  hw_specs.py
 
 $ esptool.py --chip esp32c3 --port /dev/ttyUSB0 erase_flash
 esptool.py v4.7.0
