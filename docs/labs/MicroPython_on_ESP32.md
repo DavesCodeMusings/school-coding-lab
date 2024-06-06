@@ -28,7 +28,7 @@ Preparing your microcontroller to run MicroPython involves copying a file called
 
 Here's how the process works:
 1. Start by finding the [MicroPython binary image](https://micropython.org/download/ESP32_GENERIC_C3/). It should have already been downloaded by your lab coordinator.
-2. Change directory (cd) to where the image is located so when you type `ls` it appears in the directory listing.
+2. Change directory (cd) to where the image is located so when you type the command `ls` it appears in the directory listing.
 3. Erase the ESP32C3 flash RAM with the command: `esptool.py --chip esp32c3 --port /dev/ttyUSB0 erase_flash`
 4. Write the MicroPython to the ESP32C3 using: `esptool.py --chip esp32c3 --port /dev/ttyUSB0 write_flash -z 0x0 ESP32_GENERIC_C3-20240602-v1.23.0.bin` ; where _ESP32_GENERIC_C3-20240602-v1.23.0.bin_ is the name of the binary image you found in step 1.
 
@@ -83,10 +83,10 @@ From here on out, we'll be concentrating on writing MicroPython programs.
 After preparing the microcontroller with MicroPython, you're ready to start running programs.
 
 ### Hello World
-The first program in nearly any programming language course is Hello World. It's not very fancy, it simply prints the message _Hello World_. Running Hello World on the ESP32C3 microcontroller is done with the help of a program called MPRemote.
+The first program in nearly any programming language course is Hello World. It's not very fancy. It simply shows the message _Hello World_ on the screen. Running Hello World on the ESP32C3 microcontroller is done with the help of a program called MPRemote.
 
 Here's how it works.
-1. Start by locating the hello.py program. It should be in the same directory where you found the MicroPython binary image.
+1. Start by locating the _hello.py_ program. It should be in the same directory where you found the MicroPython binary image.
 2. Change directory (cd) to where hello.py is.
 3. Run the program with the command: `mpremote run hello.py`
 
@@ -97,18 +97,19 @@ $ mpremote run hello.py
 Hello World!
 ```
 
-So what just happened here? The hello.py program is located on the Raspberry Pi, but it ran on the ESP32C3 microcontroller.
+So what just happened here? The hello.py program is located on the Raspberry Pi, but it ran on the ESP32C3 microcontroller with the help of the `mpremote run` command.
 
-It's just a regular Python program, so you could run it on the Raspberry Pi as well. See the example below.
+It's just a regular Python program, so you could run hello.py on the Raspberry Pi as well. The example below shows what that would look like.
 
 ```
 $ python3 hello.py
 Hello World!
 ```
 
-Both mpremote and python3 produced the same results: _Hello World_. So how do you know it really ran on the ESP32C3 microcontroller?
+Both mpremote and python3 produced the same results on the screen: _Hello World_. So how do you know it really ran on the ESP32C3 microcontroller and not on the Raspberry Pi?
 
-The next program will show CPU, RAM, and flash memory. It's called _hw_specs.py_ and it only runs on microcontrollers and not Raspberry Pi.
+### Hardware Specs
+The next program will show CPU, RAM, and flash memory. It's called _hw_specs.py_ and it only runs on microcontrollers.
 
 Running on the microcontroller should look something like this:
 
@@ -136,4 +137,4 @@ ModuleNotFoundError: No module named 'machine'
 ## Next Steps
 Now that you have MicroPython flashed onto your microcontroller and you know how to run programs with _mpremote_, you're ready to start writing your own programs.
 
-TODO: List some options here.
+You'll use a code editor called Visual Studio Code. Many times you'll see its name shortened as _VS Code_. In the next lab, you'll learn how to use VS Code in your Raspberry Pi development environment.
