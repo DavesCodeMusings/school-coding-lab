@@ -80,7 +80,7 @@ https://github.com/DavesCodeMusings/school-coding-lab/blob/fleet/rpi/fleet/insta
 See below for an example. 
 
 ```
-admin@pi:~$ nano install_ansible.sh
+admin@pi:~$ wget https://raw.githubusercontent.com/DavesCodeMusings/school-coding-lab/main/rpi/fleet/install_ansible.sh
 admin@pi:~$ bash install_ansible.sh
 Installing the Ansible automation software package...
 ```
@@ -92,6 +92,7 @@ This part involves several steps. They are all automated by Ansible. However, th
 The example below shows how to run it.
 
 ```
+admin@pi:~$ wget https://raw.githubusercontent.com/DavesCodeMusings/school-coding-lab/main/rpi/fleet/configure_wifi_ap.yml
 admin@pi:~$ ansible-playbook configure_wifi_ap.yml
 ```
 _Figure 5: Running the Ansible playbook_
