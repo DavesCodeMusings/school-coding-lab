@@ -119,7 +119,7 @@ Broadcast message from root@pi3 on pts/1 (Sun 2024-06-09 10:13:41 CDT):
 
 The system will power off now!
 ```
-_Figure 5: Running up until system shutdown for attaching serial cable_
+_Figure 6: Running up until system shutdown for attaching serial cable_
 
 At this point, the system will restart and you'll need to log in again. Serial console will be available, so use that if you've wired the cable to the GPIO header. You may need to tap Enter once or twice to get a login prompt. This is normal with serial consoles.
 
@@ -166,7 +166,7 @@ Broadcast message from root@pi3 on pts/0 (Sun 2024-06-09 10:17:01 CDT):
 
 The system will reboot now!
 ```
-_Figure 6: Continuing with WiFi access point setup_
+_Figure 7: Continuing with WiFi access point setup_
 
 After this second restart, you'll no longer be able to use the old IP address for Secure Shell. This is where the serial cable (or alternatively, a monitor and keyboard) is handy.
 
@@ -181,7 +181,7 @@ admin@pifi:~$ ifconfig wlan0
 wlan0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         inet 10.42.0.1  netmask 255.255.255.0  broadcast 10.42.0.255
 ```
-_Figure 7: The Pi's new IP address_
+_Figure 8: The Pi's new IP address_
 
 ## Testing the PiFi Access Point Functionality
 To make sure everything is working as expected, let's take a quick look at what you can and cannot do on a this isolated student network.
@@ -198,7 +198,7 @@ Once connected, get the IP address assigned to your Chromebook or laptop. On Win
 PS > ipconfig | findstr "IPv4"
    IPv4 Address. . . . . . . . . . . : 10.42.0.66
 ```
-_Figure 8: Finding the Windows client IP address_
+_Figure 9: Finding the Windows client IP address_
 
 If your remote computer shows a WiFi connection and an IP address, things are working great.
 
@@ -230,7 +230,7 @@ Commercial support is available at nginx.com.
 
 Thank you for using nginx.
 ```
-_Figure 9: Nginx test page_
+_Figure 10: Nginx test page_
 
 ## Connecting Your Fleet of Student Developer Workstations
 With the PiFi access point now up and running, you can begin changing the WiFi connections for the rest of the Raspberry Pis to use the PiFi SSID and password. This will ensure the Raspberry Pis can interact with each other, but not connect to sites outside of the classroom.
