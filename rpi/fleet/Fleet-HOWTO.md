@@ -19,6 +19,14 @@ Use Raspberry Pi Imager to prepare a microSD card with Raspberry Pi OS Lite (64-
 
 In place of Raspberry Pi OS (64-bit), you'll want to select _Raspberry Pi OS (other)_ and then choose _Raspberry Pi OS Lite (64-bit)_ from the sub-menu.
 
+___
+
+![Raspberry Pi OS Lite](../../docs/images/Imager%20Choose%20OS%20Lite.png)
+
+_Figure 1: Choosing Raspberry Pi OS Lite in Raspberry Pi Imager_
+
+___
+
 Continue on with the remaining steps and boot the Pi.
 
 ### First Login
@@ -36,7 +44,7 @@ $ ifconfig wlan0
 wlan0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         inet 192.168.1.116  netmask 255.255.255.0  broadcast 192.168.1.255
 ```
-_Figure 1: An example of logging in to find an IP address of 192.168.1.116_
+_Figure 2: An example of logging in to find an IP address of 192.168.1.116_
 
 ### Testing Secure Shell
 Having you WiFi router attached to a monitor and keyboard is not the way it's usually done. Normally, access is through Secure Shell. Now that you know the IP address of the Pi, try connecting from another machine with an SSH client. Troubleshoot any problems before moving on.
@@ -48,7 +56,7 @@ Linux pi3 6.6.20+rpt-rpi-v8 #1 SMP PREEMPT Debian 1:6.6.20-1+rpt1 (2024-03-07) a
 
 admin@pi:~ $
 ```
-_Figure 2: A successful SSH connection_
+_Figure 3: A successful SSH connection_
 
 ### Attaching a USB Serial Console Cable
 Secure Shell doesn't work if there's no IP address to connect to. This can happen if the machine is malfunctioning. Most of the time, you can hook up a monitor and keyboard to figure out what's wrong. But, the normal state of a WiFi Access Point is to operate without a monitor and keyboard.
@@ -76,7 +84,7 @@ admin@pi:~$ nano install_ansible.sh
 admin@pi:~$ bash install_ansible.sh
 Installing the Ansible automation software package...
 ```
-_Figure 3: Installing Ansible with the script_
+_Figure 4: Installing Ansible with the script_
 
 ### Setting Up the Pi as an Access Point
 This part involves several steps. They are all automated by Ansible. However, there is a reboot in the middle of set-up. So you will need to log in and run the automation twice.
@@ -86,7 +94,7 @@ The example below shows how to run it.
 ```
 admin@pi:~$ ansible-playbook configure_wifi_ap.yml
 ```
-_Figure 4: Running the Ansible playbook_
+_Figure 5: Running the Ansible playbook_
 
 Here's an example of what you will see for the first run:
 
@@ -221,5 +229,9 @@ Commercial support is available at nginx.com.
 
 Thank you for using nginx.
 ```
-Figure 8: Nginx test page
+_Figure 9: Nginx test page_
 
+## Connecting Your Fleet of Student Developer Workstations
+With the PiFi access point now up and running, you can begin changing the WiFi connections for the rest of the Raspberry Pis to use the PiFi SSID and password. This will ensure the Raspberry Pis can interact with each other, but not connect to sites outside of the classroom.
+
+With Ansible installed on the PiFi device and all of the student workstations connected to it, you can automate any changes that need to be made. But there are some limitations due to not being connected to the internet. This deficit is particuarly evident when trying to install software packages from Raspberry Pi OS repositories.
