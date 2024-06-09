@@ -72,4 +72,5 @@ See below for an example.
 ```
 admin@pi:~$ nano install_ansible.sh
 admin@pi:~$ bash install_ansible.sh
+Installing the Ansible automation software package.
 ```
