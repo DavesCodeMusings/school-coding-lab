@@ -235,3 +235,6 @@ _Figure 9: Nginx test page_
 With the PiFi access point now up and running, you can begin changing the WiFi connections for the rest of the Raspberry Pis to use the PiFi SSID and password. This will ensure the Raspberry Pis can interact with each other, but not connect to sites outside of the classroom.
 
 With Ansible installed on the PiFi device and all of the student workstations connected to it, you can automate any changes that need to be made. But there are some limitations due to not being connected to the internet. This deficit is particuarly evident when trying to install software packages from Raspberry Pi OS repositories.
+
+## Next Steps: Automation
+Another glaring limitation of an isolated network is having to use IP addresses all the time instead of names like we're used to. To remedy this, we can use a centralized list of hostname to IP address associations, called a _hosts_ file. One of the first automation tasks is to make sure all the Raspberry Pis have the same copy of the hosts file.
