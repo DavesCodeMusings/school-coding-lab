@@ -1,0 +1,72 @@
+---
+- name: Configure Raspberry Pi as WiFi Access Point
+  hosts: localhost
+  become: true
+
+  vars:
+    wifi_ssid: PiFi
+    wifi_password: P@ssw0rd
+
+  tasks:
+    - name: Enable serial console
+      lineinfile:
+        dest: /boot/firmware/config.txt
+        insertafter: "[all]"
+        line: "enable_uart=1"
+      register: enable_uart
+
+    - name: Shutdown for switchover to serial console
+      ansible.builtin.shell:
+        cmd: "shutdown -h now"
+      when: enable_uart.changed
+
+    # Update will fail if not connected to the internet.
+    - name: Update apt cache
+      ansible.builtin.apt:
+        update_cache: yes
+
+    - name: Install web-based Secure Shell
+      ansible.builtin.apt:
+        name: shellinabox
+ 
+    - name: Install web server
+      ansible.builtin.apt:
+        name: nginx
+
+    - name: Set up WiFi access point connection
+      community.general.nmcli:
+        conn_name: "{{ wifi_ssid | lower }}"
+        type: wifi
+        ifname: wlan0
+        ssid: "{{ wifi_ssid }}"
+        wifi:
+          band: bg
+          hidden: false
+          mode: ap
+        wifi_sec:
+          key-mgmt: wpa-psk
+          psk: "{{ wifi_password }}"
+        method4: shared
+        state: present
+
+    - name: Delete WiFi station connection
+      community.general.nmcli:
+        conn_name: "preconfigured"
+        state: absent
+
+    - name: Set hostname to match SSID
+      ansible.builtin.hostname:
+        name: "{{ wifi_ssid | lower }}"
+
+    - name: Restart to activate changes
+      ansible.builtin.shell:
+        cmd: "shutdown -r now"
+
+
+# References:
+# https://learn.adafruit.com/adafruits-raspberry-pi-lesson-5-using-a-console-cable/
+# https://raymii.org/s/tutorials/Ansible_-_Only-do-something-if-another-action-changed.html
+# https://raspberrytips.com/access-point-setup-raspberry-pi/
+# https://docs.ansible.com/ansible/latest/collections/community/general/nmcli_module.html
+# https://docs.ansible.com/ansible/latest/collections/ansible/builtin/reboot_module.html
+# https://docs.ansible.com/ansible/latest/collections/ansible/builtin/hostname_module.html
