@@ -55,6 +55,8 @@ Secure Shell doesn't work if there's no IP address to connect to. This can happe
 
 To avoid being stuck with no access, Raspberry Pi OS has the ability to use a serial console. Adafruit has an excellent tutorial on [setting up a serial console on Raspberry Pi](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-5-using-a-console-cable/).
 
+**Be safe and power down the Pi before attaching the cable!**
+
 You can skip the bits about using raspi-config or editing config.txt. The Ansible automation will take care of all these tasks. All you need to do is wire the cable and install drivers on the remote machine.
 
 >If this sounds too complex and you want to just stick with using a monitor and keyboard in a pinch, that's fine too. However, the automation will still enable serial console regardless of it being wired or not. This will not cause a problem.
@@ -73,4 +75,97 @@ See below for an example.
 admin@pi:~$ nano install_ansible.sh
 admin@pi:~$ bash install_ansible.sh
 Installing the Ansible automation software package...
+```
+
+### Setting Up the Pi as an Access Point
+This part involves several steps. They are all automated by Ansible. However, there is a reboot in the middle of set-up. So you will need to log in and run the automation twice.
+
+The example below shows how to run it.
+
+```
+admin@pi:~$ ansible-playbook configure_wifi_ap.yml
+```
+
+Here's an example of what you will see for the first run:
+
+```
+admin@pi:~$ ansible-playbook configure_wifi_ap.yml
+[WARNING]: No inventory was parsed, only implicit localhost is available
+[WARNING]: provided hosts list is empty, only localhost is available. Note that
+the implicit localhost does not match 'all'
+
+PLAY [Configure Raspberry Pi as WiFi Access Point] *****************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [localhost]
+
+TASK [Enable serial console] ***************************************************
+changed: [localhost]
+
+TASK [Shutdown for switchover to serial console] *******************************
+
+Broadcast message from root@pi3 on pts/1 (Sun 2024-06-09 10:13:41 CDT):
+
+The system will power off now!
+```
+_Figure 3: System shutdown for attaching serial cable.
+
+At this point, the system will restart and you'll need to log in again. Serial console will be available, so use that if you've wired the cable to the GPIO header. You may need to tap Enter once or twice to get a login prompt. This is normal with serial consoles.
+
+After logging in and running the automation a second time, you'll see something like this:
+
+```
+$ ansible-playbook configure_wifi_ap.yml
+[WARNING]: No inventory was parsed, only implicit localhost is available
+[WARNING]: provided hosts list is empty, only localhost is available. Note that
+the implicit localhost does not match 'all'
+
+PLAY [Configure Raspberry Pi as WiFi Access Point] *****************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [localhost]
+
+TASK [Enable serial console] ***************************************************
+ok: [localhost]
+
+TASK [Shutdown for switchover to serial console] *******************************
+skipping: [localhost]
+
+TASK [Update apt cache] ********************************************************
+ok: [localhost]
+
+TASK [Install web-based Secure Shell] ******************************************
+changed: [localhost]
+
+TASK [Install web server] ******************************************************
+changed: [localhost]
+
+TASK [Set up WiFi access point connection] *************************************
+changed: [localhost]
+
+TASK [Delete WiFi station connection] ******************************************
+changed: [localhost]
+
+TASK [Set hostname to match SSID] **********************************************
+changed: [localhost]
+
+TASK [Restart to activate changes] *********************************************
+
+Broadcast message from root@pi3 on pts/0 (Sun 2024-06-09 10:17:01 CDT):
+
+The system will reboot now!
+```
+
+After this second restart, you'll no longer be able to use the old IP address for Secure Shell. This is where the serial cable (or alternatively, a monitor and keyboard) is handy.
+
+Power up the Pi, log in, and get the new IP address as shown below.
+
+```
+pifi login: admin
+Password:
+Linux pifi 6.6.20+rpt-rpi-v8 #1 SMP PREEMPT Debian 1:6.6.20-1+rpt1 (2024-03-07) aarch64
+
+admin@pifi:~$ ifconfig wlan0
+wlan0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 10.42.0.1  netmask 255.255.255.0  broadcast 10.42.0.255
 ```
