@@ -62,3 +62,14 @@ You can skip the bits about using raspi-config or editing config.txt. The Ansibl
 ### Installing Ansible
 The Ansible package is installed from the Raspberry Pi OS repository using a simple shell script you can find at:
 
+https://github.com/DavesCodeMusings/school-coding-lab/blob/fleet/rpi/fleet/install_ansible.sh
+
+1. Copy the script to your Raspberry Pi and save it as _install_ansible.sh_
+2. Run the script with the command `bash install_ansible.sh`
+
+See below for an example. 
+
+```
+admin@pi:~$ nano install_ansible.sh
+admin@pi:~$ bash install_ansible.sh
+```
