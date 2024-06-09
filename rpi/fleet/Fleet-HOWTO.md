@@ -50,6 +50,15 @@ admin@pi:~ $
 ```
 _Figure 2: A successful SSH connection_
 
+### Attaching a USB Serial Console Cable
+Secure Shell doesn't work if there's no IP address to connect to. This can happen if the machine is malfunctioning. Most of the time, you can hook up a monitor and keyboard to figure out what's wrong. But, the normal state of a WiFi Access Point is to operate without a monitor and keyboard.
+
+To avoid being stuck with no access, Raspberry Pi OS has the ability to use a serial console. Adafruit has an excellent tutorial on [setting up a serial console on Raspberry Pi](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-5-using-a-console-cable/).
+
+You can skip the bits about using raspi-config or editing config.txt. The Ansible automation will take care of all these tasks. All you need to do is wire the cable and install drivers on the remote machine.
+
+>If this sounds too complex and you want to just stick with using a monitor and keyboard in a pinch, that's fine too. However, the automation will still enable serial console regardless of it being wired or not. This will not cause a problem.
+
 ### Installing Ansible
 The Ansible package is installed from the Raspberry Pi OS repository using a simple shell script you can find at:
 
