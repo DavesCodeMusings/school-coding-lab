@@ -6,7 +6,7 @@ The steps in this document assume you are familiar with using the Raspberry Pi I
 ## Understanding School Network Limitations
 Internet access in schools is very different than the simple connection you experience at home or on your mobile phone. Quite often it will require an individual username and password to sign in. Many times, web sites we take for granted are blocked by web filters. Because of this, the School Coding Lab is designed to operate as an island, disconnected from the internet entirely.
 
-## Creating a Lab Network
+## Creating an Isolated Lab Network
 The first step in separating the lab from the school network is to create our own WiFi router. We'll create a device similar to what you might have at home, but instead of buying something from NetGear or TP-Link, we'll use a Raspberry Pi. This functionality is built into the latest version of Raspberry Pi OS and only requires a little bit of configuration to get it working.
 
 The next step is to use the Raspberry Pi WiFi Access Point (herein lovingly referred to as PiFi) as a central place to manage the remaining Raspberry Pis in our fleet with Ansible automation.
