@@ -9,7 +9,7 @@ Internet access in schools is very different than the simple connection you expe
 ## Creating a Lab Network
 The first step in separating the lab from the school network is to create our own WiFi router. We'll create a device similar to what you might have at home, but instead of buying something from NetGear or TP-Link, we'll use a Raspberry Pi. This functionality is built into the latest version of Raspberry Pi OS and only requires a little bit of configuration to get it working.
 
-The next step is to use the Raspberry Pi WiFi Access Point (herein lovingly referred to as PiFi) as a central place to manage our remaining Raspberry Pis with Ansible automation.
+The next step is to use the Raspberry Pi WiFi Access Point (herein lovingly referred to as PiFi) as a central place to manage the remaining Raspberry Pis in our fleet with Ansible automation.
 
 ## Configuring the PiFi Access Point
 We'll start with a Raspberry Pi 3 or better and flash it with Raspberry Pi OS Lite. We'll use a short shell script to install Ansible. Then, we'll use an Ansible Playbook to do the rest of the configuration.
@@ -76,6 +76,7 @@ admin@pi:~$ nano install_ansible.sh
 admin@pi:~$ bash install_ansible.sh
 Installing the Ansible automation software package...
 ```
+_Figure 3: Installing Ansible with the script_
 
 ### Setting Up the Pi as an Access Point
 This part involves several steps. They are all automated by Ansible. However, there is a reboot in the middle of set-up. So you will need to log in and run the automation twice.
@@ -85,6 +86,7 @@ The example below shows how to run it.
 ```
 admin@pi:~$ ansible-playbook configure_wifi_ap.yml
 ```
+_Figure 4: Running the Ansible playbook_
 
 Here's an example of what you will see for the first run:
 
@@ -108,7 +110,7 @@ Broadcast message from root@pi3 on pts/1 (Sun 2024-06-09 10:13:41 CDT):
 
 The system will power off now!
 ```
-_Figure 3: System shutdown for attaching serial cable.
+_Figure 5: Running up until system shutdown for attaching serial cable_
 
 At this point, the system will restart and you'll need to log in again. Serial console will be available, so use that if you've wired the cable to the GPIO header. You may need to tap Enter once or twice to get a login prompt. This is normal with serial consoles.
 
@@ -155,6 +157,7 @@ Broadcast message from root@pi3 on pts/0 (Sun 2024-06-09 10:17:01 CDT):
 
 The system will reboot now!
 ```
+_Figure 6: Continuing with WiFi access point setup_
 
 After this second restart, you'll no longer be able to use the old IP address for Secure Shell. This is where the serial cable (or alternatively, a monitor and keyboard) is handy.
 
@@ -169,3 +172,54 @@ admin@pifi:~$ ifconfig wlan0
 wlan0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         inet 10.42.0.1  netmask 255.255.255.0  broadcast 10.42.0.255
 ```
+_Figure 7: The Pi's new IP address_
+
+## Testing the PiFi Access Point Functionality
+To make sure everything is working as expected, let's take a quick look at what you can and cannot do on a this isolated student network.
+
+First connect a Chromebook, Windows, Mac, or Linux laptop to the PiFi access point. How you do this depends on your particular device, but it's usually a matter of selecting the access point name (PiFi) from a list and entering the default password (P@ssw0rd) to get connected.
+
+>If you're wondering where the name and password came from, take a look toward the top of _configure_wifi_ap.yml_ in the _vars:_ section.
+
+It might take a second to get connected. And your laptop might complain that there's no internet access. This is by design. We are creating an isolated network.
+
+Once connected, get the IP address assigned to your Chromebook or laptop. On Windows, it looks similar to this:
+
+```
+PS > ipconfig | findstr "IPv4"
+   IPv4 Address. . . . . . . . . . . : 10.42.0.66
+```
+_Figure 8: Finding the Windows client IP address_
+
+If your remote computer shows a WiFi connection and an IP address, things are working great.
+
+## Testing Connection to the PiFi's Raspberry Pi OS
+There are several ways to access the Raspberry Pi serving as a WiFi access point. Normally, you'll only need to do this when performing maintenance, but it's good to test now.
+
+Of all the options, only the USB serial cable will work all the time. The other methods require you to first connect to the PiFi network.
+
+Try each of the following to make sure they work from your remote device:
+
+1. Secure Shell from a command prompt. (i.e. `ssh admin@10.42.0.1`)
+2. Secure Shell from the browser (i.e. `http:\\10.42.0.1:4200`)
+3. Serial console with the USB to serial cable.
+
+Note anything not working and troubleshoot as needed.
+
+## Testing the PiFi Web Server
+One of the steps in the the Ansible automation involves installing a web server called Nginx (pronounced engine-X). This is not a requirement for WiFi access point functionality, but it can be useful for distributing files.
+
+Test it by going to `http://10.42.0.1` in a web browser on any machine connected to the PiFi network. You should see a message that says, _Welcome to nginx!_"
+
+```
+Welcome to nginx!
+
+If you see this page, the nginx web server is successfully installed and working. Further configuration is required.
+
+For online documentation and support please refer to nginx.org.
+Commercial support is available at nginx.com.
+
+Thank you for using nginx.
+```
+Figure 8: Nginx test page
+
