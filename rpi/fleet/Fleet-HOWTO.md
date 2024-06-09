@@ -27,7 +27,7 @@ _Figure 1: Choosing Raspberry Pi OS Lite in Raspberry Pi Imager_
 
 ___
 
-Continue on with the remaining steps and boot the Pi.
+Continue on with the remaining steps in the [first-time setup  document](https://davescodemusings.github.io/school-coding-lab/rpi/fresh_install.html) and boot the Pi.
 
 ### First Login
 When you've got the Pi attached to a monitor and keyboard, you won't see the familiar Raspberry Pi OS desktop. Instead you'll be looking at a text-based prompt asking you to log in. Use the username and password you set up in the Raspberry Pi Imager's option's General tab.
@@ -46,7 +46,7 @@ wlan0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
 ```
 _Figure 2: An example of logging in to find an IP address of 192.168.1.116_
 
-### Testing Secure Shell
+### Logging in with Secure Shell
 Having you WiFi router attached to a monitor and keyboard is not the way it's usually done. Normally, access is through Secure Shell. Now that you know the IP address of the Pi, try connecting from another machine with an SSH client. Troubleshoot any problems before moving on.
 
 ```
@@ -170,7 +170,7 @@ _Figure 7: Continuing with WiFi access point setup_
 
 After this second restart, you'll no longer be able to use the old IP address for Secure Shell. This is where the serial cable (or alternatively, a monitor and keyboard) is handy.
 
-Power up the Pi, log in, and get the new IP address as shown below.
+After the debug messages roll by, log in and get the new IP address as shown below.
 
 ```
 pifi login: admin
@@ -184,7 +184,7 @@ wlan0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
 _Figure 8: The Pi's new IP address_
 
 ## Testing the PiFi Access Point Functionality
-To make sure everything is working as expected, let's take a quick look at what you can and cannot do on a this isolated student network.
+To make sure everything is working as expected, take a quick look at what you can and cannot do on a this isolated student network.
 
 First connect a Chromebook, Windows, Mac, or Linux laptop to the PiFi access point. How you do this depends on your particular device, but it's usually a matter of selecting the access point name (PiFi) from a list and entering the default password (P@ssw0rd) to get connected.
 
@@ -192,7 +192,7 @@ First connect a Chromebook, Windows, Mac, or Linux laptop to the PiFi access poi
 
 It might take a second to get connected. And your laptop might complain that there's no internet access. This is by design. We are creating an isolated network.
 
-Once connected, get the IP address assigned to your Chromebook or laptop. On Windows, it looks similar to this:
+Once connected, the next task is to get the IP address assigned to your Chromebook or laptop. On Windows, it looks similar to this:
 
 ```
 PS > ipconfig | findstr "IPv4"
@@ -200,25 +200,25 @@ PS > ipconfig | findstr "IPv4"
 ```
 _Figure 9: Finding the Windows client IP address_
 
-If your remote computer shows a WiFi connection and an IP address, things are working great.
+If your remote computer shows an active WiFi connection and an IP address starting with the same three groups of numbers as the PiFi IP address, things are working great.
 
 ## Testing Connection to the PiFi's Raspberry Pi OS
-There are several ways to access the Raspberry Pi serving as a WiFi access point. Normally, you'll only need to do this when performing maintenance, but it's good to test now.
+There are several ways to access the Raspberry Pi serving as a WiFi access point. Normally, you'll only need to do this when performing maintenance, but it's good to ensure it works now.
 
-Of all the options, only the USB serial cable will work all the time. The other methods require you to first connect to the PiFi network.
+Of all the options, only the USB serial cable will work all the time. The other methods depend on you first connecting to the PiFi network.
 
 Try each of the following to make sure they work from your remote device:
 
 1. Secure Shell from a command prompt. (i.e. `ssh admin@10.42.0.1`)
-2. Secure Shell from the browser (i.e. `http:\\10.42.0.1:4200`)
+2. Secure Shell from the web browser. (i.e. `http:\\10.42.0.1:4200`)
 3. Serial console with the USB to serial cable.
 
 Note anything not working and troubleshoot as needed.
 
 ## Testing the PiFi Web Server
-One of the steps in the the Ansible automation involves installing a web server called Nginx (pronounced engine-X). This is not a requirement for WiFi access point functionality, but it can be useful for distributing files.
+One of the steps in the the Ansible automation involves installing a web server called Nginx (pronounced engine-X). This is not a requirement for WiFi access point functionality, but it can be useful for distributing files. Any of the other Raspberry Pis on the isolated network can access the web server on the PiFi.
 
-Test it by going to `http://10.42.0.1` in a web browser on any machine connected to the PiFi network. You should see a message that says, _Welcome to nginx!_"
+Test it by going to `http://10.42.0.1` in a web browser on a machine connected to the PiFi network. You should see a message that says, _Welcome to nginx!_" similar to what is shown below.
 
 ```
 Welcome to nginx!
