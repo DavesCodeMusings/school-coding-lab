@@ -58,17 +58,6 @@ admin@pi:~ $
 ```
 _Figure 3: A successful SSH connection_
 
-### Attaching a USB Serial Console Cable
-Secure Shell doesn't work if there's no IP address to connect to. This can happen if the machine is malfunctioning. Most of the time, you can hook up a monitor and keyboard to figure out what's wrong. But, the normal state of a WiFi Access Point is to operate without a monitor and keyboard.
-
-To avoid being stuck with no access, Raspberry Pi OS has the ability to use a serial console. Adafruit has an excellent tutorial on [setting up a serial console on Raspberry Pi](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-5-using-a-console-cable/).
-
-**Be safe and power down the Pi before attaching the cable!**
-
-You can skip the bits about using raspi-config or editing config.txt. The Ansible automation will take care of all these tasks. All you need to do is wire the cable and install drivers on the remote machine.
-
->If this sounds too complex and you want to just stick with using a monitor and keyboard in a pinch, that's fine too. However, the automation will still enable serial console regardless of it being wired or not. This will not cause a problem.
-
 ### Installing Ansible
 The Ansible package is installed from the Raspberry Pi OS repository using a simple shell script you can find at:
 
@@ -86,10 +75,10 @@ Installing the Ansible automation software package...
 ```
 _Figure 4: Installing Ansible with the script_
 
-### Setting Up the Pi as an Access Point
-This part involves several steps. They are all automated by Ansible. However, there is a reboot in the middle of set-up. So you will need to log in and run the automation twice.
+### Starting the Access Point Setup
+This part involves a few steps. They are all automated by Ansible. However, it ends with a system shutdown before the setup is complete. This is so you can disconnect power and attach a USB serial cable.
 
-The example below shows how to run it.
+The example below shows how to run the setup.
 
 ```
 admin@pi:~$ wget https://raw.githubusercontent.com/DavesCodeMusings/school-coding-lab/main/rpi/fleet/configure_wifi_ap.yml
@@ -121,16 +110,30 @@ The system will power off now!
 ```
 _Figure 6: Running up until system shutdown for attaching serial cable_
 
-At this point, the system will restart and you'll need to log in again. Serial console will be available, so use that if you've wired the cable to the GPIO header. You may need to tap Enter once or twice to get a login prompt. This is normal with serial consoles.
+### Attaching the USB Serial Console Cable
+The normal state of a WiFi Access Point is to operate headless (without a monitor and keyboard.) To access a headless Raspberry Pi, Raspberry Pi OS can use a serial console.
 
-Log in and run the Ansible playbook a second time to finish up the remaining tasks.
+Adafruit has an excellent tutorial on [setting up a serial console on Raspberry Pi](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-5-using-a-console-cable/). You can skip the bits about using raspi-config or editing config.txt. The Ansible automation will take care of all these tasks. All you need to do is wire the cable and install drivers on the remote machine.
+
+**Be safe and unplug power from the Pi before attaching the serial cable!**
+
+### Continuing Access Point Setup from the Serial Console
+After attaching the serial cable, plug the USB end into your laptop and power up the Pi. The system will restart and you'll need to log in again. Serial console will be available, so use that to log in. You may need to tap Enter once or twice to get a login prompt. This is normal with serial consoles.
+
+>If this sounds too complex and you want to just stick with using a monitor and keyboard in a pinch, that's fine too. However, the automation will still enable serial console regardless of it being wired or not. This will not cause a problem.
+
+Once logged in, run the Ansible playbook a second time to finish up the remaining tasks.
 
 ```
-$ ansible-playbook configure_wifi_ap.yml
+pi login: admin
+Password:
+Linux pi3 6.6.20+rpt-rpi-v8 #1 SMP PREEMPT Debian 1:6.6.20-1+rpt1 (2024-03-07) aarch64
+
+admin@pi:~ $ ansible-playbook configure_wifi_ap.yml
 ```
 _Figure 7: Running again after attaching the serial cable_
 
-After logging in and running the automation a second time, you'll see something like this:
+The second run of the Ansible playbook should look something like this:
 
 ```
 $ ansible-playbook configure_wifi_ap.yml
