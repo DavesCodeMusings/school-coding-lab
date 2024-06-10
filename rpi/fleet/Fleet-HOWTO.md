@@ -123,6 +123,13 @@ _Figure 6: Running up until system shutdown for attaching serial cable_
 
 At this point, the system will restart and you'll need to log in again. Serial console will be available, so use that if you've wired the cable to the GPIO header. You may need to tap Enter once or twice to get a login prompt. This is normal with serial consoles.
 
+Log in and run the Ansible playbook a second time to finish up the remaining tasks.
+
+```
+$ ansible-playbook configure_wifi_ap.yml
+```
+_Figure 7: Running again after attaching the serial cable_
+
 After logging in and running the automation a second time, you'll see something like this:
 
 ```
@@ -166,7 +173,7 @@ Broadcast message from root@pi3 on pts/0 (Sun 2024-06-09 10:17:01 CDT):
 
 The system will reboot now!
 ```
-_Figure 7: Continuing with WiFi access point setup_
+_Figure 8: Continuing with WiFi access point setup_
 
 After this second restart, you'll no longer be able to use the old IP address for Secure Shell. This is where the serial cable (or alternatively, a monitor and keyboard) is handy.
 
@@ -181,7 +188,7 @@ admin@pifi:~$ ifconfig wlan0
 wlan0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         inet 10.42.0.1  netmask 255.255.255.0  broadcast 10.42.0.255
 ```
-_Figure 8: The Pi's new IP address_
+_Figure 9: The Pi's new IP address_
 
 ## Testing the PiFi Access Point Functionality
 To make sure everything is working as expected, take a quick look at what you can and cannot do on a this isolated student network.
@@ -198,7 +205,7 @@ Once connected, the next task is to get the IP address assigned to your Chromebo
 PS > ipconfig | findstr "IPv4"
    IPv4 Address. . . . . . . . . . . : 10.42.0.66
 ```
-_Figure 9: Finding the Windows client IP address_
+_Figure 10: Finding the Windows client IP address_
 
 If your remote computer shows an active WiFi connection and an IP address starting with the same three groups of numbers as the PiFi IP address, things are working great.
 
@@ -210,7 +217,7 @@ Of all the options, only the USB serial cable will work all the time. The other 
 Try each of the following to make sure they work from your remote device:
 
 1. Secure Shell from a command prompt. (i.e. `ssh admin@10.42.0.1`)
-2. Secure Shell from the web browser. (i.e. `http:\\10.42.0.1:4200`)
+2. Secure Shell from the web browser. (i.e. `https:\\10.42.0.1:4200`)
 3. Serial console with the USB to serial cable.
 
 Note anything not working and troubleshoot as needed.
@@ -230,7 +237,7 @@ Commercial support is available at nginx.com.
 
 Thank you for using nginx.
 ```
-_Figure 10: Nginx test page_
+_Figure 11: Nginx test page_
 
 ## Connecting Your Fleet of Student Developer Workstations
 With the PiFi access point now up and running, you can begin changing the WiFi connections for the rest of the Raspberry Pis to use the PiFi SSID and password. This will ensure the Raspberry Pis can interact with each other, but not connect to sites outside of the classroom.
