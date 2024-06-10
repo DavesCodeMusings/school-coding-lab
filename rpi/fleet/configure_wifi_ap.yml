@@ -20,12 +20,21 @@
         cmd: "shutdown -h now"
       when: enable_uart.changed
 
-    # lookup will fail if not connected to the internet.
+    - name: Look up the system's apt configuration
+      ansible.builtin.shell:
+        cmd: apt-cache policy | awk '!found && /origin/ { found=1; print $2 }'
+      register: apt_origin
+
+    - name: Get the apt source repository hostname
+      set_fact:
+        apt_repo: "{{ apt_origin.stdout }}"
+
     - name: Check connectivity to apt repository
       ansible.builtin.debug:
         msg: "{{ lookup('community.general.dig', '{{ apt_repo }}.')}}"
       ignore_errors: true
       register: connectivity_test
+      # will fail if not connected to the internet.
 
     - name: Update apt cache
       ansible.builtin.apt:
@@ -81,7 +90,7 @@
       ansible.builtin.copy:
         content: |
           127.0.1.1       localhost
-          10.42.0.1       pifi
+          10.42.0.1       {{ wifi_ssid | lower }}
         dest: /etc/hosts
         owner: root
         group: root
