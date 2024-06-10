@@ -20,6 +20,7 @@ e=/dev/null --no-hosts --keep-in-foreground --bind-interfaces --except-interface
 eases --pid-file=/run/nm-dnsmasq-wlan0.pid --conf-dir=/etc/NetworkManager/dnsmas
 q-shared.d
 ```
+_Figure 1: dnsmasq and its options_
 
 What can we tell from this? Some highlights include:
 1. --conf-file; It's set to dev/null, so there's no configuration file being used.
@@ -40,12 +41,14 @@ Reservations are covered in the section entitled _Setting Up Static IPs_. Skippi
 ```
 dhcp-host=ab:cd:ef:12:34:56,example-host,192.168.0.10,infinite
 ```
+_Figure 2: A sample DHCP reservation_
 
 Adjusting this to our purposes might look something like this:
 
 ```
 dhcp-host=ab:cd:ef:12:34:56,rpi03,10.42.0.11,infinite
 ```
+_Figure 3: A reservation tailored to the configured DHCP range_
 
 This will tell dnsmasq to always assign the IP address of 10.42.0.11 to rpi03, whose hardware address is ab:cd:ef:12:34:56.
 
@@ -67,6 +70,7 @@ wlan0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         TX packets 330  bytes 27871 (27.2 KiB)
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 ```
+_Figure 4: Showing the configuration for the wireless interface_
 
 The line starting with _ether_ is followed by six pairs of two-digit hexadecimal numbers. That's the MAC address.
 
@@ -85,6 +89,7 @@ admin@pifi:~$ sudo su -
 root@pifi:~# cd /etc/NetworkManager/dnsmasq-shared.d/
 root@pifi:/etc/NetworkManager/dnsmasq-shared.d# nano reservations
 ```
+_Figure 5: Creating the reservations file in the dnsmasq config directory_
 
 Start with _dhcp-host=_ then add the following comma-separated values:
 1. The MAC address for your host
@@ -98,6 +103,7 @@ Save this file. Then, verify it looks like the example below.
 root@pifi:/etc/NetworkManager/dnsmasq-shared.d# cat reservations
 dhcp-host=2d:ec:af:c0:ff:ee,stemmy,10.42.0.34,infinite
 ```
+_Figure 6: Showing the contents of the reservations file_
 
 ## Reboot and Test
 dnsmasq won't pick up the new configuration until it's restarted. The easiest way to do this is simply rebooting the PiFi access point.
@@ -106,8 +112,21 @@ dnsmasq won't pick up the new configuration until it's restarted. The easiest wa
 admin@pifi:~$ sudo shutdown -r now
 The system will reboot now!
 ```
+_Figure 7: Rebooting_
 
 Once the PiFi is back up and running, try connecting with the client that has a reservation. If you don't get the reserved IP address right away, don't panic. It might be waiting for an old one to expire and this can take up to an hour with the way dnsmasq is configured.
+
+You can watch WiFi connections being made in realtime by using the `journalctl -f` command as shown below. Notice the IP address being assigned matches the reservation. This means it's working.
+
+```
+root@pifi:~# journalctl -f
+Jun 08 20:42:25 pifi wpa_supplicant[506]: wlan0: CTRL-EVENT-SUBNET-STATUS-UPDATE status=0
+Jun 08 20:42:25 pifi wpa_supplicant[506]: wlan0: AP-STA-CONNECTED 2d:ec:af:c0:ff:ee
+Jun 08 20:42:25 pifi wpa_supplicant[506]: wlan0: EAPOL-4WAY-HS-COMPLETED 2d:ec:af:c0:ff:ee
+Jun 08 20:42:25 pifi dnsmasq-dhcp[681]: DHCPREQUEST(wlan0) 10.42.0.34 2d:ec:af:c0:ff:ee
+Jun 08 20:42:25 pifi dnsmasq-dhcp[681]: DHCPACK(wlan0) 10.42.0.34 2d:ec:af:c0:ff:ee stemmy
+```
+_Figure 8: A WiFi connection being made from the host with a reservation_
 
 ## Next Steps
 Once one host is getting its reserved address, follow the same procedure to add a line for each remaining Pi on your network.
