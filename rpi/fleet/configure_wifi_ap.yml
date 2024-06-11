@@ -86,15 +86,28 @@
         name: "{{ wifi_ssid | lower }}"
       register: hostname_result
 
-    - name: Create a basic hosts file
+    - name: Create a new hosts file
       ansible.builtin.copy:
-        content: |
-          127.0.1.1       localhost
-          10.42.0.1       {{ wifi_ssid | lower }}
+        content: ""
         dest: /etc/hosts
         owner: root
         group: root
         mode: '0644'
+      when: hostname_result.changed
+
+    - name: Add the loopback address
+      ansible.builtin.lineinfile:
+        path: /etc/hosts
+        search_string: "127.0.0.1"
+        line: "127.0.0.1\tlocalhost"
+      when: hostname_result.changed
+
+    - name: Add this host's address(es) to hosts file
+      ansible.builtin.lineinfile:
+        path: /etc/hosts
+        search_string: "{{ item }}"
+        line: "{{ item }}\t{{ wifi_ssid | lower }}"
+      with_items: "{{ ansible_all_ipv4_addresses }}"
       when: hostname_result.changed
 
   handlers:
