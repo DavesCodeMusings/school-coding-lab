@@ -72,20 +72,20 @@
         method4: shared
         state: present
       notify:
-        - Restart to activate changes
-
-    - name: Delete WiFi station connection
-      community.general.nmcli:
-        conn_name: "preconfigured"
-        state: absent
-      notify:
+        - Create a new resolv.conf file
+        - Add this host as a nameserver
+        - Delete WiFi station connection
         - Restart to activate changes
 
     - name: Set hostname to match SSID
       ansible.builtin.hostname:
         name: "{{ wifi_ssid | lower }}"
-      register: hostname_result
+      notify:
+        - Create a new hosts file
+        - Add the loopback address
+        - Add this host's address(es)
 
+  handlers:
     - name: Create a new hosts file
       ansible.builtin.copy:
         content: ""
@@ -93,24 +93,38 @@
         owner: root
         group: root
         mode: '0644'
-      when: hostname_result.changed
 
     - name: Add the loopback address
       ansible.builtin.lineinfile:
         path: /etc/hosts
         search_string: "127.0.0.1"
         line: "127.0.0.1\tlocalhost"
-      when: hostname_result.changed
 
-    - name: Add this host's address(es) to hosts file
+    - name: Add this host's address(es)
       ansible.builtin.lineinfile:
         path: /etc/hosts
         search_string: "{{ item }}"
         line: "{{ item }}\t{{ wifi_ssid | lower }}"
       with_items: "{{ ansible_all_ipv4_addresses }}"
-      when: hostname_result.changed
 
-  handlers:
+    - name: Create a new resolv.conf file
+      ansible.builtin.copy:
+        dest: /etc/resolv.conf
+        content: ""
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: Add this host as a nameserver
+      ansible.builtin.lineinfile:
+        path: /etc/resolv.conf
+        line: "nameserver {{ ansible_all_ipv4_addresses | first }}"
+
+    - name: Delete WiFi station connection
+      community.general.nmcli:
+        conn_name: "preconfigured"
+        state: absent
+
     - name: Restart to activate changes
       ansible.builtin.shell:
         cmd: "shutdown -r now"
@@ -121,5 +135,5 @@
 # https://raymii.org/s/tutorials/Ansible_-_Only-do-something-if-another-action-changed.html
 # https://raspberrytips.com/access-point-setup-raspberry-pi/
 # https://docs.ansible.com/ansible/latest/collections/community/general/nmcli_module.html
-# https://docs.ansible.com/ansible/latest/collections/ansible/builtin/reboot_module.html
 # https://docs.ansible.com/ansible/latest/collections/ansible/builtin/hostname_module.html
+# https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_handlers.html
