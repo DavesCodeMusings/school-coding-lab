@@ -22,12 +22,12 @@
 
     - name: Look up the system's apt configuration
       ansible.builtin.shell:
-        cmd: apt-cache policy | awk '!found && /origin/ { found=1; print $2 }'
-      register: apt_origin
+        cmd: apt-cache policy | awk '/origin/ { print $2 }'
+      register: apt_origins
 
-    - name: Get the apt source repository hostname
+    - name: Get the first apt repository hostname
       set_fact:
-        apt_repo: "{{ apt_origin.stdout }}"
+        apt_repo: "{{ apt_origins.stdout_lines | first }}"
 
     - name: Check connectivity to apt repository
       ansible.builtin.debug:
