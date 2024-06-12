@@ -1,0 +1,55 @@
+---
+- name: Configure Raspberry Pi as a Web Server
+  hosts: localhost
+  become: true
+
+  tasks:
+    - name: Update apt cache
+      ansible.builtin.apt:
+        update_cache: yes
+
+    - name: Install Nginx
+      ansible.builtin.apt:
+        name: nginx
+        state: present
+
+    - name: Ensure the service is running
+      ansible.builtin.service:
+        name: nginx
+        enabled: true
+        state: started
+
+    - name: Create a document root
+      ansible.builtin.file:
+        path: /srv/www
+        state: directory
+        owner: www-data
+        group: www-data
+        mode: '0664'
+
+    - name: Create configuration for static content
+      ansible.builtin.copy:
+        dest: /etc/nginx/conf.d/00_Default.conf
+        owner: root
+        group: root
+        mode: '0644'
+        content: |
+          server {
+              listen 80;
+              server_name  {{ ansible_hostname }};
+              location / {
+                  root /srv/www;
+                  index index.html index.htm;
+              }
+          }
+      notify: Reload configuration
+
+  handlers:
+    - name: Reload web server configuration
+      ansible.builtin.service:
+        name: nginx
+        state: reloaded
+
+
+# References:
+# https://docs.nginx.com/nginx/admin-guide/basic-functionality/managing-configuration-files/
