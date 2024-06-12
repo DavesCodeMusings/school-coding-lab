@@ -2,14 +2,14 @@
 This page details the steps for setting up a Raspberry Pi board for MicroPython development using Visual Studio Code and the MPRemote VS Code extension. Some knowledge of Raspberry Pi is assumed, but most steps should have plenty of detail for the first time user. The steps are geared toward reusing older generations of donated Raspberry Pi hardware. The procedure is tested on a 32-bit Raspberry Pi 2 with 1G of RAM, but model 3 and above is preferred.
 
 The steps here will require the following:
-* A PC or Mac with a Micro SD card slot (or appropriate adapter.)
+* A PC or Mac with a microSD card slot (or appropriate adapter.)
 * A network connection (WiFi or RJ-45, depending on model of Raspberry Pi.)
 * Access to the internet.
 
 > If your Raspberry Pi hardware was donated and you're not sure what you've got, see the page for [how to identify your Raspberry Pi](identify_rpi.md).
 
-## Creating a Raspberry Pi OS Micro SD Card
-Raspberry Pi Operating System installation is different than a typical PC or Mac. The procedure for Raspberry Pi is to write an operating system image to a Micro SD card and then use the Micro SD card to boot the device. This requires the following steps:
+## Creating a Raspberry Pi OS MicroSD Card
+Raspberry Pi Operating System installation is different than a typical PC or Mac. The procedure for Raspberry Pi is to write an operating system image to a microSD card and then use the microSD card to boot the device. This requires the following steps:
 
 1. Installing and running the Raspberry Pi Imager tool.
 2. Configuring Raspberry Pi Imager options.
@@ -28,25 +28,25 @@ If this isn't your first experience with Raspberry Pi Imager, go ahead and scrol
 If this is your first time using Raspberry Pi Imager, learn more about it by reading and watching the short video on the [Raspberry Pi Imager announcement page](https://www.raspberrypi.com/news/raspberry-pi-imager-imaging-utility/). Keep in mind there have been improvements made to the tool since the video was published, so things will look slightly different. This differences will be highlighted in the procedure below.
 
 ### Selecting the Appropriate Options for the Raspberry Pi Imager
-There are three things you must choose to create a Micro SD card for use with your Raspberry Pi. There is also a fourth grouping of options that will pre-configure the system for you.
+There are three things you must choose to create a microSD card for use with your Raspberry Pi. There is also a fourth grouping of options that will pre-configure the system for you.
 
 1. Choose the Raspberry Pi device. Because there are several generations of Raspberry Pi, it's important to get this right.
-2. Choose an Operating System. In all cases, you will want Raspberry Pi OS. 32-bit or 64-bit depends on the generation of Raspberry Pi hardware.
-3. Choose the storage device. This is the easiest step. It is the Micro SD card on your system and is often the only device in the list.
+2. Choose an Operating System. In nearly all cases, you will want Raspberry Pi OS 64-bit (except for Raspberry Pi 2, which is 32-bit.)
+3. Choose the storage device. This is the easiest step. It is the microSD card on your system and is often the only device in the list.
 4. Choose additional configuration options. Press CTRL + SHIFT + X to bring up the super secret options page. Visit each tab and fill in as appropriate.
 
 #### The OS Customization General Tab
 Careful consideration of the information on the General tab can make your life much easier, so don't skip it.
 
 1. _Set hostname_ determines what the machine will be called. It can be almost anything you want, but it should be no more than a dozen or so alphanumeric characters and it must be unique (i.e. you can't name everything raspberrypi.)
-2. _Set username and password_ is used to create the first user account. This account is allowed to run `sudo` commands. Make the username something generic, like admin or supervisor, rather than a person's name. You can add individual accounts for people later on. Make the password something not easily guessed.
+2. _Set username and password_ is used to create the first user account. This account is allowed to run `sudo` commands. Make the username something generic, like _admin_ or _supervisor_, rather than a person's name. You can add individual accounts for people later on. Make the password something not easily guessed.
 3. _Configure wireless LAN_ will ger you automatically connected to the network you specify. Don't forget to set the country code in addition to the SSID and password.
 4. _Set locale settings_ makes sure you're in the right time zone and your clock is correct. It also ensures you don't get strange characters from your keyboard by configuring for your language.
 
-Once the information is entered, you have the option to save it. This makes it faster to create multiple Micro SD cards if you have more than one Pi.
+Once the information is entered, you have the option to save it. This makes it faster to create multiple microSD cards if you have more than one Pi.
 
 ### Raspberry Pi Imager Screenshots
-If a picture is worth a thousand words, this section is money in the bank. These screenshots give some examples of what to expect while using the Raspberry Pi Imager. Choices shown are for the older Raspberry Pi 2 hardware. If you're using a 2nd generation Pi 3 or later, you'll want to select a 64-bit OS.
+If a picture is worth a thousand words, this section is money in the bank. These screenshots give some examples of what to expect while using the Raspberry Pi Imager. Choices shown are for Raspberry Pi 3 hardware, but it works the same for Raspberry Pi 4.
 
 ___
 
@@ -77,7 +77,7 @@ ___
 ![Imager Choose Storage](../images/Imager%20Choose%20Storage.png)
 
 
-_Figure 5: Choosing the Micro SD card_
+_Figure 5: Choosing the microSD card_
 
 ___
 
@@ -95,7 +95,7 @@ ___
 
 ![Imager OS Customization Options Leave Default](../images/Imager%20OS%20Customization%20Options%20Leave%20Default.png)
 
-_Figure 8: Default options showing the Micro SD will be ejected when writing is finished_
+_Figure 8: Default options showing the microSD will be ejected when writing is finished_
 
 ___
 
@@ -106,13 +106,14 @@ _Figure 9: Raspberry Pi Imager writing after all options have been selected_
 ___
 
 ## Booting Your Raspberry Pi
-After writing the Raspberry Pi OS image, you can remove the Micro SD card from your PC and insert it into the slot on the Raspberry Pi.
+After writing the Raspberry Pi OS image, you can remove the microSD card from your PC and insert it into the slot on the Raspberry Pi.
 
-1. Ensure the Raspberry Pi is not plugged into power.
-2. Insert the Micro SD card into the slot taking care to orient it the correct way.
-3. Attach an HDMI monitor with the appropriate cable for your device (standard or micro HDMI).
-4. Plug in an appropriate power supply for your device (Official Raspberry Pi or Canakit power supplies are a good choice.)
-5. Watch the monitor for signs of life.
+**Always ensure the Raspberry Pi is not plugged into power when you insert or remove the microSD card.**
+
+1. Insert the microSD card into the slot taking care to orient it the correct way.
+2. Attach an HDMI monitor with the appropriate cable for your device (standard or micro HDMI).
+3. Plug in an appropriate power supply for your device (Official Raspberry Pi or Canakit power supplies are a good choice.)
+4. Watch the monitor for signs of life.
 
 Booting could take several minutes the first time. If you see a Raspberry Pi Desktop logo on the monitor, things are moving in the right direction. Just be patient.
 
@@ -121,7 +122,7 @@ Staying current on Operating System updates is key to maintaining a stable and s
 
 The first update can take a significant amount of time, particularly on older Raspberry Pi models. After the first update, establish a habit of weekly updates. This will not only keep your OS secure, it will shorten the time required for each update.
 
-1. Open a command prompt (either from the desktop or using SSH.)
+1. Open a command prompt (either from the Raspberry Pi Desktop desktop or using SSH.)
 2. Update the list of available software with `sudo apt-get update`
 3. Install any available upgrades with `sudo apt-get upgrade`
 4. Reboot the system when finished with `sudo shutdown -r now`
@@ -138,13 +139,21 @@ Building dependency tree... Done
 Reading state information... Done
 The following additional packages will be installed:
 Do you want to continue? [Y/n] y
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+Calculating upgrade... Done
+...
+update-initramfs: Generating /boot/initrd.img-6.6.20+rpt-rpi-v8
+'/boot/initrd.img-6.6.20+rpt-rpi-v8' -> '/boot/firmware/initramfs8'
+...
 
 $ sudo shutdown -r now
 The system will reboot now!
 ```
 
 ## Optionally Enabling Remote Access
-You can skip this if you'll always be using a keyboard, mouse, and monitor with your Raspberry Pi. But if you think you might need to access the Pi from another machine, see the [guide for setting up remote access](remote_access.md).
+You can skip this if you'll always have a keyboard, mouse, and monitor attached to your Raspberry Pi. But if you think you might need to access the Pi from another machine, see the [guide for setting up remote access](remote_access.md).
 
 ## Next Steps
 Congratulations on getting your Raspberry Pi configured. And give yourself an extra pat on the back if you upcycled an older, discarded Pi for this purpose.
