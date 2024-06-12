@@ -66,11 +66,19 @@
       ansible.builtin.hostname:
         name: "{{ wifi_ssid | lower }}"
       notify:
+        - Refresh Ansible facts
         - Create a new hosts file
         - Add the loopback address
         - Add this host's address(es)
 
   handlers:
+    - name: Activate access point mode
+      ansible.builtin.shell:
+        cmd: "nmcli connection up {{ wifi_ssid | lower }}"
+
+    - name: Refresh Ansible facts
+      setup:
+
     - name: Create a new hosts file
       ansible.builtin.copy:
         content: ""
@@ -91,10 +99,6 @@
         search_string: "{{ item }}"
         line: "{{ item }}\t{{ wifi_ssid | lower }}"
       with_items: "{{ ansible_all_ipv4_addresses }}"
-
-    - name: Activate access point mode
-      ansible.builtin.shell:
-        cmd: "nmcli connection up {{ wifi_ssid | lower }}"
 
 
 # References:
