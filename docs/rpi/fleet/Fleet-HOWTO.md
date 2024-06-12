@@ -15,7 +15,7 @@ The next step is to use the Raspberry Pi WiFi Access Point (herein lovingly refe
 We'll start with a Raspberry Pi 3 or better and flash it with Raspberry Pi OS Lite. We'll use a short shell script to install Ansible. Then, we'll use an Ansible Playbook to do the rest of the configuration.
 
 ### Creating the OS Image
-Use Raspberry Pi Imager to prepare a microSD card with Raspberry Pi OS Lite (64-bit). This will be almost exactly like the [process of setting up a Raspberry Pi as a student developer workstation](https://davescodemusings.github.io/school-coding-lab/rpi/fresh_install.html), but it won't need to graphical desktop environment. So the Operating System selection will be different.
+Use Raspberry Pi Imager to prepare a microSD card with Raspberry Pi OS Lite (64-bit). This will be almost exactly like the [process of setting up a Raspberry Pi as a student developer workstation](https://davescodemusings.github.io/school-coding-lab/rpi/fresh_install.html), but it won't need a graphical desktop environment. So the Operating System selection will be different.
 
 In place of Raspberry Pi OS (64-bit), you'll want to select _Raspberry Pi OS (other)_ and then choose _Raspberry Pi OS Lite (64-bit)_ from the sub-menu.
 
@@ -120,7 +120,7 @@ Adafruit has an excellent tutorial on [setting up a serial console on Raspberry 
 ### Continuing Access Point Setup from the Serial Console
 After attaching the serial cable, plug the USB end into your laptop and power up the Pi. The system will restart and you'll need to log in again. Serial console will be available, so use that to log in. You may need to tap Enter once or twice to get a login prompt. This is normal with serial consoles.
 
->If this sounds too complex and you want to just stick with using a monitor and keyboard in a pinch, that's fine too. However, the automation will still enable serial console regardless of it being wired or not. This will not cause a problem.
+>If this sounds too complex and you want to just stick with using a monitor and keyboard, that's fine too. However, the automation will still enable serial console regardless of it being wired or not. This will not cause a problem.
 
 Once logged in, run the Ansible playbook a second time to finish up the remaining tasks.
 
@@ -152,35 +152,50 @@ ok: [localhost]
 TASK [Shutdown for switchover to serial console] *******************************
 skipping: [localhost]
 
+TASK [Check internet connection] ***********************************************
+changed: [localhost]
+
+TASK [set_fact] ****************************************************************
+ok: [localhost]
+
 TASK [Update apt cache] ********************************************************
 ok: [localhost]
 
 TASK [Install web-based Secure Shell] ******************************************
 changed: [localhost]
 
-TASK [Install web server] ******************************************************
-changed: [localhost]
+TASK [Install network discovery tool] ******************************************
+ok: [localhost]
 
 TASK [Set up WiFi access point connection] *************************************
-changed: [localhost]
-
-TASK [Delete WiFi station connection] ******************************************
 changed: [localhost]
 
 TASK [Set hostname to match SSID] **********************************************
 changed: [localhost]
 
-TASK [Restart to activate changes] *********************************************
+RUNNING HANDLER [Activate access point mode] ***********************************
+changed: [localhost]
 
-Broadcast message from root@pi3 on pts/0 (Sun 2024-06-09 10:17:01 CDT):
+RUNNING HANDLER [Refresh Ansible facts] ****************************************
+ok: [localhost]
 
-The system will reboot now!
+RUNNING HANDLER [Create a new hosts file] **************************************
+changed: [localhost]
+
+RUNNING HANDLER [Add the loopback address] *************************************
+changed: [localhost]
+
+RUNNING HANDLER [Add this host's address(es)] **********************************
+changed: [localhost] => (item=10.42.0.1)
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=14   changed=7    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
 ```
 _Figure 8: Continuing with WiFi access point setup_
 
 After this second restart, you'll no longer be able to use the old IP address for Secure Shell. This is where the serial cable (or alternatively, a monitor and keyboard) is handy.
 
-After the debug messages roll by, log in and get the new IP address as shown below.
+After the kernel debug messages roll by, log in and get the new IP address as shown below.
 
 ```
 pifi login: admin
@@ -225,27 +240,27 @@ Try each of the following to make sure they work from your remote device:
 
 Note anything not working and troubleshoot as needed.
 
-## Testing the PiFi Web Server
-One of the steps in the the Ansible automation involves installing a web server called Nginx (pronounced engine-X). This is not a requirement for WiFi access point functionality, but it can be useful for distributing files. Any of the other Raspberry Pis on the isolated network can access the web server on the PiFi.
-
-Test it by going to `http://10.42.0.1` in a web browser on a machine connected to the PiFi network. You should see a message that says, _Welcome to nginx!_" similar to what is shown below.
-
-```
-Welcome to nginx!
-
-If you see this page, the nginx web server is successfully installed and working. Further configuration is required.
-
-For online documentation and support please refer to nginx.org.
-Commercial support is available at nginx.com.
-
-Thank you for using nginx.
-```
-_Figure 11: Nginx test page_
-
 ## Connecting Your Fleet of Student Developer Workstations
 With the PiFi access point now up and running, you can begin changing the WiFi connections for the rest of the Raspberry Pis to use the PiFi SSID and password. This will ensure the Raspberry Pis can interact with each other, but not connect to sites outside of the classroom.
 
 With Ansible installed on the PiFi device and all of the student workstations connected to it, you can automate any changes that need to be made. But there are some limitations due to not being connected to the internet. This deficit is particuarly evident when trying to install software packages from Raspberry Pi OS repositories.
+
+## Reconnecting to the Internet
+With the Raspberry Pi in access point mode, there's no connection the the internet. But, the old _preconfigured_ connection set up by Raspberry Pi Imager still exists. If you need to switch back, you can. To see what mode you're in and switch between them, use the example commands shown below.
+
+```
+admin@pifi:~$ nmcli connection
+NAME                UUID                                  TYPE      DEVICE
+pifi                1413b9e8-9107-4abc-a781-80221325788b  wifi      wlan0
+lo                  452ec766-f3b7-46bf-b8ea-9dfaa81a4e40  loopback  lo
+preconfigured       56a42244-64c4-4249-bdd5-10a70c84b56c  wifi      --
+
+admin@pifi:~$ sudo nmcli connection up preconfigured
+Connection successfully activated
+
+admin@pifi:~$ sudo nmcli connection up pifi
+Connection successfully activated
+```
 
 ## Next Steps: Automation
 Another glaring limitation of an isolated network is having to use IP addresses all the time instead of names like we're used to. To remedy this, we can use a centralized list of hostname to IP address associations, called a _hosts_ file. One of the first automation tasks is to make sure all the Raspberry Pis have the same copy of the hosts file.
