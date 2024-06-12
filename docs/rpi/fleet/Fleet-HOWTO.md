@@ -47,21 +47,21 @@ wlan0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
 _Figure 2: An example of logging in to find an IP address of 192.168.1.116_
 
 ### Logging in with Secure Shell
-Having you WiFi router attached to a monitor and keyboard is not the way it's usually done. Normally, access is through Secure Shell. Now that you know the IP address of the Pi, try connecting from another machine with an SSH client. Troubleshoot any problems before moving on.
+Having you WiFi router attached to a monitor and keyboard is not the way it's usually done. Normally, access is through Secure Shell. Now that you know the IP address of the Pi, try connecting from another machine's command prompt. Troubleshoot any problems before moving on.
 
 ```
-> ssh admin@192.168.1.116
+PS C:\> ssh admin@192.168.1.116
 admin@192.168.1.116's password:
 Linux pi3 6.6.20+rpt-rpi-v8 #1 SMP PREEMPT Debian 1:6.6.20-1+rpt1 (2024-03-07) aarch64
 
 admin@pi:~ $
 ```
-_Figure 3: A successful SSH connection_
+_Figure 3: A successful SSH connection to Raspberry Pi from Windows_
 
 ### Installing Ansible
 The Ansible package is installed from the Raspberry Pi OS repository using a simple shell script you can find at:
 
-https://github.com/DavesCodeMusings/school-coding-lab/blob/fleet/rpi/fleet/install_ansible.sh
+[https://github.com/DavesCodeMusings/school-coding-lab/blob/fleet/rpi/fleet/install_ansible.sh](https://github.com/DavesCodeMusings/school-coding-lab/blob/main/rpi/fleet/install_ansible.sh)
 
 1. Copy the contents of the script to your Raspberry Pi and save it as _install_ansible.sh_
 2. Run the script with the command `bash install_ansible.sh`
@@ -71,12 +71,17 @@ See below for an example.
 ```
 admin@pi:~$ wget https://raw.githubusercontent.com/DavesCodeMusings/school-coding-lab/main/rpi/fleet/install_ansible.sh
 admin@pi:~$ bash install_ansible.sh
+Checking for Ansible.
 Installing the Ansible automation software package...
 ```
 _Figure 4: Installing Ansible with the script_
 
 ### Starting the Access Point Setup
-This part involves a few steps. They are all automated by Ansible. However, it ends with a system shutdown before the setup is complete. This is so you can disconnect power and attach a USB serial cable.
+This part involves a few steps. They are all automated by Ansible. However, it will shut down the system before setup is complete. This is so you can disconnect power and attach a USB serial cable.
+
+The Ansible playbook for creating a Raspberry Pi WiFi access point is available from:
+
+[https://github.com/DavesCodeMusings/school-coding-lab/blob/main/rpi/fleet/configure_wifi_ap.yml](https://github.com/DavesCodeMusings/school-coding-lab/blob/main/rpi/fleet/configure_wifi_ap.yml)
 
 The example below shows how to run the setup.
 
@@ -111,16 +116,14 @@ The system will power off now!
 _Figure 6: Running up until system shutdown for attaching serial cable_
 
 ### Attaching the USB Serial Console Cable
-The normal state of a WiFi Access Point is to operate headless (without a monitor and keyboard.) To access a headless Raspberry Pi, Raspberry Pi OS can use a serial console.
-
 Adafruit has an excellent tutorial on [setting up a serial console on Raspberry Pi](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-5-using-a-console-cable/). You can skip the bits about using raspi-config or editing config.txt. The Ansible automation will take care of all these tasks. All you need to do is wire the cable and install drivers on the remote machine.
+
+>If all this seems too complex and you want to just stick with using a monitor and keyboard, that's fine too. However, the automation will still enable serial console regardless of it being wired or not. This will not cause a problem.
 
 **Be safe and unplug power from the Pi before attaching the serial cable!**
 
 ### Continuing Access Point Setup from the Serial Console
 After attaching the serial cable, plug the USB end into your laptop and power up the Pi. The system will restart and you'll need to log in again. Serial console will be available, so use that to log in. You may need to tap Enter once or twice to get a login prompt. This is normal with serial consoles.
-
->If this sounds too complex and you want to just stick with using a monitor and keyboard, that's fine too. However, the automation will still enable serial console regardless of it being wired or not. This will not cause a problem.
 
 Once logged in, run the Ansible playbook a second time to finish up the remaining tasks.
 
@@ -220,14 +223,14 @@ It might take a second to get connected. And your laptop might complain that the
 Once connected, the next task is to get the IP address assigned to your Chromebook or laptop. On Windows, it looks similar to this:
 
 ```
-PS > ipconfig | findstr "IPv4"
+PS C:\> ipconfig | findstr "IPv4"
    IPv4 Address. . . . . . . . . . . : 10.42.0.66
 ```
 _Figure 10: Finding the Windows client IP address_
 
 If your remote computer shows an active WiFi connection and an IP address starting with the same three groups of numbers as the PiFi IP address, things are working great.
 
-## Testing Connection to the PiFi's Raspberry Pi OS
+## Testing Logins to the PiFi's Raspberry Pi OS
 There are several ways to access the Raspberry Pi serving as a WiFi access point. Normally, you'll only need to do this when performing maintenance, but it's good to ensure it works now.
 
 Of all the options, only the USB serial cable will work all the time. The other methods depend on you first connecting to the PiFi network.
@@ -240,13 +243,15 @@ Try each of the following to make sure they work from your remote device:
 
 Note anything not working and troubleshoot as needed.
 
+>Remember, for any method other than serial cable, the remote machine first needs to be attached to the PiFi access point.
+
 ## Connecting Your Fleet of Student Developer Workstations
 With the PiFi access point now up and running, you can begin changing the WiFi connections for the rest of the Raspberry Pis to use the PiFi SSID and password. This will ensure the Raspberry Pis can interact with each other, but not connect to sites outside of the classroom.
 
-With Ansible installed on the PiFi device and all of the student workstations connected to it, you can automate any changes that need to be made. But there are some limitations due to not being connected to the internet. This deficit is particuarly evident when trying to install software packages from Raspberry Pi OS repositories.
+Any further changes to the Raspberry Pi development workstations can be automated using Ansible playbooks run from a central location (e.g. the PiFi access point.) That is the advantage of automation. It reduces the repetative tasks performed on multiple machines.
 
 ## Reconnecting to the Internet
-With the Raspberry Pi in access point mode, there's no connection the the internet. But, the old _preconfigured_ connection set up by Raspberry Pi Imager still exists. If you need to switch back, you can. To see what mode you're in and switch between them, use the example commands shown below.
+With the PiFi in access point mode, there's no connection the the internet. This can cause a problem when trying to do things like installing new software.  But, the old _preconfigured_ connection set up by Raspberry Pi Imager still exists. If you need to switch back, you can. To see what mode you're in and switch between them, use the example commands shown below.
 
 ```
 admin@pifi:~$ nmcli connection
