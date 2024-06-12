@@ -20,41 +20,28 @@
         cmd: "shutdown -h now"
       when: enable_uart.changed
 
-    - name: Look up the system's apt configuration
+    - name: Check internet connection
       ansible.builtin.shell:
-        cmd: apt-cache policy | awk '/origin/ { print $2 }'
-      register: apt_origins
-
-    - name: Get the first apt repository hostname
-      set_fact:
-        apt_repo: "{{ apt_origins.stdout_lines | first }}"
-
-    - name: Check connectivity to apt repository
-      ansible.builtin.debug:
-        msg: "{{ lookup('community.general.dig', '{{ apt_repo }}.')}}"
-      ignore_errors: true
+        cmd: nmcli networking connectivity
       register: connectivity_test
-      # will fail if not connected to the internet.
+
+    - set_fact:
+        internet_connectivity: "{{ connectivity_test.stdout }}"
 
     - name: Update apt cache
       ansible.builtin.apt:
         update_cache: yes
-      when: connectivity_test.failed is not true
+      when: internet_connectivity == "full"
 
     - name: Install web-based Secure Shell
       ansible.builtin.apt:
         name: shellinabox
-      when: connectivity_test.failed is not true
+      when: internet_connectivity == "full"
 
     - name: Install network discovery tool
       ansible.builtin.apt:
         name: nmap
-      when: connectivity_test.failed is not true
-
-    - name: Install web server
-      ansible.builtin.apt:
-        name: nginx
-      when: connectivity_test.failed is not true
+      when: internet_connectivity == "full"
 
     - name: Set up WiFi access point connection
       community.general.nmcli:
@@ -71,11 +58,9 @@
           psk: "{{ wifi_password }}"
         method4: shared
         state: present
+        autoconnect: true
       notify:
-        - Create a new resolv.conf file
-        - Add this host as a nameserver
-        - Delete WiFi station connection
-        - Restart to activate changes
+        - Activate access point mode
 
     - name: Set hostname to match SSID
       ansible.builtin.hostname:
@@ -107,27 +92,9 @@
         line: "{{ item }}\t{{ wifi_ssid | lower }}"
       with_items: "{{ ansible_all_ipv4_addresses }}"
 
-    - name: Create a new resolv.conf file
-      ansible.builtin.copy:
-        dest: /etc/resolv.conf
-        content: ""
-        owner: root
-        group: root
-        mode: '0644'
-
-    - name: Add this host as a nameserver
-      ansible.builtin.lineinfile:
-        path: /etc/resolv.conf
-        line: "nameserver {{ ansible_all_ipv4_addresses | first }}"
-
-    - name: Delete WiFi station connection
-      community.general.nmcli:
-        conn_name: "preconfigured"
-        state: absent
-
-    - name: Restart to activate changes
+    - name: Activate access point mode
       ansible.builtin.shell:
-        cmd: "shutdown -r now"
+        cmd: "nmcli connection up {{ wifi_ssid | lower }}"
 
 
 # References:
