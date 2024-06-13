@@ -45,7 +45,7 @@
       notify: Reload configuration
 
   handlers:
-    - name: Reload web server configuration
+    - name: Reload configuration
       ansible.builtin.service:
         name: nginx
         state: reloaded
