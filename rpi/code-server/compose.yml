@@ -1,8 +1,7 @@
 ---
 services:
   code-server:
-    build: .
-    container_name: ghcr.io/davescodemusings/code-server-python:latest
+    image: ghcr.io/davescodemusings/code-server-python:latest
     hostname: code-server
     environment:
       - PUID=1000
