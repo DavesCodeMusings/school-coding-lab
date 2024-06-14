@@ -14,10 +14,10 @@ Learning to code in middle school is rough. Chromebook administrative policies p
 The computing lab starts with donated Raspberry Pis and an old laptop or two. Technology evolves at an incredible pace. Last year's top of the line hardware is today's middle or low-tier. But that's no reason to send it off as e-waste. Students will create their own computer lab using last generation hardware donated by technology enthusiasts in the community.
 
 ### Learning to Code
-Every copy of Raspberry Pi OS includes the Python programming language and the tools needed to get started with it. And, by building and maintaining their own lab, students will learn configuration management languages and automation techniques.
+Every copy of Raspberry Pi OS includes the Python programming language and the tools needed to get started with it. And, by building and maintaining their own lab, students will learn configuration management languages, automation techniques, and modern DevOps methodologies.
 
 ### Builing an Internet of Things
-Beyond the programming capabilities of the Rasberry Pi, students will extend their knowledge of Python programming to build and interact with connected devices in their environment. Today's inexpensive WiFi capable microcontrollers and a wide variety of sensors allow experiments that extend beyond the confines of the computer into the physical world.
+Beyond the programming capabilities of the Rasberry Pi, students will extend their knowledge of Python programming to build and interact with connected devices in their environment. Today's inexpensive WiFi capable microcontrollers and a wide variety of sensors allow experiments that push beyond the confines of the computer into the physical world.
 
 ## Why does this require funding?
 By relying on donations, you're not going to get everything you need. There will be microSD cards required for Raspberry Pis. Maybe even monitors, keyboards, and mice. Cables and power supplies will need to be purchased. Microcontroller boards and sensors, though usually under $10(US), can add up quickly when providing enough for a group.
