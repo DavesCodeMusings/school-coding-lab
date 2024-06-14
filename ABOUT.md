@@ -2,7 +2,7 @@
 Here is where you will find the management speak you might need to get this kind of project started in your own school.
 
 ## Vision
-Every student can build and maintain their own hands-on computing lab.
+Every student has the tools and knowledge build and maintain their own hands-on computing lab.
 
 ## Mission
 Accelerate student hands-on learning with upcycled hardware and open-source software.
