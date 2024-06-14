@@ -20,7 +20,16 @@ Every copy of Raspberry Pi OS includes the Python programming language and the t
 Beyond the programming capabilities of the Rasberry Pi, students will extend their knowledge of Python programming to build and interact with connected devices in their environment. Today's inexpensive WiFi capable microcontrollers and a wide variety of sensors allow experiments that push beyond the confines of the computer into the physical world.
 
 ## Why does this require funding?
-By relying on donations, you're not going to get everything you need. There will be microSD cards required for Raspberry Pis. Maybe even monitors, keyboards, and mice. Cables and power supplies will need to be purchased. Microcontroller boards and sensors, though usually under $10(US), can add up quickly when providing enough for a group.
+By relying on donations, you're not going to get everything you need. There will be commodity items such as microSD cards, USB cables, and power supplies that are needed. There are also the microcontroller boards and sensors for the Internet of Things (IoT) labs. Though usually under $10(US) a piece, these items can add up quickly when providing enough for a group.
+
+### What will need to be purchased?
+Here's a list to get started. It is by no means complete.
+* 32G high endurance microSD cards for Raspberry Pis
+* 5V/3A power supplies for Raspberry Pis
+* HDMI monitors, USB keyboards, and USB mice for Raspberry Pis
+* Espressif ESP32C microcontrollers
+* USB cables for ESP32C microcontrollers
+* Sensors for interfacing to ESP32 microcontrollers
 
 ## Next Steps
 As this project contiues to develop, more information will be added here to help.
