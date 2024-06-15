@@ -155,7 +155,11 @@ the implicit localhost does not match 'all'
 PLAY RECAP *********************************************************************
 localhost                  : ok=16   changed=5    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
 
-admin@pi:~ $
+Everything is done but the reboot. Restart now [y/N]? y
+
+Broadcast message from root@pi on pts/1 (Sat 2024-06-15 08:27:00 CDT):
+
+The system will reboot now!
 ```
 
 ## Next Steps
@@ -163,4 +167,4 @@ Congratulations on getting your Raspberry Pi configured. And give yourself an ex
 
 Now you're ready to explore MicroPython programming on microcontrollers.
 
-[Move on to the microcontroller labs](labs/index.md)
+[Move on to the microcontroller labs](micropython/index.md)
