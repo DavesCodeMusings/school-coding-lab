@@ -31,6 +31,12 @@
         - "{{ admin_login_id }}"
         - "{{ student_login_id }}"
 
+    - name: Configure student as the auto-login desktop user
+      ansible.builtin.lineinfile:
+        path: /etc/lightdm/lightdm.conf
+        regexp: '^autologin-user'
+        line: autologin-user={{ student_login_id }}
+
     - name: Shutdown and disable unnecessary services
       ansible.builtin.service:
         name: "{{ item }}"
@@ -61,11 +67,16 @@
         - shellinabox
         - vncserver-x11-serviced
         - nginx
-        - docker
+
+    - name: Check if VNC permissions are unconfigured
+      ansible.builtin.lineinfile:
+        path: /root/.vnc/config.d/vncserver-x11
+        regex: '^Permissions'
+        line: Permissions=:d,%admin:d,%sudo:d,%wheel:d,%vnc:d
 
     - name: Discover who has permission to connect through VNC
       ansible.builtin.shell:
-        cmd: grep ^Permissions= /root/.vnc/config.d/vncserver-x11
+        cmd: grep ^Permissions /root/.vnc/config.d/vncserver-x11
       register: vnc_permissions
 
     - name: Give vnc group permission to connect through VNC
