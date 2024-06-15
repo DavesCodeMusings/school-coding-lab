@@ -8,6 +8,22 @@
     wifi_password: P@ssw0rd
 
   tasks:
+    - name: Add systemd watchdog parameter for system lock-ups
+      ansible.builtin.lineinfile:
+        path: /etc/systemd/system.conf
+        regexp: '^RuntimeWatchdogSec'
+        line: RuntimeWatchdogSec=15
+
+    - name: Add systemd watchdog parameter for boot-up problems
+      ansible.builtin.lineinfile:
+        path: /etc/systemd/system.conf
+        regexp: '^RebootWatchdogSec'
+        line: RebootWatchdogSec=5min
+
+    - name: Reload systemd configuration
+      ansible.builtin.systemd_service:
+        daemon_reload: true
+
     - name: Enable serial console
       lineinfile:
         dest: /boot/firmware/config.txt
@@ -102,6 +118,7 @@
 
 
 # References:
+# https://pimylifeup.com/raspberry-pi-watchdog/  
 # https://learn.adafruit.com/adafruits-raspberry-pi-lesson-5-using-a-console-cable/
 # https://raymii.org/s/tutorials/Ansible_-_Only-do-something-if-another-action-changed.html
 # https://raspberrytips.com/access-point-setup-raspberry-pi/
