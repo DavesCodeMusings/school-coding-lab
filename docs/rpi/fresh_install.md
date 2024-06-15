@@ -137,7 +137,7 @@ It will take a while to run and it will take care of the following tasks for you
 
 > &#128343; The configuration process takes about eight to ten minutes in total.
 
-When everything is done, you'll be back at a command prompt. Reboot the Raspberry Pi and you're ready to go.
+When everything is done, you can reboot the Raspberry Pi and you're ready to go.
 
 A successful run of the steps will look something like what's shown below, though large chunks of output have been removed for brevity.
 
