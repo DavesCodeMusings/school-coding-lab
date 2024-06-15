@@ -118,6 +118,14 @@ After writing the Raspberry Pi OS image, you can remove the microSD card from yo
 > Booting takes about three minutes the first time. If you see a Raspberry Pi Desktop logo on the monitor, things are moving in the right direction. Just be patient.
 
 ## Configuration of the Operating System
+The remaining steps are all automated using the [Ansible](https://docs.ansible.com/ansible/latest/) configuration language. You don't need to know anything about Ansible other than how to run a configuration script (called a playbook in Ansible terminology.) The entire process of taking a freshly flashed microSD and handing over a ready-to-use student developer workstation takes only two commands.
+
+A freshly installed Raspberry Pi OS will boot to a desktop and automatically log in as whatever user you configured in the _OS Customization_, _General_ tab of the Raspberry Pi imager tool. From here, you need to open a terminal window using the icon on the taskbar.
+
+> Advanced users can start a Secure Shell (SSH) session from a remote machine and log in as the configured user.
+
+
+
 TODO:
 * https://github.com/DavesCodeMusings/school-coding-lab/raw/main/rpi/fleet/install_ansible.sh
 * https://github.com/DavesCodeMusings/school-coding-lab/raw/main/rpi/fleet/configure_dev_workstation.yml
