@@ -17,3 +17,9 @@ check_download_error $?
 bash install_ansible.sh
 
 ansible-playbook configure_dev_workstation.yml
+
+echo -n "Everything is done but the reboot. Restart now [y/N]?"
+read REPLY
+if [ "$REPLY" == "Y" ] || [ "$REPLY" == "y" ]; then
+  sudo shutdown -r now
+fi
