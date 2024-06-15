@@ -6,7 +6,7 @@ The steps here will require the following:
 * A network connection (WiFi or RJ-45, depending on model of Raspberry Pi.)
 * Access to the internet.
 
-> If your Raspberry Pi hardware was donated and you're not sure what you've got, see the page for [how to identify your Raspberry Pi](identify_rpi.md).
+> &#128161; If your Raspberry Pi hardware was donated and you're not sure what you've got, see the page for [how to identify your Raspberry Pi](identify_rpi.md).
 
 ## Creating a Raspberry Pi OS MicroSD Card
 Raspberry Pi Operating System installation is different than a typical PC or Mac. The procedure for Raspberry Pi is to write an operating system image to a microSD card and then use the microSD card to boot the device. This requires the following steps:
@@ -14,6 +14,8 @@ Raspberry Pi Operating System installation is different than a typical PC or Mac
 1. Installing and running the Raspberry Pi Imager tool.
 2. Configuring Raspberry Pi Imager options.
 3. Writing the OS image.
+
+> &#128343; Creating the OS image takes about eight to ten minutes in total.
 
 ### Installing and Running the Raspberry Pi Imager
 You may skip this step if Raspberry Pi Imager is already installed.
@@ -115,14 +117,14 @@ After writing the Raspberry Pi OS image, you can remove the microSD card from yo
 3. Plug in an appropriate power supply for your device (Official Raspberry Pi or Canakit power supplies are a good choice.)
 4. Watch the monitor for signs of life.
 
-> Booting takes about three minutes the first time. If you see a Raspberry Pi Desktop logo on the monitor, things are moving in the right direction. Just be patient.
+> &#128338; Booting takes about three minutes the first time. If you see a Raspberry Pi Desktop logo on the monitor, things are moving in the right direction. Just be patient.
 
 ## Configuration of the Operating System
 The entire process of taking a freshly flashed microSD and handing over a ready-to-use student developer workstation takes only two commands.
 
 Raspberry Pi OS will boot to a desktop and automatically log in as whatever user you configured in the _OS Customization_, _General_ tab of the Raspberry Pi imager tool. From here, you need to open a terminal window using the icon on the taskbar.
 
-> Advanced users can start a Secure Shell (SSH) session from a remote machine and log in as the configured user.
+> &#128161; Advanced users can start a Secure Shell (SSH) session from a remote machine and log in as the configured user.
 
 From the terminal window, you'll need to download a script from the _school-coding-lab_ GitHub sit and run it using the following commands:
 
