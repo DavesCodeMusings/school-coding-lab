@@ -1,0 +1,139 @@
+---
+- name: Configure Raspberry Pi as a Development Workstation
+  hosts: localhost
+  become: true
+
+  vars:
+    admin_login_id: "{{ lookup('env', 'USER') }}"
+    student_login_id: student
+    student_password: P@ssw0rd
+    labs:
+      - index.html
+      - MicroPython_on_ESP32.html
+      - GPIO_Output.html
+      - Displays.html
+
+  tasks:
+    - name: Create student user id
+      ansible.builtin.user:
+        name: "{{ student_login_id }}"
+        password: "{{ student_password | password_hash('sha512') }}"
+
+    # admin_login_id is the one who ran this playbook, so it does not
+    # need to be created.
+
+    - name: Add user ids to groups
+      ansible.builtin.user:
+        name: "{{ item }}"
+        groups: vnc, www-data
+        append: yes
+      with_items:
+        - "{{ admin_login_id }}"
+        - "{{ student_login_id }}"
+
+    - name: Install software packages
+      ansible.builtin.apt:
+        name: "{{ item }}"
+        state: present
+        update_cache: yes
+      with_items:
+        - shellinabox
+        - realvnc-vnc-server
+        - nginx
+        - pipx
+
+    - name: Ensure services are running
+      ansible.builtin.service:
+        name: "{{ item }}"
+        enabled: true
+        state: started
+      with_items:
+        - shellinabox
+        - vncserver-x11-serviced
+        - nginx
+        - docker
+
+    - name: Discover who has permission to connect through VNC
+      ansible.builtin.shell:
+        cmd: grep ^Permissions= /root/.vnc/config.d/vncserver-x11
+      register: vnc_permissions
+
+    - name: Give vnc group permission to connect through VNC
+      ansible.builtin.lineinfile:
+        path: /root/.vnc/config.d/vncserver-x11
+        backrefs: yes
+        regexp: "^(Permissions=.*)$"
+        line: '\1,%vnc:d'
+      when: '"%vnc:d" not in vnc_permissions.stdout'
+
+    - name: Create web server configuration for static content
+      ansible.builtin.copy:
+        dest: /etc/nginx/sites-available/default
+        backup: true
+        owner: root
+        group: root
+        mode: '0644'
+        content: |
+          server {
+              listen 80;
+              root /srv/www;
+              index index.html index.htm;
+          }
+
+    - name: Create web server document directory
+      ansible.builtin.file:
+        path: /srv/www
+        state: directory
+        owner: www-data
+        group: www-data
+        mode: '0775'
+
+    - name: Reload web server configuration
+      ansible.builtin.service:
+        name: nginx
+        enabled: true
+        state: reloaded
+
+    - name: Re-create online content directory structure
+      file:
+        path: /srv/www/school-coding-lab/labs
+        state: directory
+        owner: www-data
+        group: www-data
+        mode: '0775'
+
+    - name: Download labs locally
+      ansible.builtin.get_url:
+        url: "https://davescodemusings.github.io/school-coding-lab/labs/{{ item }}"
+        dest: "/srv/www/school-coding-lab/labs/{{ item }}"
+        mode: '0644'
+      with_items: "{{ labs }}"
+
+    - name: Re-create online style directory structure
+      file:
+        path: /srv/www/school-coding-lab/assets/css
+        state: directory
+        owner: www-data
+        group: www-data
+        mode: '0775'
+
+    - name: Download online css style
+      ansible.builtin.get_url:
+        url: https://davescodemusings.github.io/school-coding-lab/assets/css/style.css
+        dest: /srv/www/school-coding-lab/assets/css/style.css
+        mode: '0644'
+
+    - name: Install esptool
+      community.general.pipx:
+        name: mpremote
+      become_user: "{{ student_login_id }}"
+
+    - name: Install mpremote
+      community.general.pipx:
+        name: mpremote
+      become_user: "{{ student_login_id }}"
+
+    - name: Add virtual environments to user path
+      ansible.builtin.shell:
+        cmd: pipx ensurepath
+      become_user: "{{ student_login_id }}"
