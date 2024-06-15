@@ -120,13 +120,11 @@ After writing the Raspberry Pi OS image, you can remove the microSD card from yo
 > &#128338; Booting takes about three minutes the first time. If you see a Raspberry Pi Desktop logo on the monitor, things are moving in the right direction. Just be patient.
 
 ## Configuration of the Operating System
-The entire process of taking a freshly flashed microSD and handing over a ready-to-use student developer workstation takes only two commands.
+Raspberry Pi OS will boot to a desktop and automatically log in as whatever user you configured in the _OS Customization_, _General_ tab of the Raspberry Pi imager tool. From here, you need to open a terminal window using the icon on the taskbar. The entire process of taking a freshly flashed microSD and handing over a ready-to-use student developer workstation takes only two commands run from the terminal window.
 
-Raspberry Pi OS will boot to a desktop and automatically log in as whatever user you configured in the _OS Customization_, _General_ tab of the Raspberry Pi imager tool. From here, you need to open a terminal window using the icon on the taskbar.
+> &#128161; Advanced users can start a Secure Shell (SSH) session from a remote machine and log in as the preconfigured user.
 
-> &#128161; Advanced users can start a Secure Shell (SSH) session from a remote machine and log in as the configured user.
-
-From the terminal window, you'll need to download a script from the _school-coding-lab_ GitHub sit and run it using the following commands:
+From the terminal window, you'll need to download and run a script from the _school-coding-lab_ GitHub site using the following commands:
 
 1. `wget https://github.com/DavesCodeMusings/school-coding-lab/raw/doc-update/rpi/fleet/quickstart_dev_workstation.sh`
 2. `bash ./quickstart_dev_workstation.sh`
@@ -137,11 +135,17 @@ It will take a while to run and it will take care of the following tasks for you
 * Installing software necessary for Python and MicroPython code development.
 * General clean-up of Raspberry Pi O.S.
 
+> &#128343; The configuration process takes about eight to ten minutes in total.
+
 When everything is done, you'll be back at a command prompt. Reboot the Raspberry Pi and you're ready to go.
 
 A successful run of the steps will look something like what's shown below, though large chunks of output have been removed for brevity.
 
 ```
+$ wget https://github.com/DavesCodeMusings/school-coding-lab/raw/doc-update/rpi/fleet/quickstart_dev_workstation.sh
+...
+Saving to: ‘quickstart_dev_workstation.sh’
+
 admin@pi:~ $ bash ./quickstart_dev_workstation.sh
 --2024-06-15 08:03:30--  https://github.com/DavesCodeMusings/school-coding-lab/raw/main/rpi/fleet/install_ansible.sh
 Resolving github.com (github.com)... 140.82.112.3
