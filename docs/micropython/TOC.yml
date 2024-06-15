@@ -1,0 +1,8 @@
+# This table of contents is used to determine which labs are complete and ready
+# to be downloaded locally to the development workstation by automation.  It's
+# a simple YAML list format of the file names without their extensions.
+
+toc:
+  - index
+  - Intro_to_Thonny
+  - MicroPython_on_ESP32
