@@ -7,11 +7,7 @@
     admin_login_id: "{{ lookup('env', 'USER') }}"
     student_login_id: student
     student_password: P@ssw0rd
-    labs:
-      - index.html
-      - MicroPython_on_ESP32.html
-      - GPIO_Output.html
-      - Displays.html
+    labs_root: /srv/www/school-coding-lab/micropython
 
   tasks:
     - name: Create student user id
@@ -118,18 +114,28 @@
 
     - name: Re-create online content directory structure
       file:
-        path: /srv/www/school-coding-lab/micropython
+        path: "{{ labs_root }}"
         state: directory
         owner: www-data
         group: www-data
         mode: '0775'
 
-    - name: Download labs locally
+    - name: Fetch latest table of contents
       ansible.builtin.get_url:
-        url: "https://davescodemusings.github.io/school-coding-lab/micropython/{{ item }}"
-        dest: "/srv/www/school-coding-lab/micropython/{{ item }}"
+        url: https://davescodemusings.github.io/school-coding-lab/micropython/TOC.yml
+        dest: "{{ labs_root }}/TOC.yml"
+
+    - name: Read available labs from table of contents
+      ansible.builtin.include_vars:
+        file: "{{ labs_root }}/TOC.yml"
+        name: labs
+
+    - name: Download copies of labs locally
+      ansible.builtin.get_url:
+        url: "https://davescodemusings.github.io/school-coding-lab/micropython/{{ item }}.html"
+        dest: "{{ labs_root }}/{{ item }}.html"
         mode: '0644'
-      with_items: "{{ labs }}"
+      with_items: "{{ labs.TOC }}"
 
     - name: Re-create online style directory structure
       file:
