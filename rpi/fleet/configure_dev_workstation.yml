@@ -78,6 +78,7 @@
               listen 80;
               root /srv/www;
               index index.html index.htm;
+              rewrite ^/$ /school-coding-lab/micropython/ permanent;
           }
 
     - name: Create web server document directory
