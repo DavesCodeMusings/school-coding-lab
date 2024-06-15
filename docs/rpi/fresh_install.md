@@ -118,18 +118,45 @@ After writing the Raspberry Pi OS image, you can remove the microSD card from yo
 > Booting takes about three minutes the first time. If you see a Raspberry Pi Desktop logo on the monitor, things are moving in the right direction. Just be patient.
 
 ## Configuration of the Operating System
-The remaining steps are all automated using the [Ansible](https://docs.ansible.com/ansible/latest/) configuration language. You don't need to know anything about Ansible other than how to run a configuration script (called a playbook in Ansible terminology.) The entire process of taking a freshly flashed microSD and handing over a ready-to-use student developer workstation takes only two commands.
+The entire process of taking a freshly flashed microSD and handing over a ready-to-use student developer workstation takes only two commands.
 
-A freshly installed Raspberry Pi OS will boot to a desktop and automatically log in as whatever user you configured in the _OS Customization_, _General_ tab of the Raspberry Pi imager tool. From here, you need to open a terminal window using the icon on the taskbar.
+Raspberry Pi OS will boot to a desktop and automatically log in as whatever user you configured in the _OS Customization_, _General_ tab of the Raspberry Pi imager tool. From here, you need to open a terminal window using the icon on the taskbar.
 
 > Advanced users can start a Secure Shell (SSH) session from a remote machine and log in as the configured user.
 
+From the terminal window, you'll need to download a script from the _school-coding-lab_ GitHub sit and run it using the following commands:
 
+1. `wget https://github.com/DavesCodeMusings/school-coding-lab/raw/doc-update/rpi/fleet/quickstart_dev_workstation.sh`
+2. `bash ./quickstart_dev_workstation.sh`
 
-TODO:
-* https://github.com/DavesCodeMusings/school-coding-lab/raw/main/rpi/fleet/install_ansible.sh
-* https://github.com/DavesCodeMusings/school-coding-lab/raw/main/rpi/fleet/configure_dev_workstation.yml
-* Tie together with a download script.
+It will take a while to run and it will take care of the following tasks for you:
+* Creating a non-administrator login id for students to use.
+* Copying lab documents to the Raspberry Pi.
+* Installing software necessary for Python and MicroPython code development.
+* General clean-up of Raspberry Pi O.S.
+
+When everything is done, you'll be back at a command prompt. Reboot the Raspberry Pi and you're ready to go.
+
+A successful run of the steps will look something like what's shown below, though large chunks of output have been removed for brevity.
+
+```
+admin@pi:~ $ bash ./quickstart_dev_workstation.sh
+--2024-06-15 08:03:30--  https://github.com/DavesCodeMusings/school-coding-lab/raw/main/rpi/fleet/install_ansible.sh
+Resolving github.com (github.com)... 140.82.112.3
+Connecting to github.com (github.com)|140.82.112.3|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+...
+Checking for Ansible.
+Ansible is already installed. Nice!
+[WARNING]: No inventory was parsed, only implicit localhost is available
+[WARNING]: provided hosts list is empty, only localhost is available. Note that
+the implicit localhost does not match 'all'
+...
+PLAY RECAP *********************************************************************
+localhost                  : ok=16   changed=5    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+
+admin@pi:~ $
+```
 
 ## Next Steps
 Congratulations on getting your Raspberry Pi configured. And give yourself an extra pat on the back if you upcycled an older, discarded Pi for this purpose.
