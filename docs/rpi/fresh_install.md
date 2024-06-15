@@ -1,5 +1,5 @@
 # Building a Student Developer Machine on Raspberry Pi
-This page details the steps for setting up a Raspberry Pi board for MicroPython development using Visual Studio Code and the MPRemote VS Code extension. Some knowledge of Raspberry Pi is assumed, but most steps should have plenty of detail for the first time user. The steps are geared toward reusing older generations of donated Raspberry Pi hardware. The procedure is tested on a 32-bit Raspberry Pi 2 with 1G of RAM, but model 3 and above is preferred.
+This page details the steps for setting up a Raspberry Pi board for MicroPython development using the Thonny Python code editor. Some knowledge of Raspberry Pi is assumed, but most steps should have plenty of detail for the first time user. The steps are geared toward reusing older generations of donated Raspberry Pi hardware. The procedure is tested on a 32-bit Raspberry Pi 2 with 1G of RAM, but model 3 and above is preferred.
 
 The steps here will require the following:
 * A PC or Mac with a microSD card slot (or appropriate adapter.)
@@ -117,43 +117,11 @@ After writing the Raspberry Pi OS image, you can remove the microSD card from yo
 
 > Booting takes about three minutes the first time. If you see a Raspberry Pi Desktop logo on the monitor, things are moving in the right direction. Just be patient.
 
-## Initial Update of the Operating System
-Staying current on Operating System updates is key to maintaining a stable and secure environment. This step shows how to update Raspberry Pi OS using command-line tools. This can either be done by opening a command prompt from the Raspberry Pi Desktop or you can use Secure Shell (SSH) from a remote machine to do this.
-
-The first update can take a significant amount of time, particularly on older Raspberry Pi models. After the first update, establish a habit of weekly updates. This will not only keep your OS secure, it will shorten the time required for each update.
-
-1. Open a command prompt (either from the Raspberry Pi Desktop desktop or using SSH.)
-2. Update the list of available software with `sudo apt-get update`
-3. Install any available upgrades with `sudo apt-get upgrade`
-4. Reboot the system when finished with `sudo shutdown -r now`
-
-A successful update will look like the following example, though much of the output has been trimmed for brevity.
-
-```
-$ sudo apt-get update
-Reading package lists... Done
-
-$ sudo apt-get upgrade
-Reading package lists... Done
-Building dependency tree... Done
-Reading state information... Done
-The following additional packages will be installed:
-Do you want to continue? [Y/n] y
-Reading package lists... Done
-Building dependency tree... Done
-Reading state information... Done
-Calculating upgrade... Done
-...
-update-initramfs: Generating /boot/initrd.img-6.6.20+rpt-rpi-v8
-'/boot/initrd.img-6.6.20+rpt-rpi-v8' -> '/boot/firmware/initramfs8'
-...
-
-$ sudo shutdown -r now
-The system will reboot now!
-```
-
-## Optionally Enabling Remote Access
-You can skip this if you'll always have a keyboard, mouse, and monitor attached to your Raspberry Pi. But if you think you might need to access the Pi from another machine, see the [guide for setting up remote access](remote_access.md).
+## Configuration of the Operating System
+TODO:
+* https://github.com/DavesCodeMusings/school-coding-lab/raw/main/rpi/fleet/install_ansible.sh
+* https://github.com/DavesCodeMusings/school-coding-lab/raw/main/rpi/fleet/configure_dev_workstation.yml
+* Tie together with a download script.
 
 ## Next Steps
 Congratulations on getting your Raspberry Pi configured. And give yourself an extra pat on the back if you upcycled an older, discarded Pi for this purpose.
