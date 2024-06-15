@@ -96,7 +96,7 @@
 
     - name: Re-create online content directory structure
       file:
-        path: /srv/www/school-coding-lab/labs
+        path: /srv/www/school-coding-lab/micropython
         state: directory
         owner: www-data
         group: www-data
@@ -104,8 +104,8 @@
 
     - name: Download labs locally
       ansible.builtin.get_url:
-        url: "https://davescodemusings.github.io/school-coding-lab/labs/{{ item }}"
-        dest: "/srv/www/school-coding-lab/labs/{{ item }}"
+        url: "https://davescodemusings.github.io/school-coding-lab/micropython/{{ item }}"
+        dest: "/srv/www/school-coding-lab/micropython/{{ item }}"
         mode: '0644'
       with_items: "{{ labs }}"
 
