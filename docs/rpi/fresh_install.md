@@ -115,7 +115,7 @@ After writing the Raspberry Pi OS image, you can remove the microSD card from yo
 3. Plug in an appropriate power supply for your device (Official Raspberry Pi or Canakit power supplies are a good choice.)
 4. Watch the monitor for signs of life.
 
-Booting could take several minutes the first time. If you see a Raspberry Pi Desktop logo on the monitor, things are moving in the right direction. Just be patient.
+> Booting takes about three minutes the first time. If you see a Raspberry Pi Desktop logo on the monitor, things are moving in the right direction. Just be patient.
 
 ## Initial Update of the Operating System
 Staying current on Operating System updates is key to maintaining a stable and secure environment. This step shows how to update Raspberry Pi OS using command-line tools. This can either be done by opening a command prompt from the Raspberry Pi Desktop or you can use Secure Shell (SSH) from a remote machine to do this.
