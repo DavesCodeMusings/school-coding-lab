@@ -2,7 +2,7 @@
 
 ## Hands-On Labs
 Plug your microcontroller into your Raspberry Pi workstation and get ready.
-This section is alabout learning by doing.
+This section is all about learning by doing.
 
 ## Feature-Specific Labs
 The goal of these labs is to get you familiar with a piece of hardware
