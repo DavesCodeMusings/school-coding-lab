@@ -8,10 +8,10 @@ check_download_error () {
   fi
 }
 
-wget https://github.com/DavesCodeMusings/school-coding-lab/raw/main/rpi/fleet/install_ansible.sh
+wget -O install_ansible.sh https://github.com/DavesCodeMusings/school-coding-lab/raw/main/rpi/fleet/install_ansible.sh
 check_download_error $?
 
-wget https://github.com/DavesCodeMusings/school-coding-lab/raw/main/rpi/fleet/configure_dev_workstation.yml
+wget -O configure_dev_workstation.yml https://github.com/DavesCodeMusings/school-coding-lab/raw/main/rpi/fleet/configure_dev_workstation.yml
 check_download_error $?
 
 bash install_ansible.sh
