@@ -7,4 +7,4 @@ If you're going to skip the HOWTO document and dive right in, run things in
 the following order:
 
 * bash install_ansible.sh
-* ansible-playbook configure_wifi_ap.yml
+* Either ansible-playbook configure_dev_workstaiton.yml or ansible-playbook configure_wifi_ap.yml
