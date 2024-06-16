@@ -1,0 +1,19 @@
+---
+- name: Disable and remove swap to save wear on microSD
+  hosts: localhost
+  become: true
+
+  tasks:
+    - name: Disable swap
+      shell:
+        cmd: dphys-swapfile swapoff
+
+    - name: Remove swap file
+      shell:
+        cmd: dphys-swapfile uninstall
+
+    - name: Disable swapfile service
+      ansible.builtin.service:
+        name: dphys-swapfile
+        enabled: false
+        state: stopped
