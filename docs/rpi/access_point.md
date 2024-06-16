@@ -17,7 +17,7 @@ In place of Raspberry Pi OS (64-bit), you'll want to select _Raspberry Pi OS (ot
 
 ___
 
-![Raspberry Pi OS Lite](../../images/Imager%20Choose%20OS%20Lite.png)
+![Raspberry Pi OS Lite](../images/Imager%20Choose%20OS%20Lite.png)
 
 _Figure 1: Choosing Raspberry Pi OS Lite in Raspberry Pi Imager_
 
