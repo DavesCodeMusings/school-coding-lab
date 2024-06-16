@@ -16,6 +16,20 @@
         password: "{{ student_password | password_hash('sha512') }}"
       when: student_login_id is defined
 
+    - name: Disable swap to save wear on microSD card
+      shell:
+        cmd: dphys-swapfile swapoff
+
+    - name: Remove swap file
+      shell:
+        cmd: dphys-swapfile uninstall
+
+    - name: Disable swapfile service
+      ansible.builtin.service:
+        name: dphys-swapfile
+        enabled: false
+        state: stopped
+
     - name: Add systemd watchdog parameter for system lock-ups
       ansible.builtin.lineinfile:
         path: /etc/systemd/system.conf
