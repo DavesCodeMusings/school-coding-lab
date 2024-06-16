@@ -4,14 +4,11 @@
   become: true
 
   tasks:
-    - name: Update apt cache
-      ansible.builtin.apt:
-        update_cache: yes
-
     - name: Install Nginx
       ansible.builtin.apt:
         name: nginx
         state: present
+        update_cache: yes
 
     - name: Ensure the service is running
       ansible.builtin.service:
