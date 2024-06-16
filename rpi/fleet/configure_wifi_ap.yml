@@ -6,8 +6,16 @@
   vars:
     wifi_ssid: PiFi
     wifi_password: P@ssw0rd
+    student_login_id: student
+    student_password: P@ssw0rd
 
   tasks:
+    - name: Create student user id
+      ansible.builtin.user:
+        name: "{{ student_login_id }}"
+        password: "{{ student_password | password_hash('sha512') }}"
+      when: student_login_id is defined
+
     - name: Add systemd watchdog parameter for system lock-ups
       ansible.builtin.lineinfile:
         path: /etc/systemd/system.conf
@@ -118,7 +126,7 @@
 
 
 # References:
-# https://pimylifeup.com/raspberry-pi-watchdog/  
+# https://pimylifeup.com/raspberry-pi-watchdog/
 # https://learn.adafruit.com/adafruits-raspberry-pi-lesson-5-using-a-console-cable/
 # https://raymii.org/s/tutorials/Ansible_-_Only-do-something-if-another-action-changed.html
 # https://raspberrytips.com/access-point-setup-raspberry-pi/
