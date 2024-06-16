@@ -17,3 +17,6 @@
         name: dphys-swapfile
         enabled: false
         state: stopped
+
+# Reference:
+# https://raspberrypi.stackexchange.com/questions/84390/how-to-permanently-disable-swap-on-raspbian-stretch-lite
