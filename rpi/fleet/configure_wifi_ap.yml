@@ -140,6 +140,7 @@
 
 
 # References:
+# https://raspberrypi.stackexchange.com/questions/84390/how-to-permanently-disable-swap-on-raspbian-stretch-lite
 # https://pimylifeup.com/raspberry-pi-watchdog/
 # https://learn.adafruit.com/adafruits-raspberry-pi-lesson-5-using-a-console-cable/
 # https://raymii.org/s/tutorials/Ansible_-_Only-do-something-if-another-action-changed.html
