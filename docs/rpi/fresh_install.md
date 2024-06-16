@@ -101,9 +101,15 @@ _Figure 8: Default options showing the microSD will be ejected when writing is f
 
 ___
 
+![Imager Erase Y/N](../images/Imager_Erase_YN.png)
+
+_Figure 9: Waiting for confirmation to overwrite_
+
+___
+
 ![Imager Writing](../images/Imager%20Writing.png)
 
-_Figure 9: Raspberry Pi Imager writing after all options have been selected_
+_Figure 10: Raspberry Pi Imager writing Raspberry Pi O.S. to microSD card_
 
 ___
 
