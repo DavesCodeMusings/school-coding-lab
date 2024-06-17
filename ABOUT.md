@@ -16,7 +16,7 @@ The computing lab starts with donated Raspberry Pis and an old laptop or two. Te
 ### Learning to Code
 Every copy of Raspberry Pi OS includes the Python programming language and the tools needed to get started with it. And, by building and maintaining their own lab, students will learn configuration management languages, automation techniques, and modern DevOps methodologies.
 
-### Builing an Internet of Things
+### Building an Internet of Things
 Beyond the programming capabilities of the Rasberry Pi, students will extend their knowledge of Python programming to build and interact with connected devices in their environment. Today's inexpensive WiFi capable microcontrollers and a wide variety of sensors allow experiments that push beyond the confines of the computer into the physical world.
 
 ## Why does this require funding?
