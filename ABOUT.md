@@ -27,8 +27,8 @@ Here's a list to get started. It is by no means complete.
 * 32G high endurance microSD cards for Raspberry Pis
 * 5V/3A power supplies for Raspberry Pis
 * HDMI monitors, USB keyboards, and USB mice for Raspberry Pis
-* Espressif ESP32C microcontrollers
-* USB cables for ESP32C microcontrollers
+* Espressif ESP32C3 microcontrollers
+* USB cables for ESP32C3 microcontrollers
 * Sensors for interfacing to ESP32 microcontrollers
 
 ## Next Steps
