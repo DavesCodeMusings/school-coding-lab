@@ -1,5 +1,5 @@
 # Building a Student Developer Machine on Raspberry Pi
-This page details the steps for setting up a Raspberry Pi board for MicroPython development using the Thonny Python code editor. Some knowledge of Raspberry Pi is assumed, but most steps should have plenty of detail for the first time user. The steps are geared toward reusing older generations of donated Raspberry Pi hardware. The procedure is tested on a 32-bit Raspberry Pi 2 with 1G of RAM, but model 3 and above is preferred.
+This page details the steps for setting up a Raspberry Pi board for MicroPython development using the Thonny Python code editor. Some knowledge of Raspberry Pi is assumed, but most steps should have plenty of detail for the first time user. The steps are geared toward reusing older generations of donated Raspberry Pi hardware. The procedure is tested on a Raspberry Pi 3, but any higher revisions should work as well
 
 The steps here will require the following:
 * A PC or Mac with a microSD card slot (or appropriate adapter.)
@@ -66,13 +66,13 @@ ___
 
 ![Imager Choose Device](../images/Imager%20Choose%20Device.png)
 
-_Figure 3: Choosing a device of Raspberry Pi 2_
+_Figure 3: Choosing a device of Raspberry Pi 3_
 
 ___
 
 ![Imager Choose OS](../images/Imager%20Choose%20OS.png)
 
-_Figure 4: Choosing a 32-bit OS for Raspbery Pi 2_
+_Figure 4: Choosing a 32-bit OS for Raspbery Pi 3_
 
 ___
 
