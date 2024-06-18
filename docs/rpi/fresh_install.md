@@ -132,7 +132,7 @@ Raspberry Pi OS will boot to a desktop and automatically log in as whatever user
 
 From the terminal window, you'll need to download and run a script from the _school-coding-lab_ GitHub site using the following commands:
 
-1. `wget https://github.com/DavesCodeMusings/school-coding-lab/raw/doc-update/rpi/fleet/quickstart_dev_workstation.sh`
+1. `wget https://raw.githubusercontent.com/DavesCodeMusings/school-coding-lab/main/rpi/fleet/quickstart_dev_workstation.sh`
 2. `bash ./quickstart_dev_workstation.sh`
 
 It will take a while to run and it will take care of the following tasks for you:
@@ -148,7 +148,7 @@ When everything is done, you can reboot the Raspberry Pi and you're ready to go.
 A successful run of the steps will look something like what's shown below, though large chunks of output have been removed for brevity.
 
 ```
-$ wget https://github.com/DavesCodeMusings/school-coding-lab/raw/doc-update/rpi/fleet/quickstart_dev_workstation.sh
+$ wget https://raw.githubusercontent.com/DavesCodeMusings/school-coding-lab/main/rpi/fleet/quickstart_dev_workstation.sh
 ...
 Saving to: ‘quickstart_dev_workstation.sh’
 
