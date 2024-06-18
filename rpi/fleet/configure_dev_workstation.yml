@@ -153,7 +153,12 @@
 
     - name: Install esptool
       community.general.pipx:
-        name: mpremote
+        name: esptool
+      become_user: "{{ student_login_id }}"
+
+    - name: Install mpflash
+      community.general.pipx:
+        name: mpflash
       become_user: "{{ student_login_id }}"
 
     - name: Install mpremote
