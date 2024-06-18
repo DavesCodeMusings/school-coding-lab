@@ -21,7 +21,7 @@
     - name: Add user ids to groups
       ansible.builtin.user:
         name: "{{ item }}"
-        groups: vnc, www-data
+        groups: dialout, vnc, www-data
         append: yes
       with_items:
         - "{{ admin_login_id }}"
