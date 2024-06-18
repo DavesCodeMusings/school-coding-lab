@@ -141,7 +141,7 @@ It will take a while to run and it will take care of the following tasks for you
 * Installing software necessary for Python and MicroPython code development.
 * General clean-up of Raspberry Pi O.S.
 
-> &#128343; The configuration process takes about eight to ten minutes in total.
+> &#128343; The automated configuration process takes about ten to fifteen minutes in total.
 
 When everything is done, you can reboot the Raspberry Pi and you're ready to go.
 
