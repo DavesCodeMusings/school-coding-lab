@@ -2,15 +2,16 @@
 services:
   code-server:
     image: ghcr.io/davescodemusings/code-server-python:latest
+    container_name: code-server
     hostname: code-server
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=1001
+      - PGID=1001
       - TZ=America/Chicago
       - DEFAULT_WORKSPACE=/src
     volumes:
       - config:/config
-      - /usr/src:/src
+      - /home/student/src:/src
     ports:
       - 8443:8443
     restart: unless-stopped
