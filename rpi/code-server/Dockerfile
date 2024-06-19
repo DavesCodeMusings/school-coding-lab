@@ -8,5 +8,5 @@ RUN apt-get update && apt-get install -y \
 # Preinstall Python extension.
 RUN /app/code-server/bin/code-server --install-extension ms-python.python
 # Allow pre-installed extensions to be found by linking directory.
-RUN rmdir /config/extensions && ln -s /config/.local/share/code-server/extensions /config/extensions
+RUN ln -s /config/.local/share/code-server/extensions /config/extensions
 EXPOSE 8443
