@@ -8,10 +8,10 @@ services:
       - PUID=1001
       - PGID=1001
       - TZ=America/Chicago
-      - DEFAULT_WORKSPACE=/src
+      - DEFAULT_WORKSPACE=/Code
     volumes:
       - config:/config
-      - /home/student/src:/src
+      - /home/student/Code:/Code
     ports:
       - 8443:8443
     restart: unless-stopped
