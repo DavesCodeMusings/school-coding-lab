@@ -119,7 +119,7 @@
         state: present
       with_items:
         - pipx
-        - acl
+        - acl  # Needed to become unprivleged user
       
     - name: Install esptool
       community.general.pipx:
