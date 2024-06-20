@@ -120,6 +120,7 @@
       with_items:
         - pipx
         - acl  # Needed to become unprivleged user
+        - python3-dev  # Needed to build mpflash
       
     - name: Install esptool
       community.general.pipx:
