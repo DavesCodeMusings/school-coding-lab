@@ -1,0 +1,100 @@
+---
+- name: Configure Raspberry Pi as a Development Workstation
+  hosts: localhost
+  become: true
+
+  vars:
+    admin_login_id: "{{ lookup('env', 'USER') }}"
+    student_login_id: student
+    student_password: P@ssw0rd
+    labs_root: /srv/www/school-coding-lab/micropython
+
+  tasks:
+    - name: Create student user id
+      ansible.builtin.user:
+        name: "{{ student_login_id }}"
+        password: "{{ student_password | password_hash('sha512') }}"
+
+    # admin_login_id is the one who ran this playbook, so it does not
+    # need to be created.
+
+    - name: Add user ids to groups
+      ansible.builtin.user:
+        name: "{{ item }}"
+        groups: dialout, vnc
+        append: yes
+      with_items:
+        - "{{ admin_login_id }}"
+        - "{{ student_login_id }}"
+
+    - name: Configure student as the auto-login desktop user
+      ansible.builtin.lineinfile:
+        path: /etc/lightdm/lightdm.conf
+        regexp: '^autologin-user'
+        line: autologin-user={{ student_login_id }}
+
+    - name: Shutdown and disable unnecessary services
+      ansible.builtin.service:
+        name: "{{ item }}"
+        enabled: false
+        state: stopped
+      with_items:
+        - cups
+        - cups-browsed
+        - ModemManager
+
+    - name: Install VNC server
+      ansible.builtin.apt:
+        name: realvnc-vnc-server
+        state: present
+        update_cache: yes
+
+    - name: Ensure VNC server is running
+      ansible.builtin.service:
+        name: vncserver-x11-serviced
+        enabled: true
+        state: started
+
+    - name: Check if VNC permissions are unconfigured
+      ansible.builtin.lineinfile:
+        path: /root/.vnc/config.d/vncserver-x11
+        regex: '^Permissions'
+        line: Permissions=:d,%admin:d,%sudo:d,%wheel:d,%vnc:d
+
+    - name: Discover who has permission to connect through VNC
+      ansible.builtin.shell:
+        cmd: grep ^Permissions /root/.vnc/config.d/vncserver-x11
+      register: vnc_permissions
+
+    - name: Give vnc group permission to connect through VNC
+      ansible.builtin.lineinfile:
+        path: /root/.vnc/config.d/vncserver-x11
+        backrefs: yes
+        regexp: "^(Permissions=.*)$"
+        line: '\1,%vnc:d'
+      when: '"%vnc:d" not in vnc_permissions.stdout'
+
+    - name: Install Python package manager
+      ansible.builtin.apt:
+        name: pipx
+        state: present
+
+    - name: Install esptool
+      community.general.pipx:
+        name: esptool
+      become_user: "{{ student_login_id }}"
+
+    - name: Install mpflash
+      community.general.pipx:
+        name: mpflash
+      become_user: "{{ student_login_id }}"
+
+    - name: Install mpremote
+      community.general.pipx:
+        name: mpremote
+      become_user: "{{ student_login_id }}"
+
+    - name: Add virtual environments to user path
+      ansible.builtin.shell:
+        cmd: pipx ensurepath
+      become_user: "{{ student_login_id }}"
