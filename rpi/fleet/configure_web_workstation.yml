@@ -27,16 +27,6 @@
         - "{{ admin_login_id }}"
         - "{{ student_login_id }}"
 
-    - name: Shutdown and disable unnecessary services
-      ansible.builtin.service:
-        name: "{{ item }}"
-        enabled: false
-        state: stopped
-      with_items:
-        - cups
-        - cups-browsed
-        - ModemManager
-
     - name: Install software packages
       ansible.builtin.apt:
         name: "{{ item }}"
