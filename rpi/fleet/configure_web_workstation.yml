@@ -1,0 +1,149 @@
+---
+- name: Configure Raspberry Pi as a Development Workstation
+  hosts: localhost
+  become: true
+
+  vars:
+    admin_login_id: "{{ lookup('env', 'USER') }}"
+    student_login_id: student
+    student_password: P@ssw0rd
+    labs_root: /srv/www/school-coding-lab/micropython
+
+  tasks:
+    - name: Create student user id
+      ansible.builtin.user:
+        name: "{{ student_login_id }}"
+        password: "{{ student_password | password_hash('sha512') }}"
+
+    # admin_login_id is the one who ran this playbook, so it does not
+    # need to be created.
+
+    - name: Add user ids to groups
+      ansible.builtin.user:
+        name: "{{ item }}"
+        groups: dialout, www-data
+        append: yes
+      with_items:
+        - "{{ admin_login_id }}"
+        - "{{ student_login_id }}"
+
+    - name: Shutdown and disable unnecessary services
+      ansible.builtin.service:
+        name: "{{ item }}"
+        enabled: false
+        state: stopped
+      with_items:
+        - cups
+        - cups-browsed
+        - ModemManager
+
+    - name: Install software packages
+      ansible.builtin.apt:
+        name: "{{ item }}"
+        state: present
+        update_cache: yes
+      with_items:
+        - shellinabox
+        - nginx
+
+    - name: Ensure new services are running
+      ansible.builtin.service:
+        name: "{{ item }}"
+        enabled: true
+        state: started
+      with_items:
+        - shellinabox
+        - nginx
+
+    - name: Create web server configuration for static content
+      ansible.builtin.copy:
+        dest: /etc/nginx/sites-available/default
+        backup: true
+        owner: root
+        group: root
+        mode: '0644'
+        content: |
+          server {
+              listen 80;
+              root /srv/www;
+              index index.html index.htm;
+              rewrite ^/$ /school-coding-lab/micropython/ permanent;
+          }
+
+    - name: Create web server document directory
+      ansible.builtin.file:
+        path: /srv/www
+        state: directory
+        owner: www-data
+        group: www-data
+        mode: '0775'
+
+    - name: Reload web server configuration
+      ansible.builtin.service:
+        name: nginx
+        enabled: true
+        state: reloaded
+
+    - name: Re-create online content directory structure
+      file:
+        path: "{{ labs_root }}"
+        state: directory
+        owner: www-data
+        group: www-data
+        mode: '0775'
+
+    - name: Fetch latest table of contents
+      ansible.builtin.get_url:
+        url: https://davescodemusings.github.io/school-coding-lab/micropython/TOC.yml
+        dest: "{{ labs_root }}/TOC.yml"
+
+    - name: Read available labs from table of contents
+      ansible.builtin.include_vars:
+        file: "{{ labs_root }}/TOC.yml"
+        name: labs
+
+    - name: Download copies of labs locally
+      ansible.builtin.get_url:
+        url: "https://davescodemusings.github.io/school-coding-lab/micropython/{{ item }}.html"
+        dest: "{{ labs_root }}/{{ item }}.html"
+        mode: '0644'
+      with_items: "{{ labs.TOC }}"
+
+    - name: Re-create online style directory structure
+      file:
+        path: /srv/www/school-coding-lab/assets/css
+        state: directory
+        owner: www-data
+        group: www-data
+        mode: '0775'
+
+    - name: Download online css style
+      ansible.builtin.get_url:
+        url: https://davescodemusings.github.io/school-coding-lab/assets/css/style.css
+        dest: /srv/www/school-coding-lab/assets/css/style.css
+        mode: '0644'
+
+    - name: Install Python package manager
+      ansible.builtin.apt:
+        name: pipx
+        state: present
+      
+    - name: Install esptool
+      community.general.pipx:
+        name: esptool
+      become_user: "{{ student_login_id }}"
+
+    - name: Install mpflash
+      community.general.pipx:
+        name: mpflash
+      become_user: "{{ student_login_id }}"
+
+    - name: Install mpremote
+      community.general.pipx:
+        name: mpremote
+      become_user: "{{ student_login_id }}"
+
+    - name: Add virtual environments to user path
+      ansible.builtin.shell:
+        cmd: pipx ensurepath
+      become_user: "{{ student_login_id }}"
