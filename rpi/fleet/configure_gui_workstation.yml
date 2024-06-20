@@ -74,6 +74,11 @@
         line: '\1,%vnc:d'
       when: '"%vnc:d" not in vnc_permissions.stdout'
 
+    - name: Install Python package manager
+      ansible.builtin.apt:
+        name: pipx
+        state: present
+
     - name: Install esptool
       community.general.pipx:
         name: esptool
