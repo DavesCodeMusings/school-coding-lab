@@ -113,10 +113,13 @@
         dest: /srv/www/school-coding-lab/assets/css/style.css
         mode: '0644'
 
-    - name: Install Python package manager
+    - name: Install Python package manager and ACL utils
       ansible.builtin.apt:
-        name: pipx
+        name: "{{ item }}"
         state: present
+      with_items:
+        - pipx
+        - acls
       
     - name: Install esptool
       community.general.pipx:
