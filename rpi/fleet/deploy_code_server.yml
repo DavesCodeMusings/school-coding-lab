@@ -1,0 +1,85 @@
+---
+- name: Deploy Visual Studio Code code-server as a Docker container
+  hosts: localhost
+  become: true
+
+  vars:
+    admin_login_id: "{{ lookup('env', 'USER') }}"
+    student_login_id: student
+
+  tasks:
+    - name: Install docker and docker compose
+      ansible.builtin.apt:
+        name: "{{ item }}"
+        state: present
+        update_cache: yes
+      with_items:
+        - docker.io
+        - docker-compose
+
+    - name: Ensure docker service is running
+      ansible.builtin.service:
+        name: docker
+        enabled: true
+        state: started
+
+    - name: Add user ids to docker group
+      ansible.builtin.user:
+        name: "{{ item }}"
+        groups: docker
+        append: yes
+      with_items:
+        - "{{ admin_login_id }}"
+        - "{{ student_login_id }}"
+
+    - name: Create student code directory
+      ansible.builtin.file:
+        path: /home/student/Code
+        state: directory
+        owner: student
+        group: student
+        mode: '0755'
+
+    - name: Create a sample Python file
+      ansible.builtin.copy:
+        dest: /home/student/Code/hello.py
+        owner: student
+        group: student
+        mode: '0644'
+        content: |
+          import os
+
+          name = os.uname().nodename
+          print("Hello from", name)
+
+    - name: Create a directory for system-wide compose projects
+      ansible.builtin.file:
+        path: /var/lib/docker/compose
+        state: directory
+        owner: root
+        group: docker
+        mode: '0775'
+
+    - name: Give directory access to users in the docker group
+      ansible.builtin.file:
+        path: /var/lib/docker
+        state: directory
+        group: docker
+
+    - name: Create a directory for the code-server project
+      ansible.builtin.file:
+        path: /var/lib/docker/compose/code-server
+        state: directory
+        owner: root
+        group: docker
+        mode: '0775'
+
+    - name: Fetch the compose file for code-server
+      ansible.builtin.get_url:
+        url: https://github.com/DavesCodeMusings/school-coding-lab/raw/main/rpi/code-server/compose.yml
+        dest: /var/lib/docker/compose/code-server
+
+    - name: Start up the code-server container
+      ansible.builtin.shell:
+        chdir: /var/lib/docker/compose/code-server
+        cmd: docker-compose up -d
