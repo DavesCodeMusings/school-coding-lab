@@ -28,8 +28,10 @@ elif [ "$DEFAULT_TARGET" == "multi-user.target" ]; then
   echo "Configuring for web-based remote access."
   download https://github.com/DavesCodeMusings/school-coding-lab/raw/main/rpi/fleet/install_ansible.sh
   download https://github.com/DavesCodeMusings/school-coding-lab/raw/main/rpi/fleet/configure_web_workstation.yml
+  download https://github.com/DavesCodeMusings/school-coding-lab/raw/main/rpi/fleet/deploy_code_server.yml
   bash ./install_ansible.sh
   ansible-playbook ./configure_web_workstation.yml
+  ansible-playbook ./deploy_code_server.yml
 else
   echo "Unable to determine if system role is desktop or web-based."
   exit 3
