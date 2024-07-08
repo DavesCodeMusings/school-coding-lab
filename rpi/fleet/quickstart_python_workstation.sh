@@ -18,7 +18,7 @@ download () {
 
 echo "Configuring for Python and MicroPython development work."
 download https://github.com/DavesCodeMusings/school-coding-lab/raw/main/rpi/fleet/install_ansible.sh
-download https://github.com/DavesCodeMusings/school-coding-lab/raw/main/rpi/fleet/configure_web_workstation.yml
+download https://github.com/DavesCodeMusings/school-coding-lab/raw/main/rpi/fleet/configure_python_workstation.yml
 download https://github.com/DavesCodeMusings/school-coding-lab/raw/main/rpi/fleet/deploy_code_server.yml
 bash ./install_ansible.sh
 ansible-playbook ./configure_python_workstation.yml
