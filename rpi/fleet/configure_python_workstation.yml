@@ -113,7 +113,7 @@
         dest: /srv/www/school-coding-lab/assets/css/style.css
         mode: '0644'
 
-    - name: Install Python package manager and ACL utils
+    - name: Install Python package manager and dependencies
       ansible.builtin.apt:
         name: "{{ item }}"
         state: present
