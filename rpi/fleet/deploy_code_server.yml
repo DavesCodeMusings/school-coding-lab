@@ -32,25 +32,13 @@
         - "{{ admin_login_id }}"
         - "{{ student_login_id }}"
 
-    - name: Create student code directory
+    - name: Ensure student code directory exists
       ansible.builtin.file:
         path: /home/student/Code
         state: directory
         owner: student
         group: student
         mode: '0755'
-
-    - name: Create a sample Python file
-      ansible.builtin.copy:
-        dest: /home/student/Code/hello.py
-        owner: student
-        group: student
-        mode: '0644'
-        content: |
-          import os
-
-          name = os.uname().nodename
-          print("Hello from", name)
 
     - name: Create a directory for system-wide compose projects
       ansible.builtin.file:
