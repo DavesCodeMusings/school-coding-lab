@@ -1,5 +1,5 @@
 ---
-- name: Configure Raspberry Pi as a Development Workstation
+- name: Configure Raspberry Pi as a Python Development Workstation
   hosts: localhost
   become: true
 
