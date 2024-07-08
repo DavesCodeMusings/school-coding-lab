@@ -1,0 +1,8 @@
+# This manifest is used to determine which labs are complete and ready to
+# be downloaded locally to the development workstation by automation.  It's
+# a simple YAML list format of the file names without their extensions.
+
+labs:
+  - hello/hello.py
+  - hw_specs/hw_specs.py
+  - neopixel/neopixel.py
