@@ -17,12 +17,14 @@ download () {
 }
 
 echo "Configuring for Python and MicroPython development work."
-download https://github.com/DavesCodeMusings/school-coding-lab/raw/main/rpi/fleet/install_ansible.sh
-download https://github.com/DavesCodeMusings/school-coding-lab/raw/main/rpi/fleet/configure_python_workstation.yml
-download https://github.com/DavesCodeMusings/school-coding-lab/raw/main/rpi/fleet/deploy_code_server.yml
+download https://raw.githubusercontent.com/DavesCodeMusings/school-coding-lab/main/rpi/fleet-automation/install_ansible.sh
+download https://raw.githubusercontent.com/DavesCodeMusings/school-coding-lab/main/rpi/fleet-automation/configure_python_workstation.yml
+download https://raw.githubusercontent.com/DavesCodeMusings/school-coding-lab/main/rpi/fleet-automation/deploy_code_server.yml
+download https://raw.githubusercontent.com/DavesCodeMusings/school-coding-lab/main/rpi/fleet-automation/download_code_samples.yml
 bash ./install_ansible.sh
 ansible-playbook ./configure_python_workstation.yml
 ansible-playbook ./deploy_code_server.yml
+ansible-playbook ./download_code_samples.yml
 
 echo -n "Everything is done but the reboot. Restart now [y/N]? "
 read REPLY

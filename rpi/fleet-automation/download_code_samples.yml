@@ -1,0 +1,44 @@
+---
+- name: Download code samples locally
+  hosts: localhost
+  become: true
+
+  vars:
+    student_login_id: student
+
+  tasks:
+    - name: Look up student user account
+      ansible.builtin.user:
+        name: "{{ student_login_id }}"
+        state: present
+      register: student_user_info
+      check_mode: true
+
+    - name: Determine student's code directory
+      ansible.builtin.set_fact:
+        student_code_dir: "{{ student_user_info.home }}/Code"
+
+    - name: Ensure code directory exists
+      ansible.builtin.file:
+        path: student_code_dir
+        state: directory
+        mode: '0755'
+        owner: "{{ student_login_id }}"
+        group: "{{ student_login_id }}"
+
+    - name: Fetch latest online manifest
+      ansible.builtin.get_url:
+        url: https://raw.githubusercontent.com/DavesCodeMusings/school-coding-lab/main/micropython/MANIFEST.yml
+        dest: "{{ student_code_dir }}/MANIFEST.yml"
+
+    - name: Read available code samples from manifest
+      ansible.builtin.include_vars:
+        file: "{{ student_code_dir }}/MANIFEST.yml"
+        name: code_samples
+
+    - name: Download code samples locally
+      ansible.builtin.get_url:
+        url: " https://raw.githubusercontent.com/DavesCodeMusings/school-coding-lab/main/micropython/{{ item }}"
+        dest: "{{ student_code_dir }}/{{ item | basename }}"
+        mode: '0644'
+      with_items: "{{ code_samples.labs }}"
