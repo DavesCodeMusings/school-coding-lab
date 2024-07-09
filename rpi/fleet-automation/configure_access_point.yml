@@ -36,6 +36,7 @@
     - name: Disable preconfigured autoconnect
       community.general.nmcli:
         conn_name: preconfigured
+        state: present
         autoconnect: false
 
     - name: Set hostname to match SSID
