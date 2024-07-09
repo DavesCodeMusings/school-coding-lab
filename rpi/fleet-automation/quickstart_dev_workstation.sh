@@ -57,7 +57,7 @@ if [ "$1" != "" ]; then
   HOSTNAME=$1
 else
   UNIQUE_ID=$(awk -F: '/Serial/ { print substr($NF, length($NF)-5, 6) }' /proc/cpuinfo)
-  HOSTNAME="pi_$UNIQUE_ID"
+  HOSTNAME="pi-$UNIQUE_ID"
 fi
 echo "INFO: Using $HOSTNAME as the name for this Raspberry Pi."
 export HOSTNAME
