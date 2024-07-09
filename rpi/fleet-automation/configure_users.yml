@@ -1,0 +1,27 @@
+---
+- name: Configure Users and Groups
+  hosts: localhost
+  become: true
+
+  vars:
+    admin_login_id: "{{ lookup('env', 'USER') }}"
+    student_login_id: student
+    student_password: P@ssw0rd
+
+  tasks:
+    - name: Create student user id
+      ansible.builtin.user:
+        name: "{{ student_login_id }}"
+        password: "{{ student_password | password_hash('sha512') }}"
+
+    # admin_login_id is the one who ran this playbook, so it does not
+    # need to be created.
+
+    - name: Add user ids to groups
+      ansible.builtin.user:
+        name: "{{ item }}"
+        groups: dialout, docker, www-data
+        append: yes
+      with_items:
+        - "{{ admin_login_id }}"
+        - "{{ student_login_id }}"
