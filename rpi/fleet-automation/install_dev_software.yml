@@ -1,0 +1,37 @@
+---
+- name: Install MicroPython Development Software
+  hosts: localhost
+  become: true
+
+  vars:
+    student_login_id: student
+
+  tasks:
+    - name: Install Python package manager and dependencies
+      ansible.builtin.apt:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - pipx
+        - acl  # Needed to become unprivleged user
+        - python3-dev  # Needed to build mpflash
+      
+    - name: Install esptool
+      community.general.pipx:
+        name: esptool
+      become_user: "{{ student_login_id }}"
+
+    - name: Install mpflash
+      community.general.pipx:
+        name: mpflash
+      become_user: "{{ student_login_id }}"
+
+    - name: Install mpremote
+      community.general.pipx:
+        name: mpremote
+      become_user: "{{ student_login_id }}"
+
+    - name: Add virtual environments to user path
+      ansible.builtin.shell:
+        cmd: pipx ensurepath
+      become_user: "{{ student_login_id }}"

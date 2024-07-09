@@ -1,0 +1,23 @@
+---
+- name: Install System Services
+  hosts: localhost
+  become: true
+
+  tasks:
+    - name: Install apt packages
+      ansible.builtin.apt:
+        name: "{{ item }}"
+        state: present
+        update_cache: yes
+      with_items:
+        - docker.io
+        - shellinabox
+
+    - name: Ensure new services are running
+      ansible.builtin.service:
+        name: "{{ item }}"
+        enabled: true
+        state: started
+      with_items:
+        - docker
+        - shellinabox

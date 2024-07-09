@@ -1,0 +1,73 @@
+---
+- name: Configure Raspberry Pi as WiFi Access Point
+  hosts: localhost
+  become: true
+
+  vars:
+    wifi_ssid: "{{ lookup('env', 'HOSTNAME') }}"
+    wifi_password: P@ssw0rd
+
+  tasks:
+    - name: Enable serial console
+      lineinfile:
+        dest: /boot/firmware/config.txt
+        insertafter: "[all]"
+        line: "enable_uart=1"
+      register: enable_uart
+
+    - name: Set up WiFi access point connection
+      community.general.nmcli:
+        conn_name: "{{ wifi_ssid | lower }}"
+        type: wifi
+        ifname: wlan0
+        ssid: "{{ wifi_ssid }}"
+        wifi:
+          band: bg
+          hidden: false
+          mode: ap
+        wifi_sec:
+          key-mgmt: wpa-psk
+          psk: "{{ wifi_password }}"
+        method4: shared
+        state: present
+        autoconnect: true
+      notify:
+        - Activate access point mode
+
+    - name: Set hostname to match SSID
+      ansible.builtin.hostname:
+        name: "{{ wifi_ssid | lower }}"
+      notify:
+        - Refresh Ansible facts
+        - Create a new hosts file
+        - Add the loopback address
+        - Add this host's address(es)
+
+  handlers:
+    - name: Activate access point mode
+      ansible.builtin.shell:
+        cmd: "nmcli connection up {{ wifi_ssid | lower }}"
+
+    - name: Refresh Ansible facts
+      setup:
+
+    - name: Create a new hosts file
+      ansible.builtin.copy:
+        content: ""
+        dest: /etc/hosts
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: Add the loopback address
+      ansible.builtin.lineinfile:
+        path: /etc/hosts
+        search_string: "127.0.0.1"
+        line: "127.0.0.1\tlocalhost"
+
+    - name: Add this host's address(es)
+      ansible.builtin.lineinfile:
+        path: /etc/hosts
+        search_string: "{{ item }}"
+        line: "{{ item }}\t{{ wifi_ssid | lower }}"
+      with_items: "{{ ansible_all_ipv4_addresses }}"
