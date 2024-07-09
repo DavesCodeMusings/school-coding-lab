@@ -4,8 +4,9 @@
   become: true
 
   vars:
-    wifi_ssid: "{{ lookup('env', 'HOSTNAME') }}"
-    wifi_password: P@ssw0rd
+    hostname: "{{ lookup('env', 'HOSTNAME') }}"
+    wifi_ssid: "{{ hostname }}"
+    wifi_password: letmein
 
   tasks:
     - name: Enable serial console
@@ -69,5 +70,4 @@
       ansible.builtin.lineinfile:
         path: /etc/hosts
         search_string: "{{ item }}"
-        line: "{{ item }}\t{{ wifi_ssid | lower }}"
-      with_items: "{{ ansible_all_ipv4_addresses }}"
+        line: "{{ ansible_default_ipv4.address }}\t{{ hostname }}"
