@@ -7,11 +7,7 @@ Goal: Test development workstation configuration and MicroPython labs.
 
 Objective: Have a working lab for two groups of students working in pairs.
 
-Three Raspberry Pis are needed.
-* Two configured as Developer Workstations
-* One configured as isolated WiFi access point
-
-Two ESP32Cs -- one microcontroller USB-attached to each Dev Workstation.
+One Raspberry Pi and one ESP32C3 microcontroller are needed for each pair of students.
 
 Volunteer does initial hardware and software setup. Students work on MicroPython labs for Hello World and flashing LEDs on GPIOs.
 
