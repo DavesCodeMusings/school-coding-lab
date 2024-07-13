@@ -10,7 +10,7 @@ What you'll find here is a combination of documentation and code, and it's all a
 Otherwise, read on to find out more about the project.
 
 ## What is it?
-With a Raspberry Pi 3 or better and an inexpensive ESP32C3 microcontroller, this project aims to build a self-contained, easy to use student coding lab.
+With a Raspberry Pi 3 or better and an inexpensive ESP32C3 microcontroller, this project aims to build a self-contained, easy to use coding lab suitible for school maker spaces.
 
 ## How does it work?
 A Raspberry Pi is configured as a WiFi access point. Students attach to it like any guest network. But, with the Raspberry Pi access point, there's no connection to the internet. Instead, it's preloaded development tools like Python and Visual Studio Code. There are also tools for running MicroPython programs on ESP32 microcontrollers, as well as code samples and lab manuals for MicroPython development. Students are able to code in a safe environment that won't run afoul of school network access restrictions.
