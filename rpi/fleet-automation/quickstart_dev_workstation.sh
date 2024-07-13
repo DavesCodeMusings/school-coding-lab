@@ -5,7 +5,7 @@
 ###
 
 # Shell script and Ansible playbooks in the order they should be run.
-AUTOMATION_LIST="install_ansible.sh install_system_services.yml configure_users.yml install_dev_software.yml download_labs.yml deploy_code_server.yml deploy_web_server.yml"
+AUTOMATION_LIST="install_ansible.sh install_system_services.yml configure_users.yml install_dev_software.yml download_labs.yml deploy_code_server.yml deploy_web_server.yml configure_access_point.yml"
 BASE_URL="https://raw.githubusercontent.com/DavesCodeMusings/school-coding-lab/main/rpi/fleet-automation"
 
 # Function to download something from the web and save it locally.
