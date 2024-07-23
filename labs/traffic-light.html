@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+    <head>
+        <title>Traffic Light</title>
+        <style>
+            body {
+                background-color: whitesmoke;
+                background-image: linear-gradient(silver, whitesmoke);
+                color: #333333;
+                font-family: sans-serif;
+                margin: 5%;
+                max-width: 60em;
+            }
+
+            .code-block {
+                border: 1px solid black;
+                background-color: white;
+                color: black;
+                display: block;
+                padding-left: 1em;
+                padding-right: 1em;
+                padding-bottom: 1em;
+                /* padding-top not needed, because of line break after <code> tag. */
+                white-space: pre;
+            }
+
+            h1, h2, h3 {
+                color: black;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>Traffic Light</h1>
+
+        <p>
+            It's your first day on the job with the city traffic
+            department and already there's a problem. Watch the video
+            voicemail from your supervisor to find out what's going
+            on. Then, scroll down to the notes from your coworker to
+            discover how you can fix it.
+        </p>
+
+        <h2>Video Voicemail</h2>
+
+        <video width="640" height="auto" controls>
+            <!--
+                My understanding is AI generated content is not copyrightable,
+                so this video is public domain like the rest of the content
+                here. The background image used in the video is from a public
+                domain photograph. The text being read was created by me and
+                is released into the public domain.
+
+                Reference:
+                https://crsreports.congress.gov/product/pdf/LSB/LSB10922
+                https://commons.wikimedia.org/wiki/File:Early_morning_in_London_-_50442294331.jpg
+            -->
+            <source src="video/TrafficLightVoicemail.mp4" type="video/mp4">
+            Your browser does not support embedded videos. Use this link instead: <a href="TrafficLightVoicemail.mp4">Traffic Light Lab Intro</a>
+        </video>
+
+        <details>
+            <summary>Show Voicemail Transcript</summary>
+
+            <p>
+                I just got a call from the mayor. All the traffic signals
+                in the city are flashing red. With your programming skills,
+                we're hoping you can get this problem sorted. Have a look
+                at the code in Visual Studio and see if you can make a proper
+                traffic light sequence.
+            </p>
+        </details>
+
+        <h2>Notes</h2>
+
+        <p>
+            Fortunately, your coworker has left some documentation on
+            the traffic light system. Take a look at the notes below.
+        </p>
+
+        <ul>
+            <li>Link to Visual Studio Code server: <a href="http://10.42.0.1:8443">http://10.42.0.1:8443</a></li>
+            <li>Link to system login (secure shell): <a href="https://10.42.0.1:4200">https://10.42.0.1:4200</a></li>
+        </ul>
+
+        <h3>Flashing Red Code</h3>
+
+        <p>
+            The traffic light code is written in MicroPython. Whenever the
+            system has a problem, it reverts back to flashing red so everyone
+            is forced to stop and there are no fender benders.
+        </p>
+
+        <p>Here's the code for that:</p>
+
+        <!-- All whitespace is rendered as-is in the code-block. This includes leading indents. -->
+        <code class="code-block">
+from machine import Pin
+from time import sleep
+
+red = Pin(4, Pin.OUT)
+yellow = Pin(5, Pin.OUT)
+green = Pin(6, Pin.OUT)
+
+while True:
+    red.on()
+    yellow.off()
+    green.off()
+    sleep(1)
+
+    red.off()
+    yellow.off()
+    green.off()
+    sleep(1)
+        </code>
+
+        <p>
+            You'll also find a copy in the ~/Code directory on your
+            development workstation. It's in the traffic_light subdirectory.
+        </p>
+
+        <p>
+            It works by using the microcontroller General Purpose Input Output
+            (GPIO) pins to control the red, yellow, and green signal lights.
+            In flashing red mode, only the GPIO pin controlling red is cycled
+            on and off. Yellow and green stay off.
+        </p>
+
+        <p>
+            There is a <code>sleep()</code> function that controls how many
+            seconds to pause before executing the next step. And the whole
+            thing is wrapped in a <code>while True:</code> loop to make it
+            run forever.
+        </p>
+
+        <p>
+            Basically, it works like this:
+        </p>
+
+        <ol>
+            <li> red on, all other lights off</li>
+            <li>wait one second</li>
+            <li>red (and everything else) off</li>
+            <li>wait another second</li>
+            <li>repeat</li>
+        </ol>
+
+        <h3>Testing the Code</h3>
+
+        <p>
+            You can run MicroPython code by logging in through
+            secure shell as the <i>student</i> user account,
+            changing to the <i>Code/traffic_light</i>
+            directory, and using the command:
+            <code>mpremote run traffic_light.py</code>
+        </p>
+
+        <p>Here's an example of what that would look like:</p>
+
+        <code class="code-block">
+login: student
+password: ********
+
+pi:~$ cd Code
+pi:~/Code$ cd traffic_light
+pi:~/Code/traffic_light$ mpremote run traffic_light.py
+        </code>
+
+        <p>Press CTRL+C to get the command prompt back.</p>
+
+        <p>
+            After making changes to the code, repeat the
+            <code>mpremote run traffic_light.py</code> command to run it
+            again.
+        </p>
+
+        <h3>Updating the Code</h3>
+
+        <p>
+            There was code written for the regular traffic light sequence,
+            but it never got uploaded to the server. And to make matters
+            worse, the laptop where it was saved got left unattended in the
+            airport and was taken out to the tarmac and blown up by TSA.
+        </p>
+
+        <p>
+            So, you'll have to start over again. Shouldn't be too hard though.
+            Just remember the GPIO <code>on()</code> and <code>off()</code>
+            methods and the <code>sleep()</code> function to control the
+            delay time.
+        </p>
+
+        <h2>Hints</h2>
+
+        <p>
+            If you get stuck, here are some things that can help you.
+        </p>
+
+        <details>
+            <summary>What needs to be changed?</summary>
+
+            <p>
+                All of the code at the top of the program (the
+                <code>from import</code> statements and the
+                <code>Pin()</code> assignments) can be left as-is. The
+                changes you want to make are inside the
+                <code>while True:</code> block.
+            </p>
+        </details>
+
+        <details>
+            <summary>How can green and yellow be lit up?</summary>
+
+            <p>
+                Take the example of the flashing red. It looks like this:
+            </p>
+
+            <code class="code-block">
+red.on()
+yellow.off()
+green.off()
+sleep(1)            
+
+red.off()
+yellow.off()
+green.off()
+sleep(1)            
+        </code>
+            <p>
+                Change it so the second block turns on green LED.
+                Like this:
+            </p>
+
+            <code class="code-block">
+red.on()
+yellow.off()
+green.off()
+sleep(1)            
+                
+red.off()
+yellow.off()
+green.on()
+sleep(1)            
+            </code>
+
+            <p>
+                Now when you run the program, the sequence should be:
+                red, green, repeat.
+            </p>
+
+            <p>
+                It works the same way for yellow. Just copy and paste the
+                code block and adjust the on / off.
+            </p>
+
+            <code class="code-block">
+red.on()
+yellow.off()
+green.off()
+sleep(1)            
+                
+red.off()
+yellow.off()
+green.on()
+sleep(1)            
+
+red.off()
+yellow.on()
+green.off()
+sleep(1)
+            </code>
+        </details>
+
+        <details>
+            <summary>How can the timing be more like a real traffic signal?</summary>
+
+            <p>
+                A typical traffic light runs like this: red, green, yellow
+                for a short time, and then back to red. Stucture your code
+                blocks to light the LEDs in this sequence. Then, use the
+                values inside the <code>sleep()</code> function to adjust
+                how long to wait for the next change.
+            </p>
+
+            <code class="code-block">
+red.on()
+yellow.off()
+green.off()
+sleep(5)            
+                
+red.off()
+yellow.off()
+green.on()
+sleep(4)            
+
+red.off()
+yellow.on()
+green.off()
+sleep(1)
+            </code>
+        </details>
+    </body>
+</html>

@@ -6,3 +6,4 @@ labs:
   - hello/hello.py
   - hw_specs/hw_specs.py
   - neopixel/neopixel.py
+  - traffic_light/traffic_light.py
