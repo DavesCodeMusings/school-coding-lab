@@ -3,36 +3,13 @@
 <html lang="en-US">
     <head>
         <title>Traffic Light</title>
-        <style>
-            body {
-                background-color: whitesmoke;
-                background-image: linear-gradient(silver, whitesmoke);
-                color: #333333;
-                font-family: sans-serif;
-                margin: 5%;
-                max-width: 60em;
-            }
-
-            .code-block {
-                border: 1px solid black;
-                background-color: white;
-                color: black;
-                display: block;
-                padding-left: 1em;
-                padding-right: 1em;
-                padding-bottom: 1em;
-                /* padding-top not needed, because of line break after <code> tag. */
-                white-space: pre;
-            }
-
-            h1, h2, h3 {
-                color: black;
-            }
-        </style>
+        <link rel="stylesheet" href="style/silver-gradient.css"> 
     </head>
 
     <body>
-        <h1>Traffic Light</h1>
+        <header>
+            <h1>Traffic Light</h1>
+        </header>
 
         <p>
             It's your first day on the job with the city traffic
@@ -116,7 +93,7 @@ while True:
         </code>
 
         <p>
-            You'll also find a copy in the ~/Code directory on your
+            You'll also find a copy in the <i>~/Code</i> directory on your
             development workstation. It's in the traffic_light subdirectory.
         </p>
 
@@ -277,7 +254,7 @@ sleep(1)
 
             <p>
                 A typical traffic light runs like this: red, green, yellow
-                for a short time, and then back to red. Stucture your code
+                for a short time, and then back to red. Structure your code
                 blocks to light the LEDs in this sequence. Then, use the
                 values inside the <code>sleep()</code> function to adjust
                 how long to wait for the next change.
@@ -300,5 +277,11 @@ green.off()
 sleep(1)
             </code>
         </details>
+
+        <footer>
+            <p>
+                The traffic lights turn blue tomorrow, and shine their emptiness down on my bed. &mdash; James Marshall "Jimi" Hendrix
+            </p>
+        </footer>
     </body>
 </html>
