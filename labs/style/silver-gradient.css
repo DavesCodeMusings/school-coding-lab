@@ -1,6 +1,8 @@
 body {
     background-color: whitesmoke;
     background-image: linear-gradient(silver, whitesmoke);
+    background-repeat: no-repeat;
+    background-size: 100vw 60em;
     color: #333333;
     font-family: sans-serif;
     margin-left: auto;
