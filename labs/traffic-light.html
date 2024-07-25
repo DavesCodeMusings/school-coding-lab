@@ -181,9 +181,22 @@ pi:~/Code/traffic_light$ mpremote run traffic_light.py
                 All of the code at the top of the program (the
                 <code>from import</code> statements and the
                 <code>Pin()</code> assignments) can be left as-is. The
-                changes you want to make are inside the
-                <code>while True:</code> block.
+                changes you want to make are part of the
+                <code>while True:</code> loop.
             </p>
+
+            <code class="code-block">
+while True:
+    red.on()
+    yellow.off()
+    green.off()
+    sleep(1)            
+
+    red.off()
+    yellow.off()
+    green.off()
+    sleep(1)            
+            </code>            
         </details>
 
         <details>
@@ -194,15 +207,16 @@ pi:~/Code/traffic_light$ mpremote run traffic_light.py
             </p>
 
             <code class="code-block">
-red.on()
-yellow.off()
-green.off()
-sleep(1)            
+while True:
+    red.on()
+    yellow.off()
+    green.off()
+    sleep(1)            
 
-red.off()
-yellow.off()
-green.off()
-sleep(1)            
+    red.off()
+    yellow.off()
+    green.off()
+    sleep(1)
         </code>
             <p>
                 Change it so the second block turns on green LED.
@@ -210,15 +224,16 @@ sleep(1)
             </p>
 
             <code class="code-block">
-red.on()
-yellow.off()
-green.off()
-sleep(1)            
-                
-red.off()
-yellow.off()
-green.on()
-sleep(1)            
+while True:
+    red.on()
+    yellow.off()
+    green.off()
+    sleep(1)
+                    
+    red.off()
+    yellow.off()
+    green.on()
+    sleep(1)
             </code>
 
             <p>
@@ -232,20 +247,21 @@ sleep(1)
             </p>
 
             <code class="code-block">
-red.on()
-yellow.off()
-green.off()
-sleep(1)            
-                
-red.off()
-yellow.off()
-green.on()
-sleep(1)            
+while True:
+    red.on()
+    yellow.off()
+    green.off()
+    sleep(1)
+                    
+    red.off()
+    yellow.off()
+    green.on()
+    sleep(1)
 
-red.off()
-yellow.on()
-green.off()
-sleep(1)
+    red.off()
+    yellow.on()
+    green.off()
+    sleep(1)
             </code>
         </details>
 
@@ -261,20 +277,21 @@ sleep(1)
             </p>
 
             <code class="code-block">
-red.on()
-yellow.off()
-green.off()
-sleep(5)            
-                
-red.off()
-yellow.off()
-green.on()
-sleep(4)            
+while True:
+    red.on()
+    yellow.off()
+    green.off()
+    sleep(5)
 
-red.off()
-yellow.on()
-green.off()
-sleep(1)
+    red.off()
+    yellow.off()
+    green.on()
+    sleep(4)
+
+    red.off()
+    yellow.on()
+    green.off()
+    sleep(1)
             </code>
         </details>
 
