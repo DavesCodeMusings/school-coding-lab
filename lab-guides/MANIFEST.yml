@@ -1,0 +1,9 @@
+# This manifest is a list of lab guides and associated files. It's used
+# by the download_lab_guides.yml Ansible playbook to... you guessed it...
+# download the lab guides to the Raspberry Pi.
+
+samples:
+  - style/silver-gradient.css
+  - video/TrafficLightVoiceMail.mp4
+  - traffic-light.html
+  - traffic_light-hardware.html
