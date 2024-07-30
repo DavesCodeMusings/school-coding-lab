@@ -41,4 +41,4 @@
         url: " https://raw.githubusercontent.com/DavesCodeMusings/school-coding-lab/main/micropython/{{ item }}"
         dest: "{{ student_code_dir }}/{{ item | basename }}"
         mode: '0644'
-      with_items: "{{ code_samples.labs }}"
+      with_items: "{{ code_samples.samples }}"

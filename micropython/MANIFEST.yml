@@ -2,7 +2,7 @@
 # by the download_sample_code.yml Ansible playbook to... you guessed it...
 # download sample code to the Raspberry Pi.
 
-labs:
+samples:
   - hello/hello.py
   - hw_specs/hw_specs.py
   - neopixel/neopixel.py
