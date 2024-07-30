@@ -20,7 +20,7 @@
 
     - name: Ensure code directory exists
       ansible.builtin.file:
-        path: student_code_dir
+        path: "{{ student_code_dir}}"
         state: directory
         mode: '0755'
         owner: "{{ student_login_id }}"
