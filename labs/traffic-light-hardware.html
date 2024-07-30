@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+
+<head>
+    <title>Traffic Light Hardware</title>
+    <link rel="stylesheet" href="style/silver-gradient.css">
+</head>
+
+<body>
+    <header>
+        <h1>Traffic Light Hardware</h1>
+    </header>
+
+    <p>
+        Remember the incident with all the traffic lights in the city
+        stuck on flashing red? Well, according to recent polls, sixty-eight
+        percent of the voting age population does too. So the mayor's
+        office wants everyone in the transportation department to learn
+        more about the traffic light system. That way, when something like
+        this happens again, it can be fixed before it becomes headline news.
+    </p>
+
+    <h2>Video Voicemail</h2>
+
+    <video width="640" height="auto" controls>
+        <!--
+                My understanding is AI generated content is not copyrightable,
+                so this video is public domain like the rest of the content
+                here. The background image used in the video is from a public
+                domain photograph. The text being read was created by me and
+                is released into the public domain.
+
+                Reference:
+                https://crsreports.congress.gov/product/pdf/LSB/LSB10922
+                https://commons.wikimedia.org/wiki/File:Traffic_in_urban_India.jpg
+            -->
+        <source src="video/HardwareCrossTrainingVoicemail.mp4" type="video/mp4">
+        Your browser does not support embedded videos. Use this link instead: <a
+            href="HardwareCrossTrainingVoicemail.mp4">Traffic Light Lab Intro</a>
+    </video>
+
+    <details>
+        <summary>Show Voicemail Transcript</summary>
+
+        <p>
+            I'm sure you've heard about the cross-training initiative being
+            asked for by the mayor's office. All the folks on my hardware
+            team have already started an online course for Python and Visual
+            Studio Code. While that's going on, I've got people on site from
+            the traffic light manufacturer to offer a hands-on seminar
+            covering the basics of their hardware. We're inviting all the
+            software developers to attend.
+        </p>
+    </details>
+
+    <h2>Hardware Overview</h2>
+
+    <p>
+        The traffic light system consists of red, yellow, and green LEDs
+        attached to an ESP32C3 microcontroller. There are four connector
+        pins on the traffic light. One for red, one for yellow, one for
+        green, and a common ground pin. Each the LED pins is connected
+        to a General Purpose Input-Output (GPIO) pin on the ESP32C3
+        microcontroller. This is how the microcontroller turns the LEDs
+        on and off.
+    </p>
+
+    <p>
+        <figure>
+            <img alt="Photo of microcontroller and traffic light style LED module alongside." href="">
+            <figcaption>ESP32C3 mounted on a breadboard with LED module unattached.</figcaption>
+        </figure>
+        <figure>
+            <img alt="Photo of microcontroller and LED module attached to the same breadboard." href="">
+            <figcaption>ESP32C3 and LED Module together on same breadboard.</figcaption>
+        </figure>
+    </p>
+
+    <h3>Hardware from a Software Perspective</h3>
+
+    <p>
+        For review, the code that runs the traffic light system is shown
+        below. It should look familiar from your previous work on fixing
+        the flashing red light problem.
+    </p>
+
+    <figure>
+    <!-- All whitespace is rendered as-is in the code-block. This includes leading indents. -->
+       <code class="code-block">
+from machine import Pin
+from time import sleep
+
+red = Pin(4, Pin.OUT)
+yellow = Pin(5, Pin.OUT)
+green = Pin(6, Pin.OUT)
+
+while True:
+    red.on()
+    yellow.off()
+    green.off()
+    sleep(5)
+
+    red.off()
+    yellow.off()
+    green.on()
+    sleep(4)
+
+    red.off()
+    yellow.on()
+    green.off()
+    sleep(1)
+        </code>
+
+        <figcaption>MicroPython code to cycle a traffic light through red, green, yellow.</figcaption>
+    </figure>
+
+    <p>
+        Last time you worked on the application, you spent your time looking
+        at the code in the <i>while loop</i> (the indented lines after
+        <code>while True:</code>) Everything above <code>while True:</code>
+        was ignored since it did not affect the timing of the lights.
+    </p>
+
+    <p>
+        This time around, we're going to look at the first few lines. This
+        is the code that sets up the hardware.
+    </p>
+
+    <p>
+        Here are the relevant lines:
+    </p>
+
+    <figure>
+        <code class="code-block">
+from machine import Pin
+
+red = Pin(4, Pin.OUT)
+yellow = Pin(5, Pin.OUT)
+green = Pin(6, Pin.OUT)        
+        </code>
+
+        <figcaption>Lines of code used setup the GPIO pins.</figcaption>
+    </figure>
+
+    <p>
+        The first line, <code>from machine import Pin</code>, tells
+        MicroPython to load the <i>Pin</i> class from the <i>machine</i>
+        module. A <i>class</i> is a predefined chunk of code you can use
+        in your applications. A <i>module</i> is a collection of those
+        predefined code chunks. You'll find lines like this in nearly
+        every MicroPython you see.
+    </p>
+
+    <p>
+        The <i>Pin</i> class is used three times: once for the red LED,
+        again for the yellow, and finally for the green. Furthermore,
+        each use of <i>Pin</i> gives a pin number (4, 5, or 6) and a
+        direction (Pin.OUT). This is how the MicroPython software
+        communicates with the ESP32C3 hardware.
+    </p>
+
+    <p>
+        Notice how the line with <code>from time import sleep</code> has
+        been omitted from this example. That's because it controls timing
+        of the light sequence and has no bearing on the hardware setup.
+    </p>
+
+    <p>
+        These four lines of MicroPython set up the the GPIO pins in the
+        software. Now let's see what it looks like from the hardware side.
+    </p>
+
+    <h3>GPIO Pins from the Microcontroller Perspective</h3>
+
+    <p>
+        Below is a picture of the ESP32C3 microcontroller with labels
+        added on the pins used to control the traffic light LED. There
+        are three GPIO pins and one ground reference.
+    </p>
+
+    <p>
+        <figure>
+            <img alt="ESP32C3 DevkitC-02 with relevant GPIO and voltage ground pins labeled.">
+            <figcaption>GPIO pins used for the traffic light.</figcaption>
+        </figure>
+    </p>
+
+    <footer>
+        <p>
+            I followed you into traffic, I never thought about asking. &mdash; Katy Kirby, Traffic!
+        </p>
+    </footer>
+</body>
+
+</html>
