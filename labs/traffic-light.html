@@ -13,10 +13,10 @@
     </header>
 
     <p>
-        It's your first day on the job with the city traffic
+        It's your first day on the job with the city transportation
         department and already there's a problem. Watch the video
-        voicemail from your supervisor to find out what's going
-        on. Then, scroll down to the notes from your coworker to
+        voicemail from your supervisor to find out what's going on.
+        Then, scroll down to the notes from your coworker to
         discover how you can fix it.
     </p>
 
@@ -73,8 +73,9 @@
 
     <p>Here's the code for that:</p>
 
-    <!-- All whitespace is rendered as-is in the code-block. This includes leading indents. -->
-    <code class="code-block">
+    <figure>
+        <!-- All whitespace is rendered as-is in the code-block. This includes leading indents. -->
+        <code class="code-block">
 from machine import Pin
 from time import sleep
 
@@ -93,6 +94,9 @@ while True:
     green.off()
     sleep(1)
         </code>
+
+        <figcaption>MicroPython code for flashing red traffic light.</figcaption>
+    </figure>
 
     <p>
         You'll also find a copy in the <i>~/Code</i> directory on your
@@ -137,7 +141,8 @@ while True:
 
     <p>Here's an example of what that would look like:</p>
 
-    <code class="code-block">
+    <figure>
+        <code class="code-block">
 login: student
 password: ********
 
@@ -145,6 +150,9 @@ pi:~$ cd Code
 pi:~/Code$ cd traffic_light
 pi:~/Code/traffic_light$ mpremote run traffic_light.py
         </code>
+
+        <figcaption>Logging into the Raspberry Pi to run the code.</figcaption>
+    </figure>
 
     <p>Press CTRL+C to get the command prompt back.</p>
 
@@ -198,7 +206,7 @@ while True:
     yellow.off()
     green.off()
     sleep(1)            
-            </code>
+        </code>
     </details>
 
     <details>
@@ -236,7 +244,7 @@ while True:
     yellow.off()
     green.on()
     sleep(1)
-            </code>
+        </code>
 
         <p>
             Now when you run the program, the sequence should be:
@@ -264,7 +272,7 @@ while True:
     yellow.on()
     green.off()
     sleep(1)
-            </code>
+        </code>
     </details>
 
     <details>
@@ -294,13 +302,13 @@ while True:
     yellow.on()
     green.off()
     sleep(1)
-            </code>
+        </code>
     </details>
 
     <footer>
         <p>
             The traffic lights turn blue tomorrow, and shine their emptiness down on my bed. &mdash; James Marshall
-            "Jimi" Hendrix
+            "Jimi" Hendrix, The Wind Cries Mary
         </p>
     </footer>
 </body>
