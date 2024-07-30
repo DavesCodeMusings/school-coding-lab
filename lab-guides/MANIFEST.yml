@@ -2,7 +2,7 @@
 # by the download_lab_guides.yml Ansible playbook to... you guessed it...
 # download the lab guides to the Raspberry Pi.
 
-samples:
+guides:
   - style/silver-gradient.css
   - video/TrafficLightVoiceMail.mp4
   - traffic-light.html

@@ -23,11 +23,11 @@
     - name: Read available code samples from manifest
       ansible.builtin.include_vars:
         file: "{{ web_server_dir }}/MANIFEST.yml"
-        name: code_samples
+        name: lab_guides
 
     - name: Download code samples locally
       ansible.builtin.get_url:
         url: " https://raw.githubusercontent.com/DavesCodeMusings/school-coding-lab/main/lab-guides/{{ item }}"
         dest: "{{ web_server_dir }}/{{ item | basename }}"
         mode: '0644'
-      with_items: "{{ code_samples.labs }}"
+      with_items: "{{ lab_guides.guides }}"
