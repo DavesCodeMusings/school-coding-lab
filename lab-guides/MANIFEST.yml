@@ -3,8 +3,10 @@
 # download the lab guides to the Raspberry Pi.
 
 assets:
+  - script/functions.js
   - style/silver-gradient.css
   - video/TrafficLightVoicemail.mp4
   - video/TrafficLightHardwareCrosstrain.mp4
+  - links.html
   - traffic-light.html
   - traffic-light-hardware.html
