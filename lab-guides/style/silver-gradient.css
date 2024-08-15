@@ -11,6 +11,15 @@ body {
     counter-reset: fignum;
 }
 
+a {
+    color: dodgerblue;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
 code {
     color: black;
     font-size: 1rem;
