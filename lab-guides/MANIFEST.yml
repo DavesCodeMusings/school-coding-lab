@@ -7,6 +7,7 @@ assets:
   - style/silver-gradient.css
   - video/TrafficLightVoicemail.mp4
   - video/TrafficLightHardwareCrosstrain.mp4
+  - index.html
   - links.html
   - traffic-light.html
   - traffic-light-hardware.html
