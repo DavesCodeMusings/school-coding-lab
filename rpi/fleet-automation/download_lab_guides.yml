@@ -19,15 +19,26 @@
       ansible.builtin.get_url:
         url: https://raw.githubusercontent.com/DavesCodeMusings/school-coding-lab/main/lab-guides/MANIFEST.yml
         dest: "{{ web_server_dir }}/MANIFEST.yml"
+        force: true  # Always overwrite to ensure latest changes are captured.
 
-    - name: Read available code samples from manifest
+    - name: Read lab guide assets from manifest
       ansible.builtin.include_vars:
         file: "{{ web_server_dir }}/MANIFEST.yml"
         name: lab_guides
 
-    - name: Download code samples locally
+    - name: Create directory structure
+      ansible.builtin.file:
+        path: "{{ web_server_dir }}/{{ item | dirname }}"
+        state: directory
+        mode: '0755'
+        owner: www-data
+        group: www-data
+      with_items: "{{ lab_guides.assets }}"
+      when: item | dirname | length > 0
+
+    - name: Download lab guide assets listed in manifest
       ansible.builtin.get_url:
         url: " https://raw.githubusercontent.com/DavesCodeMusings/school-coding-lab/main/lab-guides/{{ item }}"
-        dest: "{{ web_server_dir }}/{{ item | basename }}"
+        dest: "{{ web_server_dir }}/{{ item }}"
         mode: '0644'
-      with_items: "{{ lab_guides.guides }}"
+      with_items: "{{ lab_guides.assets }}"
