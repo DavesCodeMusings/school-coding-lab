@@ -5,6 +5,7 @@
 <head>
     <title>Traffic Light</title>
     <link rel="stylesheet" href="style/silver-gradient.css">
+    <script src="script/functions.js"></script>
 </head>
 
 <body>
@@ -59,8 +60,10 @@
     </p>
 
     <ul>
-        <li>Link to Visual Studio Code server: <a href="http://10.42.0.1:8443">http://10.42.0.1:8443</a></li>
-        <li>Link to system login (secure shell): <a href="https://10.42.0.1:4200">https://10.42.0.1:4200</a></li>
+        <li>Link to Visual Studio Code server: <a id="code-server" href="http://10.42.0.1:8443">http://10.42.0.1:8443</a></li>
+        <script>updateLink("code-server", "http", 8443)</script>
+        <li>Link to system login (secure shell): <a id="shellinabox" href="https://10.42.0.1:4200">https://10.42.0.1:4200</a></li>
+        <script>updateLink("shellinabox", "https", 4200)</script>
     </ul>
 
     <h3>Flashing Red Code</h3>
