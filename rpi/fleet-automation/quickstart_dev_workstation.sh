@@ -10,8 +10,9 @@ AUTOMATION_LIST="
   install_system_services.yml
   configure_users.yml
   install_dev_software.yml
-  download_code_samples.yml
   install_web_server.yml
+  download_code_samples.yml
+  download_lab_guides.yml
   install_docker.yml
   deploy_code_server.yml
   configure_access_point.yml
