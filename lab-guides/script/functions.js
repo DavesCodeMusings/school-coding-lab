@@ -13,8 +13,9 @@
  * @param {string} path 
  */
 function updateLink(id, protocol, port, path) {
-    if (!path) path = '/'
-    let url = protocol + '://' + window.location.host + ':' + port + path
+    path = (path) ? path : "/"
+    host = (window.location.host) ? window.location.host : "localhost"
+    let url = protocol + '://' + host + ':' + port + path
     console.log("New URL for", id, "is", url)
     document.getElementById(id).href = url
     document.getElementById(id).innerHTML = url
