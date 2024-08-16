@@ -35,6 +35,11 @@ article img {
     margin-right: 1em;
 }
 
+/* The last paragraph element is always the link to the lab. */
+article p:last-child {
+    text-align: right;
+}
+
 code {
     color: black;
     font-size: 1rem;
