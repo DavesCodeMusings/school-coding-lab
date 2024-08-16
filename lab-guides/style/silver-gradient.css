@@ -20,6 +20,11 @@ a:hover {
     text-decoration: underline;
 }
 
+/* Ensure the article link is not indented by a floating image */
+article > p:last-child > a {
+    clear: both;
+}
+
 code {
     color: black;
     font-size: 1rem;
