@@ -20,9 +20,19 @@ a:hover {
     text-decoration: underline;
 }
 
-/* Ensure the article link is not indented by a floating image */
-article > p:last-child > a {
+/* Force article to expand to accomodate floated image. */
+article {
+    overflow: hidden;
+}
+
+article h2 {
     clear: both;
+}
+
+article img {
+    border: 1px solid dimgray;
+    float: left;
+    margin-right: 1em;
 }
 
 code {
