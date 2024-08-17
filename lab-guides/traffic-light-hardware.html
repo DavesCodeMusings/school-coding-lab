@@ -239,16 +239,20 @@ green = Pin(6, Pin.OUT)
     <h2>GPIO Voltages</h2>
 
     <p>
-        We've seen how the MicroPython code can use a statement like,
-        <code>red.on()</code> or <code>red.off()</code> to control the
-        red LED. We now know that it works this way because the RED LED
-        is connected to GPIO pin 4 on the microcontroller board. But
-        what exactly does <code>.on()</code> and <code>.off()</code>
-        do?
+        If you have a sharp eye, you may have noticed some of the other
+        pins labeled on the ESP32-C3 board. Specifically 3V3 and G. These
+        labels are for 3.3 volts and ground (or 0 volts). When you set a
+        GPIO to on using something like <code>red.on()</code> in your
+        program, it's changing the voltage on the GPIO 4 pin to 3.3 volts.
+        When you set it to off, with <code>red.off()</code>, the voltage
+        on the GPIO 4 pin becomes 0 volts.
     </p>
 
     <p>
-        For this part, you'll need a digital multimeter to measure voltage.
+        This is how the program can make the LEDs light up. The software
+        tells the microcontroller to turn the GPIO on. The microcontroller
+        switches the GPIO pin voltage to 3.3 volts. This causes current to
+        flow through the LED and the LED turns on.
     </p>
 
     <footer>
