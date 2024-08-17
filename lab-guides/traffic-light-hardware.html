@@ -5,6 +5,22 @@
 <head>
     <title>Traffic Light Hardware</title>
     <link rel="stylesheet" href="style/silver-gradient.css">
+    <script>
+        function imageSwap(id, replacementURL) {
+            let image = document.getElementById(id)
+            image.src = replacementURL
+        }
+    </script>
+    <style>
+        th, td {
+            padding-left: 1em;
+            padding-right: 1em;
+        }
+
+        .numeric {
+            text-align: right;
+        }
+    </style>
 </head>
 
 <body>
@@ -62,16 +78,15 @@
         on and off.
     </p>
 
-    <p>
-        <figure>
-            <img alt="Photo of microcontroller and traffic light style LED module alongside." href="">
-            <figcaption>ESP32C3 mounted on a breadboard with LED module unattached.</figcaption>
-        </figure>
-        <figure>
-            <img alt="Photo of microcontroller and LED module attached to the same breadboard." href="">
-            <figcaption>ESP32C3 and LED Module together on same breadboard.</figcaption>
-        </figure>
-    </p>
+    <figure>
+        <img alt="Photo of microcontroller and traffic light style LED module alongside." src="">
+        <figcaption>ESP32C3 mounted on a breadboard with LED module unattached.</figcaption>
+    </figure>
+    <figure>
+        <img alt="Photo of microcontroller and LED module attached to the same breadboard."
+            src="images/traffic-light-controller.jpg">
+        <figcaption>ESP32C3 and LED Module together on same breadboard.</figcaption>
+    </figure>
 
     <h3>Hardware from a Software Perspective</h3>
 
@@ -82,8 +97,8 @@
     </p>
 
     <figure>
-    <!-- All whitespace is rendered as-is in the code-block. This includes leading indents. -->
-       <code class="code-block">
+        <!-- All whitespace is rendered as-is in the code-block. This includes leading indents. -->
+        <code class="code-block">
 from machine import Pin
 from time import sleep
 
@@ -171,21 +186,69 @@ green = Pin(6, Pin.OUT)
 
     <p>
         Below is a picture of the ESP32C3 microcontroller with labels
-        added on the pins used to control the traffic light LED. There
-        are three GPIO pins and one ground reference.
+        added pointing to the pins used to control the traffic light LED.
+        In this configuration, there are three GPIO pins and one ground
+        reference attached to the LED module.
+    </p>
+
+    <figure>
+        <img id="gpio" alt="ESP32C3 DevkitC-02 with relevant GPIO and ground pins labeled."
+            src="images/traffic-light-gpio.jpg"
+            onmouseover="imageSwap(this.id, 'images/traffic-light-gpio-zoomed.jpg')"
+            onmouseout="imageSwap(this.id, 'images/traffic-light-gpio.jpg')">
+        <figcaption>GPIO pins used for the traffic light.</figcaption>
+    </figure>
+
+    <p>
+        Notice how the pins are also labeled with white printing on the
+        microcontroller board itself. The printed numbers are slightly
+        offset to make use of the available space. The actual GPIO pin
+        is the shiny silver metal bit beside it.
     </p>
 
     <p>
-        <figure>
-            <img alt="ESP32C3 DevkitC-02 with relevant GPIO and voltage ground pins labeled.">
-            <figcaption>GPIO pins used for the traffic light.</figcaption>
-        </figure>
-
+        When you write MicroPython code that has a line like,
+        <code>red = Pin(4, Pin.OUT)</code>, you're referring to a GPIO pin
+        on the microcontroller board. Pin 4 in this case. The LED module is
+        situated in so a pin connected to its red LED is plugged into the
+        same place as GPIO 4 on the microcontroller. This is why the
+        MicroPython code is written so <i>red</i> is equal to <i>Pin 4</i>.
     </p>
+
+    <p>
+        Have a look at the traffic light code and see if you can figure
+        out which GPIO pins on the microcontroller board connect to the
+        yellow and green LEDs.
+    </p>
+
+    <details>
+        <summary>If you get stuck, click here for the answer</summary>
+        <table>
+            <tr><th>GPIO Pin</th><th>LED Color</th></tr>
+            <tr><td class="numeric">4</td><td>Red</td></tr>
+            <tr><td class="numeric">5</td><td>Yellow</td></tr>
+            <tr><td class="numeric">6</td><td>Green</td></tr>
+        </table>
+    </details>
 
     <p>
         There is also a <a href="gpio-reference.html" target="_blank">GPIO
-        pin reference diagram</a> you can use while working through this.
+            pin reference diagram</a> you can use while working through this.
+    </p>
+
+    <h2>GPIO Voltages</h2>
+
+    <p>
+        We've seen how the MicroPython code can use a statement like,
+        <code>red.on()</code> or <code>red.off()</code> to control the
+        red LED. We now know that it works this way because the RED LED
+        is connected to GPIO pin 4 on the microcontroller board. But
+        what exactly does <code>.on()</code> and <code>.off()</code>
+        do?
+    </p>
+
+    <p>
+        For this part, you'll need a digital multimeter to measure voltage.
     </p>
 
     <footer>

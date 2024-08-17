@@ -60,6 +60,11 @@ figure {
     counter-increment: fignum;
 }
 
+/* Keep large images from overflowing the page. */
+figure > img {
+    max-width: 95%;
+}
+
 figcaption:before {
     content: 'Figure ' counter(fignum) ': ';
 }
