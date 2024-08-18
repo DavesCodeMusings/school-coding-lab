@@ -8,6 +8,7 @@ assets:
   - images/traffic-light-gpio-zoomed.jpg
   - images/traffic-light-gpio.jpg
   - images/traffic-light.jpg
+  - images/walk-signal.jpg
   - script/functions.js
   - style/silver-gradient.css
   - video/TrafficLightVoicemail.mp4
