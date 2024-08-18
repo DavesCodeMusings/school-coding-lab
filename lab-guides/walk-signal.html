@@ -25,17 +25,17 @@
 
     <video width="640" height="auto" controls>
 
-                My understanding is AI generated content is not copyrightable,
-                so this video is public domain like the rest of the content
-                here. The text being read was created by me and is released into
-                the public domain.
+        My understanding is AI generated content is not copyrightable,
+        so this video is public domain like the rest of the content
+        here. The text being read was created by me and is released into
+        the public domain.
 
-                Reference:
-                https://crsreports.congress.gov/product/pdf/LSB/LSB10922
+        Reference:
+        https://crsreports.congress.gov/product/pdf/LSB/LSB10922
 
         <source src="video/AdvancedGPIO.mp4" type="video/mp4">
-        Your browser does not support embedded videos. Use this link instead: <a
-            href="video/AdvancedGPIO.mp4">Traffic Light Hardware Crosstrain</a>
+        Your browser does not support embedded videos. Use this link instead: <a href="video/AdvancedGPIO.mp4">Traffic
+            Light Hardware Crosstrain</a>
     </video>
 
     <details>
@@ -92,14 +92,15 @@ from machine import Pin
 from neopixel import NeoPixel
 from time import sleep
 
-np = NeoPixel(Pin(8), 1)
+walk_signal = NeoPixel(Pin(8), 1)
 
 while True:
-    np[0] = (255, 0, 0)
-    np.write()
+    walk_signal[0] = (255, 0, 0)
+    walk_signal.write()
     sleep(5)
-    np[0] = (255, 255, 255)
-    np.write()
+
+    walk_signal[0] = (255, 255, 255)
+    walk_signal.write()
     sleep(5)
         </code>
         <figcaption>Sample code to cycle between walk and don't walk every five seconds.</figcaption>
@@ -109,37 +110,39 @@ while True:
         This code sample lights up the NeoPixel in red to represent
         <i>don't walk</i> and white to represent <i>walk</i>. Use the
         Raspberry Pi development workstation to run the code on your
-        ESP32-C3.
+        ESP32-C3 and watch what happens.
     </p>
 
     <details class="tip">
-        <summary>Click here to show/hide a review of how to run code</summary>
+        <summary>Click here to show/hide a review of how to run code using the Raspberry Pi.</summary>
 
         <p>
             You can access the Visual Studio Code server and the command prompt
             on the Raspberry Pi using the links below.
         </p>
-    
+
         <ul>
-            <li>Link to Visual Studio Code server: <a id="code-server" href="http://10.42.0.1:8443">http://10.42.0.1:8443</a></li>
+            <li>Link to Visual Studio Code server: <a id="code-server"
+                    href="http://10.42.0.1:8443">http://10.42.0.1:8443</a></li>
             <script>updateLink("code-server", "http", 8443)</script>
-            <li>Link to system login (secure shell): <a id="shellinabox" href="https://10.42.0.1:4200">https://10.42.0.1:4200</a></li>
+            <li>Link to system login (secure shell): <a id="shellinabox"
+                    href="https://10.42.0.1:4200">https://10.42.0.1:4200</a></li>
             <script>updateLink("shellinabox", "https", 4200)</script>
         </ul>
-    
+
         <p>
             The code shown above is also available in the ~/Code directory
             of your Raspberry Pi development workstation.
         </p>
-        
+
         <p>
             Running the programs on the ESP32-C3 is done by logging into
             the Raspberry Pi via secure shell and using the mpremote command
             like in the example below.
-        </p>    
+        </p>
 
-    <figure>
-        <code class="code-block">
+        <figure>
+            <code class="code-block">
 login: student
 password: ********
 
@@ -148,15 +151,15 @@ pi:~/Code$ cd neopixel
 pi:~/Code/neopixel$ mpremote run walk_signal.py
         </code>
 
-        <figcaption>Logging into the Raspberry Pi to run the code.</figcaption>
-    </figure>
+            <figcaption>Logging into the Raspberry Pi to run the code.</figcaption>
+        </figure>
 
-    <p>
-        Remember you can press CTRL+C to get the command prompt back.
-        Refer to the first <a href="traffic-light.html">Traffic Light
-            activity</a> if you need a refresher.
-    </p>
-</details>
+        <p>
+            Remember you can press CTRL+C to get the command prompt back.
+            Refer to the first <a href="traffic-light.html">Traffic Light
+                activity</a> if you need a refresher.
+        </p>
+    </details>
 
     <h2>NeoPixel vs. Traditional LED</h2>
 
@@ -177,9 +180,14 @@ pi:~/Code/neopixel$ mpremote run walk_signal.py
 
     <ul>
         <li>The import line <code>from neopixel import NeoPixel</code> is new.</li>
-        <li>There's no <code>.on()</code> and <code>.off()</code> to control the LED.</li>
-        <li>The <code>np[0] = (255, 0, 0)</code> statement is new, as is <code>np.write()</code></li>
+        <li>There's no more <code>.on()</code> and <code>.off()</code> to control the LED.</li>
+        <li>The variable names red, yellow, and green have all been removed</li>
+        <li>The <code>walk_signal[0] = (255, 0, 0)</code> statement is new, as is <code>walk_signal.write()</code></li>
     </ul>
+
+    <p>
+        So why all these changes?
+    </p>
 
     <p>
         Very simply, the NeoPixel needs an external module because it
@@ -190,36 +198,80 @@ pi:~/Code/neopixel$ mpremote run walk_signal.py
     </p>
 
     <p>
-        The controller and module are needed because the NeoPixel actually
-        has three LEDs built into it, red, green, and blue. (Remember the
-        RGB label printed on the microcontroller board? RGB is for red,
-        green, blue.) It can also control the brightness of each of these
-        three built-in LEDs. All of this is done with a single GPIO.
+        The controller chip and software module are needed because the
+        NeoPixel actually has three LEDs built into it, red, green, and
+        blue. (Remember the RGB label printed on the microcontroller
+        board? RGB stands for red, green, blue.) The controller chip
+        together with the software module can also control the brightness
+        of each of these three built-in LEDs. And all of this is done
+        using a single GPIO pin.
     </p>
 
     <p>
-        Take a look at the code sample, but just the lines in the while
-        loop. Notice the <code>np[0] = (255, 0, 0)</code> and
-        <code>np[0] = (255, 255, 255)</code> statements. This is what
-        sets the NeoPixel to red and white, respectively. The three
-        numbers represent the brightness of the individual LEDs.
+        Take a look at the code sample, focusing on the lines in the while
+        loop. (See below.) Notice the <code>walk_signal[0] = (255, 0, 0)</code>
+        and <code>walk_signal[0] = (255, 255, 255)</code> statements. This
+        is what sets the NeoPixel to red and white, respectively. The three
+        numbers represent the brightness of the individual red, green, and
+        blue LEDs. (Red, green, and blue light combined makes white.)
     </p>
 
     <figure>
         <code class="code-block">
 while True:
-    np[0] = (255, 0, 0)
-    np.write()
+    walk_signal[0] = (255, 0, 0)
+    walk_signal.write()
     sleep(5)
-    np[0] = (255, 255, 255)
-    np.write()
+
+    walk_signal[0] = (255, 255, 255)
+    walk_signal.write()
     sleep(5)
         </code>
+        <figcaption>The while loop portion of the MicroPython code.</figcaption>
     </figure>
 
     <p>
         Try making some temporary changes to the code to make the NeoPixel
         cycle between red and green instead of red and white.
+    </p>
+
+    <details class="tip">
+        <summary>Click here if you need a hint.</summary>
+
+        <p>
+            Here's a few hints:
+        </p>
+
+        <ul>
+            <li>
+                The lines that set the color of the NeoPixel are:
+                <code>walk_signal[0] = (255, 0, 0)</code> and
+                <code>walk_signal[0] = (255, 255, 255)</code>
+            </li>
+
+            <li>
+                Recall that the color values are red, green, and blue,
+                respectively. So you can think of it like this:
+                <code>walk_signal[0] = (RED, GREEN, BLUE)</code>
+            </li>
+
+            <li>
+                The line <code>walk_signal[0] = (255, 0, 0)</code> changes
+                the NeoPixel to red at maximum brightness.
+            </li>
+
+            <li>
+                Replacing <code>walk_signal[0] = (255, 255, 255)</code>
+                with <code>walk_signal[0] = (0, 255, 0)</code> will change
+                the NeoPixel to green instead of white.
+            </li>
+        </ul>
+    </details>
+
+    <p>
+        Have some fun experimenting with different color combinations.
+        Be sure to change the code back to red and white when you're
+        done so you're ready for the next part.
     </p>
 
     <h2>Synchronizing the Walk Signal with the Traffic Light</h2>
@@ -233,6 +285,117 @@ while True:
         together with the walk signal.
     </p>
 
+    <p>
+        First, let's review the code that cycles the traffic light
+        LEDs between red, green, and yellow signals.
+    </p>
+
+    <figure>
+        <code class="code-block">
+from machine import Pin
+from time import sleep
+
+red = Pin(4, Pin.OUT)
+yellow = Pin(5, Pin.OUT)
+green = Pin(6, Pin.OUT)
+
+while True:
+    red.on()
+    yellow.off()
+    green.off()
+    sleep(5)
+
+    red.off()
+    yellow.off()
+    green.on()
+    sleep(4)
+
+    red.off()
+    yellow.on()
+    green.off()
+    sleep(1)
+        </code>
+        <figcaption>MicroPython Code to control the traffic light LEDs</figcaption>
+    </figure>
+
+    <p>
+        Now, compare it to the walk signal code shown below.
+    </p>
+
+    <figure>
+        <code class="code-block">
+from machine import Pin
+from neopixel import NeoPixel
+from time import sleep
+
+walk_signal = NeoPixel(Pin(8), 1)
+
+while True:
+    walk_signal[0] = (255, 0, 0)
+    walk_signal.write()
+    sleep(5)
+
+    walk_signal[0] = (255, 255, 255)
+    walk_signal.write()
+    sleep(5)
+        </code>
+        <figcaption>MicroPython code to control the walk signal NeoPixel.</figcaption>
+    </figure>
+
+    <p>
+        Notice the similarities and differences between the two programs.
+    </p>
+
+    <ul>
+        <li>Both have module import statements, but the walk signal requires an extra one for the NeoPixel.</li>
+        <li>Both have while loops, but the traffic light cycles through three colors while the walk signal cycles through two.</li>
+    </ul>
+
+    <p>
+        See if you can combine the two programs into a new one. The new
+        code should only turn on the walk signal only when traffic is
+        stopped at a red light. When the traffic signal is showing green
+        or yellow, the walk sign should show red for don't walk.
+    </p>
+
+    <details class="tip">
+        <summary>If you need a hint, click here to show/hide the completed code.</summary>
+
+        <figure>
+            <code class="code-block">
+from machine import Pin
+from neopixel import NeoPixel
+from time import sleep
+
+red = Pin(4, Pin.OUT)
+yellow = Pin(5, Pin.OUT)
+green = Pin(6, Pin.OUT)
+walk_signal = NeoPixel(Pin(8), 1)
+
+while True:
+    red.on()
+    yellow.off()
+    green.off()
+    walk_signal[0] = (255, 255, 255)
+    walk_signal.write()
+    sleep(5)
+
+    red.off()
+    yellow.off()
+    green.on()
+    walk_signal[0] = (255, 0, 0)
+    walk_signal.write()
+    sleep(4)
+
+    red.off()
+    yellow.on()
+    green.off()
+    # The walk signal is already red, so no need to set it again.
+    sleep(1)
+            </code>
+            <figcaption>Code to control the traffic light LEDs and the walk signal NeoPixel.</figcaption>
+        </figure>
+    </details>
 
     <footer>
         <p>
