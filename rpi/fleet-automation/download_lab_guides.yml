@@ -21,7 +21,7 @@
         dest: "{{ web_server_dir }}/MANIFEST.yml"
         force: true  # Always overwrite to ensure latest changes are captured.
 
-    - name: Read lab guide assets from manifest
+    - name: Read assets from manifest
       ansible.builtin.include_vars:
         file: "{{ web_server_dir }}/MANIFEST.yml"
         name: lab_guides
@@ -36,7 +36,7 @@
       with_items: "{{ lab_guides.assets }}"
       when: item | dirname | length > 0
 
-    - name: Download lab guide assets listed in manifest
+    - name: Download assets
       ansible.builtin.get_url:
         url: " https://raw.githubusercontent.com/DavesCodeMusings/school-coding-lab/main/lab-guides/{{ item }}"
         dest: "{{ web_server_dir }}/{{ item }}"
