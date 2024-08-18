@@ -187,8 +187,8 @@ pi:~/Code/traffic_light$ mpremote run traffic_light.py
         If you get stuck, here are some things that can help you.
     </p>
 
-    <details>
-        <summary>What needs to be changed?</summary>
+    <details class="tip">
+        <summary>Click here for a hint on what needs to be changed.</summary>
 
         <p>
             All of the code at the top of the program (the
@@ -198,7 +198,8 @@ pi:~/Code/traffic_light$ mpremote run traffic_light.py
             <code>while True:</code> loop.
         </p>
 
-        <code class="code-block">
+        <figure>
+            <code class="code-block">
 while True:
     red.on()
     yellow.off()
@@ -209,17 +210,20 @@ while True:
     yellow.off()
     green.off()
     sleep(1)            
-        </code>
+            </code>
+            <figcaption>Portion of code that needs to be changed.</figcaption>
+        </figure>
     </details>
 
-    <details>
-        <summary>How can green and yellow be lit up?</summary>
+    <details class="tip">
+        <summary>Click here to see how green and yellow can be lit up.</summary>
 
         <p>
             Take the example of the flashing red. It looks like this:
         </p>
 
-        <code class="code-block">
+        <figure>
+            <code class="code-block">
 while True:
     red.on()
     yellow.off()
@@ -230,13 +234,17 @@ while True:
     yellow.off()
     green.off()
     sleep(1)
-        </code>
+            </code>
+            <figcaption>Code for flashing red.</figcaption>
+        </figure>
+
         <p>
             Change it so the second block turns on green LED.
             Like this:
         </p>
 
-        <code class="code-block">
+        <figure>
+            <code class="code-block">
 while True:
     red.on()
     yellow.off()
@@ -247,7 +255,9 @@ while True:
     yellow.off()
     green.on()
     sleep(1)
-        </code>
+            </code>
+            <figcaption>Code changed to alternate red and green.</figcaption>
+        </figure>
 
         <p>
             Now when you run the program, the sequence should be:
@@ -259,7 +269,8 @@ while True:
             code block and adjust the on / off.
         </p>
 
-        <code class="code-block">
+        <figure>
+            <code class="code-block">
 while True:
     red.on()
     yellow.off()
@@ -275,11 +286,13 @@ while True:
     yellow.on()
     green.off()
     sleep(1)
-        </code>
+            </code>
+            <figcaption>Code appended for yellow.</figcaption>
+        </figure>
     </details>
 
-    <details>
-        <summary>How can the timing be more like a real traffic signal?</summary>
+    <details class="tip">
+        <summary>Click here to see how the timing can be more like a real traffic signal.</summary>
 
         <p>
             A typical traffic light runs like this: red, green, yellow
@@ -289,7 +302,8 @@ while True:
             how long to wait for the next change.
         </p>
 
-        <code class="code-block">
+        <figure>
+            <code class="code-block">
 while True:
     red.on()
     yellow.off()
@@ -305,7 +319,9 @@ while True:
     yellow.on()
     green.off()
     sleep(1)
-        </code>
+            </code>
+            <figcaption>A while loop that controls red, green, and yellow.</figcaption>
+        </figure>
     </details>
 
     <footer>
