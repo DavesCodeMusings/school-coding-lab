@@ -91,3 +91,6 @@ footer {
     text-align: right;
 }
 
+.tip::before {
+    content: '\1F4A1';
+}
