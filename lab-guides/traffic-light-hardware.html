@@ -12,7 +12,13 @@
         }
     </script>
     <style>
-        th, td {
+        table {
+            margin-top: 1em;
+            margin-bottom: 1em;
+        }
+
+        th,
+        td {
             padding-left: 1em;
             padding-right: 1em;
         }
@@ -74,8 +80,9 @@
         pins on the traffic light. One for red, one for yellow, one for
         green, and a common ground pin. Each the LED pins is connected
         to a General Purpose Input-Output (GPIO) pin on the ESP32C3
-        microcontroller. This is how the microcontroller turns the LEDs
-        on and off.
+        microcontroller. In this activity, we'll look at how the GPIO
+        hardware connections and software functions work together to let
+        the microcontroller turn the traffic light LEDs on and off.
     </p>
 
     <figure>
@@ -193,8 +200,7 @@ green = Pin(6, Pin.OUT)
 
     <figure>
         <img id="gpio" alt="ESP32C3 DevkitC-02 with relevant GPIO and ground pins labeled."
-            src="images/traffic-light-gpio.jpg"
-            onmouseover="imageSwap(this.id, 'images/traffic-light-gpio-zoomed.jpg')"
+            src="images/traffic-light-gpio.jpg" onmouseover="imageSwap(this.id, 'images/traffic-light-gpio-zoomed.jpg')"
             onmouseout="imageSwap(this.id, 'images/traffic-light-gpio.jpg')">
         <figcaption>GPIO pins used for the traffic light.</figcaption>
     </figure>
@@ -218,16 +224,47 @@ green = Pin(6, Pin.OUT)
     <p>
         Have a look at the traffic light code and see if you can figure
         out which GPIO pins on the microcontroller board connect to the
-        yellow and green LEDs.
+        yellow and green LEDs. Fill in your answers in the table below.
     </p>
 
+    <table>
+        <tr>
+            <th>GPIO Pin</th>
+            <th>LED Color</th>
+        </tr>
+        <tr>
+            <td class="numeric">4</td>
+            <td><input value="Red"></td>
+        </tr>
+        <tr>
+            <td class="numeric">5</td>
+            <td><input></td>
+        </tr>
+        <tr>
+            <td class="numeric">6</td>
+            <td><input></td>
+        </tr>
+    </table>
+
     <details>
-        <summary>If you get stuck, click here for the answer</summary>
+        <summary>If you get stuck, click here to see the GPIO to LED connections.</summary>
         <table>
-            <tr><th>GPIO Pin</th><th>LED Color</th></tr>
-            <tr><td class="numeric">4</td><td>Red</td></tr>
-            <tr><td class="numeric">5</td><td>Yellow</td></tr>
-            <tr><td class="numeric">6</td><td>Green</td></tr>
+            <tr>
+                <th>GPIO Pin</th>
+                <th>LED Color</th>
+            </tr>
+            <tr>
+                <td class="numeric">4</td>
+                <td><input value="Red" readonly></td>
+            </tr>
+            <tr>
+                <td class="numeric">5</td>
+                <td><input value="Yellow" readonly></td>
+            </tr>
+            <tr>
+                <td class="numeric">6</td>
+                <td><input value="Green" readonly></td>
+            </tr>
         </table>
     </details>
 
@@ -237,6 +274,88 @@ green = Pin(6, Pin.OUT)
     </p>
 
     <h2>GPIO Voltages</h2>
+
+    <p>
+        If you have access to a multimeter, use it to measure the voltage
+        at the GPIO pins while the traffic light program is running.
+    </p>
+
+    <ol>
+        <li>Set the multimeter to measure DC voltage in the 0 to 20v range.</li>
+        <li>Touch the meter's common (black) lead to one of the microcontroller's ground pins (labeled G on the board.)
+        </li>
+        <li>Touch red lead of the multimeter to the GPIO 4 pin on the microcontroller.</li>
+        <li>Determine what the voltage is when the LED is on and what it is when the LED is off.</li>
+        <li>Repeat the measurements for GPIO pins 5 (yellow LED) and 6 (green LED.)</li>
+        <li>Record the voltage measured as the program runs.</li>
+    </ol>
+
+    <table>
+        <caption>Voltages measured on GPIO pins</caption>
+        <tr>
+            <th>Traffic Signal Color</th>
+            <th>GPIO Pin 4</th>
+            <th>GPIO Pin 5</th>
+            <th>GPIO Pin 6</th>
+        </tr>
+        <tr>
+            <td>Red</td>
+            <td class="numeric"><input class="numeric"></td>
+            <td><input class="numeric"></td>
+            <td><input class="numeric"></td>
+        </tr>
+        <tr>
+            <td>Yellow</td>
+            <td class="numeric"><input class="numeric"></td>
+            <td><input class="numeric"></td>
+            <td><input class="numeric"></td>
+        </tr>
+        <tr>
+            <td>Green</td>
+            <td class="numeric"><input class="numeric"></td>
+            <td><input class="numeric"></td>
+            <td><input class="numeric"></td>
+        </tr>
+    </table>
+
+    <details>
+        <summary>If you get stuck, click here to see typical voltage readings.</summary>
+
+        <table>
+            <caption>Voltages measured on GPIO pins</caption>
+            <tr>
+                <th>Traffic Signal Color</th>
+                <th>GPIO Pin 4</th>
+                <th>GPIO Pin 5</th>
+                <th>GPIO Pin 6</th>
+            </tr>
+            <tr>
+                <td>Red</td>
+                <td><input class="numeric" value="3.3" readonly></td>
+                <td><input class="numeric" value="0" readonly></td>
+                <td><input class="numeric" value="0" readonly></td>
+            </tr>
+            <tr>
+                <td>Yellow</td>
+                <td><input class="numeric" value="0" readonly></td>
+                <td><input class="numeric" value="3.3" readonly></td>
+                <td><input class="numeric" value="0" readonly></td>
+            </tr>
+            <tr>
+                <td>Green</td>
+                <td><input class="numeric" value="0" readonly></td>
+                <td><input class="numeric" value="0" readonly></td>
+                <td><input class="numeric" value="3.3" readonly></td>
+            </tr>
+        </table>
+
+        <p>
+            The voltage should be 3.3 volts whenever the GPIO is in the
+            on state and the LED is illuminated. GPIO voltage should be
+            0 volts when it's off. Measurements with the multimeter may
+            not be exact, but they should be close, within 10% or so.
+        </p>
+    </details>
 
     <p>
         If you have a sharp eye, you may have noticed some of the other
