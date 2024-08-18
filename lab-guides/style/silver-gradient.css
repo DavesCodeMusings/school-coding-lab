@@ -56,8 +56,8 @@ code {
     white-space: pre;
 }
 
-details.tip > summary {
-    list-style-type: '\01F4A1';
+details.help > summary {
+    list-style-type: '\01F6DF';
 }
 
 figure {
