@@ -7,6 +7,7 @@ assets:
   - images/traffic-light-controller.jpg
   - images/traffic-light-gpio-zoomed.jpg
   - images/traffic-light-gpio.jpg
+  - images/traffic-light-neopixel.jpg
   - images/traffic-light.jpg
   - images/walk-signal.jpg
   - script/functions.js
