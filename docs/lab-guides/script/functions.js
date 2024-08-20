@@ -13,10 +13,12 @@
  * @param {string} path 
  */
 function updateLink(id, protocol, port, path) {
-    path = (path) ? path : "/"
-    host = (window.location.host) ? window.location.host : "localhost"
-    let url = protocol + '://' + host + ':' + port + path
-    console.log("New URL for", id, "is", url)
-    document.getElementById(id).href = url
-    document.getElementById(id).innerHTML = url
+    if (windows.location.host.includes("github") == false) {
+        path = (path) ? path : "/"
+        host = (window.location.host) ? window.location.host : "localhost"
+        let url = protocol + '://' + host + ':' + port + path
+        console.log("New URL for", id, "is", url)
+        document.getElementById(id).href = url
+        document.getElementById(id).innerHTML = url
+    }
 }
