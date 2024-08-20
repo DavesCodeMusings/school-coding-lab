@@ -1,0 +1,22 @@
+# This manifest is a list of lab guides and associated files. It's used
+# by the download_lab_guides.yml Ansible playbook to... you guessed it...
+# download the lab guides to the Raspberry Pi.
+
+assets:
+  - images/traffic-light-above.jpg
+  - images/traffic-light-controller.jpg
+  - images/traffic-light-gpio-zoomed.jpg
+  - images/traffic-light-gpio.jpg
+  - images/traffic-light-neopixel.jpg
+  - images/traffic-light.jpg
+  - images/walk-signal.jpg
+  - script/functions.js
+  - style/silver-gradient.css
+  - video/TrafficLightVoicemail.mp4
+  - video/TrafficLightHardwareCrosstrain.mp4
+  - video/GPIOPartDeux.mp4
+  - index.html
+  - links.html
+  - traffic-light.html
+  - traffic-light-hardware.html
+  - walk-signal.html

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+
+<head>
+    <title>GPIO Pin Reference</title>
+    <link rel="stylesheet" href="style/silver-gradient.css">
+    <script src="script/functions.js"></script>
+    <style>
+        table {
+            margin-left: auto;
+            margin-right: auto;
+            width: 40em;
+        }
+
+        table > caption {
+            margin-bottom: 0.5em;
+        }
+
+        th, td {
+            text-align: center;
+            width: 33%;
+        }
+
+        .gpio {
+            background-color: paleturquoise;
+            color: black;
+        }
+
+        .ground {
+            background-color: black;
+            color: white;
+        }
+
+        .power {
+            background-color: crimson;
+            color: white;
+        }
+
+        .reset {
+            background-color: orange;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>GPIO Pin Reference</h1>
+    </header>
+
+    <table>
+        <caption>Simplified GPIO Pin Assignments for ESP32-C3 DevkitC-02</caption>
+        <tr>
+            <th>Name</th> <th>Number</th> <th>Name</th>
+        </tr>
+        <tr>
+            <td class="ground">GND</td> <td>1</td> <td class="ground">GND</td>
+        </tr>
+        <tr>
+            <td class="power">3V3</td> <td>2</td> <td class="gpio">GPIO 0</td>
+        </tr>
+        <tr>
+            <td class="power">3V3</td> <td>3</td> <td class="gpio">GPIO 1</td>
+        </tr>
+        <tr>
+            <td class="reset">RST</td> <td>4</td> <td class="gpio">GPIO 2</td>
+        </tr>
+        <tr>
+            <td class="ground">GND</td> <td>5</td> <td class="gpio">GPIO 3</td>
+        </tr>
+        <tr>
+            <td class="gpio">GPIO 4</td> <td>6</td> <td class="ground">GND</td>
+        </tr>
+        <tr>
+            <td class="gpio">GPIO 5</td> <td>7</td> <td class="gpio">GPIO 10</td>
+        </tr>
+        <tr>
+            <td class="gpio">GPIO 6</td> <td>8</td> <td class="ground">GND</td>
+        </tr>
+        <tr>
+            <td class="gpio">GPIO 7</td> <td>9</td> <td class="gpio">GPIO 20</td>
+        </tr>
+        <tr>
+            <td class="ground">GND</td> <td>10</td> <td class="gpio">GPIO 21</td>
+        </tr>
+        <tr>
+            <td class="gpio">GPIO 8</td> <td>11</td> <td class="ground">GND</td>
+        </tr>
+        <tr>
+            <td class="gpio">GPIO 9</td> <td>12</td> <td class="gpio">GPIO 18</td>
+        </tr>
+        <tr>
+            <td class="power">5V</td> <td>13</td> <td class="gpio">GPIO 19</td>
+        </tr>
+        <tr>
+            <td class="power">5V</td> <td>14</td> <td class="ground">GND</td>
+        </tr>
+        <tr>
+            <td class="ground">GND</td> <td>15</td> <td class="ground">GND</td>
+        </tr>
+    </table>
+
+    <p style="text-align: center;">
+        To use this reference, orient the ESP32-C3 with its WiFi antenna at the top and USB connector at the bottom.
+    </p>
+</body>
+
+</html>
