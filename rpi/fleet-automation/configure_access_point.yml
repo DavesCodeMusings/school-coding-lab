@@ -6,7 +6,7 @@
   vars:
     hostname: "{{ lookup('env', 'HOSTNAME') }}"
     wifi_ssid: "{{ hostname }}"
-    wifi_password: letmein
+    wifi_password: P@ssw0rd
 
   tasks:
     - name: Enable serial console
