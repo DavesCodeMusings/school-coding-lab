@@ -32,14 +32,19 @@
         mode: '0644'
         content: |
           server {
-              listen 80;
-              server_name  {{ ansible_hostname }};
+              listen 80 default;
+              server_name  _;
               location / {
                   root /srv/www;
                   index index.html index.htm;
               }
           }
       notify: Reload configuration
+
+    - name: Remove delivered default configuration
+      ansible.builtin.file:
+        path: /etc/nginx/sites-available/default
+        state: absent
 
   handlers:
     - name: Reload configuration
