@@ -33,7 +33,7 @@
         state: present
         autoconnect: true
 
-    - name: Disable preconfigured autoconnect
+    - name: Disable autoconnect for preconfigured connection
       community.general.nmcli:
         conn_name: preconfigured
         state: present
