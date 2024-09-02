@@ -22,7 +22,7 @@
         state: directory
         owner: www-data
         group: www-data
-        mode: '0664'
+        mode: '0775'
 
     - name: Create configuration for static content
       ansible.builtin.copy:
