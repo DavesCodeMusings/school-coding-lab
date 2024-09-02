@@ -138,7 +138,7 @@ Raspberry Pi OS will boot to text-based login prompt. You can log in as whatever
 
 From the terminal window, you'll need to download and run a script from the _school-coding-lab_ GitHub site using the following commands:
 
-1. `wget https://raw.githubusercontent.com/DavesCodeMusings/school-coding-lab/main/rpi/fleet/quickstart_dev_workstation.sh`
+1. `wget https://raw.githubusercontent.com/DavesCodeMusings/school-coding-lab/main/rpi/fleet-automation/quickstart_dev_workstation.sh`
 2. `bash ./quickstart_dev_workstation.sh`
 
 It will take a while to run and it will take care of the following tasks for you:
@@ -154,12 +154,12 @@ When everything is done, you can reboot the Raspberry Pi and you're ready to go.
 A successful run of the steps will look something like what's shown below, though large chunks of output have been removed for brevity.
 
 ```
-$ wget https://raw.githubusercontent.com/DavesCodeMusings/school-coding-lab/main/rpi/fleet/quickstart_dev_workstation.sh
+$ wget https://raw.githubusercontent.com/DavesCodeMusings/school-coding-lab/main/rpi/fleet-automation/quickstart_dev_workstation.sh
 ...
 Saving to: ‘quickstart_dev_workstation.sh’
 
 admin@pi:~ $ bash ./quickstart_dev_workstation.sh
---2024-06-15 08:03:30--  https://github.com/DavesCodeMusings/school-coding-lab/raw/main/rpi/fleet/install_ansible.sh
+--2024-06-15 08:03:30--  https://github.com/DavesCodeMusings/school-coding-lab/raw/main/rpi/fleet-automation/install_ansible.sh
 Resolving github.com (github.com)... 140.82.112.3
 Connecting to github.com (github.com)|140.82.112.3|:443... connected.
 HTTP request sent, awaiting response... 302 Found
