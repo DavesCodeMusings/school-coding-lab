@@ -4,6 +4,9 @@
 
 assets:
   - hello/hello.py
+  - hello/README.txt
   - hw_specs/hw_specs.py
+  - hw_specs/README.txt
   - neopixel/neopixel.py
+  - neopixel/README.txt
   - traffic_light/traffic_light.py

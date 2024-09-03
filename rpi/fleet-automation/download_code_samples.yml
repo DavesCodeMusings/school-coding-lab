@@ -5,9 +5,10 @@
 
   vars:
     student_login_id: student
+    student_login_group: student
 
   tasks:
-    - name: Look up student user account
+    - name: Look up student user account info
       ansible.builtin.user:
         name: "{{ student_login_id }}"
         state: present
@@ -24,23 +25,34 @@
         state: directory
         mode: '0755'
         owner: "{{ student_login_id }}"
-        group: "{{ student_login_id }}"
+        group: "{{ student_login_group }}"
 
     - name: Fetch latest online manifest
       ansible.builtin.get_url:
         url: https://raw.githubusercontent.com/DavesCodeMusings/school-coding-lab/main/micropython/MANIFEST.yml
         dest: "{{ student_code_dir }}/MANIFEST.yml"
+        force: true  # Always overwrite to ensure latest changes are captured.
 
-    - name: Read available code samples from manifest
+    - name: Read assets from manifest
       ansible.builtin.include_vars:
         file: "{{ student_code_dir }}/MANIFEST.yml"
         name: code_samples
 
+    - name: Create directory structure
+      ansible.builtin.file:
+        path: "{{ student_code_dir }}/{{ item | dirname }}"
+        state: directory
+        mode: '0755'
+        owner: "{{ student_login_id }}"
+        group: "{{ student_login_group }}"
+      with_items: "{{ code_samples.assets }}"
+      when: item | dirname | length > 0
+
     - name: Download code samples locally
       ansible.builtin.get_url:
         url: " https://raw.githubusercontent.com/DavesCodeMusings/school-coding-lab/main/micropython/{{ item }}"
-        dest: "{{ student_code_dir }}/{{ item | basename }}"
+        dest: "{{ student_code_dir }}/{{ item }}"
         mode: '0644'
         owner: "{{ student_login_id }}"
-        group: "{{ student_login_id }}"
+        group: "{{ student_login_group }}"
       with_items: "{{ code_samples.assets }}"
