@@ -41,4 +41,6 @@
         url: " https://raw.githubusercontent.com/DavesCodeMusings/school-coding-lab/main/micropython/{{ item }}"
         dest: "{{ student_code_dir }}/{{ item | basename }}"
         mode: '0644'
+        owner: "{{ student_login_id }}"
+        group: "{{ student_login_id }}"
       with_items: "{{ code_samples.assets }}"
