@@ -43,7 +43,7 @@
 
     - name: Remove delivered default configuration
       ansible.builtin.file:
-        path: /etc/nginx/sites-available/default
+        path: /etc/nginx/sites-enabled/default
         state: absent
 
   handlers:
