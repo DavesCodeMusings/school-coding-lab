@@ -154,7 +154,7 @@ When everything is done, you can reboot the Raspberry Pi and you're ready to go.
 A successful run of the steps will look something like what's shown below, though large chunks of output have been removed for brevity.
 
 ```
-$ wget https://raw.githubusercontent.com/DavesCodeMusings/school-coding-lab/main/rpi/fleet-automation/quickstart_dev_workstation.sh
+admin@pi:~ $ wget https://raw.githubusercontent.com/DavesCodeMusings/school-coding-lab/main/rpi/fleet-automation/quickstart_dev_workstation.sh
 ...
 Saving to: ‘quickstart_dev_workstation.sh’
 
