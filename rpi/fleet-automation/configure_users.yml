@@ -25,3 +25,10 @@
       with_items:
         - "{{ admin_login_id }}"
         - "{{ student_login_id }}"
+
+    - name: Allow student to sudo shutdown
+      community.general.sudoers:
+        name: student-shutdown
+        state: present
+        user: "{{ student_login_id }}"
+        commands: /sbin/shutdown -h now
