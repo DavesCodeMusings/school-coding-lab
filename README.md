@@ -27,7 +27,9 @@ For those wanting to set this up, here's what you're in for:
 Documentation and code samples included in this repository are released to the public domain. Use, modify, or remix to your heart's content.
 
 For the code-server-python Docker image available here, please refer to the following licensing:
-* The [code-server license](https://github.com/coder/code-server/blob/main/LICENSE)
-* The [Python license](https://docs.python.org/3/license.html)
+* [code-server](https://github.com/coder/code-server/blob/main/LICENSE)
+* [Python](https://docs.python.org/3/license.html)
+* [MicroPython](https://docs.micropython.org/en/latest/license.html)
+* [ESPTool](https://github.com/espressif/esptool/blob/master/LICENSE)
 
-While both code-server and Python are open-source licenses, they are not public domain.
+While these licenses are open-source, they are not public domain.
