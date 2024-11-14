@@ -13,7 +13,7 @@ services:
       - config:/config
       - /home/student/Code:/Code
     ports:
-      - 8443:8443
+      - 8000:8000
     restart: unless-stopped
 
 volumes:
