@@ -3,6 +3,8 @@
 # download sample code to the Raspberry Pi.
 
 assets:
+  - demo/demo.py
+  - demo/README.txt
   - hello/hello.py
   - hello/README.txt
   - hw_specs/hw_specs.py
