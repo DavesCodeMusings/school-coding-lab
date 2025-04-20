@@ -1,0 +1,98 @@
+---
+- name: Configure home page with links
+  hosts: localhost
+  become: true
+
+  vars:
+    web_server_dir: /srv/www/lab-guides
+
+  tasks:
+    - name: Create index.html
+      ansible.builtin.copy:
+        dest: /srv/www/index.html
+        owner: www-data
+        group: www-data
+        mode: '0644'
+        content: |
+          <!DOCTYPE html>
+
+          <html lang="en-US">
+
+          <head>
+              <title>MicroPython Learning Environment</title>
+              <link rel="stylesheet" href="silver-gradient.css">
+              <script src="functions.js"></script>
+          </head>
+
+          <body>
+              <h1>MicroPython Learning Environment</h1>
+              <hr>
+              <p>Visual Studio Code server: <a id="code-server" href="http://10.42.0.1:8000">http://10.42.0.1:8000</a></p>
+              <script>updateLink("code-server", "http", 8000)</script>
+              <p>System login (secure shell): <a id="shellinabox" href="https://10.42.0.1:4200">https://10.42.0.1:4200</a></p>
+              <script>updateLink("shellinabox", "https", 4200)</script>
+              <p>Lab guides: <a href="/lab-guides">/lab-guides</a></p>
+          </body>
+
+          </html>
+
+    - name: Create basic CSS style
+      ansible.builtin.copy:
+        dest: /srv/www/silver-gradient.css
+        owner: www-data
+        group: www-data
+        mode: '0644'
+        content: |
+          body {
+              background-color: whitesmoke;
+              background-image: linear-gradient(silver, whitesmoke);
+              background-repeat: no-repeat;
+              background-size: 100vw 60em;
+              color: #333333;
+              font-family: sans-serif;
+              margin-left: auto;
+              margin-right: auto;
+              max-width: 60em;
+              counter-reset: fignum;
+          }
+
+          a {
+              color: dodgerblue;
+              text-decoration: none;
+          }
+
+          a:hover {
+              text-decoration: underline;
+          }
+
+    - name: Create JavaScript function
+      ansible.builtin.copy:
+        dest: /srv/www/functions.js
+        owner: www-data
+        group: www-data
+        mode: '0644'
+        content: |
+          /**
+          * Recreate a link with a new hostname. This allows something like this:
+          *   <a href="http://127.0.0.1:8080/">127.0.0.1:8080</a>
+          * to become this:
+          *   <a href="http://192.168.1.100:8080/">192.168.1.100:8080</a>
+          * where the 192.168.1.100 part comes from what JavaScript determines is
+          * the host portion of the URL, and http, 8080, and / all come from
+          * function parameters.
+          * This is useful for web server hosts with changing IP addresses. 
+          * @param {string} id
+          * @param {string} protocol
+          * @param {integer} port
+          * @param {string} path
+          */
+          function updateLink(id, protocol, port, path) {
+              if (windows.location.host.includes("github") == false) {
+                  path = (path) ? path : "/"
+                  host = (window.location.host) ? window.location.host : "localhost"
+                  let url = protocol + '://' + host + ':' + port + path
+                  console.log("New URL for", id, "is", url)
+                  document.getElementById(id).href = url
+                  document.getElementById(id).innerHTML = url
+              }
+          }

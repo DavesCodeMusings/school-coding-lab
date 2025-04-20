@@ -12,6 +12,7 @@ AUTOMATION_LIST="
   install_dev_software.yml
   download_code_samples.yml
   install_web_server.yml
+  configure_home_page.yml
   download_lab_guides.yml
   install_docker.yml
   deploy_code_server.yml
