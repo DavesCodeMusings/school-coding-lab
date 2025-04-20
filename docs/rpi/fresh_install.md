@@ -47,6 +47,12 @@ Careful consideration of the information on the General tab can make your life m
 
 Once the information is entered, you have the option to save it. This makes it faster to create multiple microSD cards if you have more than one Pi.
 
+#### The OS Customization Services Tab
+Under the Services tab, be sure to enable SSH and select the option to use password authentication. This will allow advanced admins to connect to the host without a monitor and keyboard if desired.
+
+#### The OS Customization Options Tab
+Options on this tab are for convenience, mainly. The eject option means you won't have to go through the "safely remove this device" process before transferring the microSD card from the computer to the Raspberry Pi.
+
 ### Raspberry Pi Imager Screenshots
 If a picture is worth a thousand words, this section is money in the bank. These screenshots give some examples of what to expect while using the Raspberry Pi Imager. Choices shown are for Raspberry Pi 3 hardware, but it works the same for Raspberry Pi 4.
 
