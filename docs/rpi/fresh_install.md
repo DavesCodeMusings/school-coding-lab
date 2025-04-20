@@ -41,7 +41,7 @@ There are three things you must choose to create a microSD card for use with you
 Careful consideration of the information on the General tab can make your life much easier, so don't skip it.
 
 1. _Set hostname_ determines what the machine will be called. It can be almost anything you want, but it should be no more than a dozen or so alphanumeric characters and it must be unique (i.e. you can't name everything raspberrypi.)
-2. _Set username and password_ is used to create the first user account. This account is allowed to run `sudo` commands. Make the username something generic, like _admin_ or _supervisor_, rather than a person's name. You can add individual accounts for people later on. Make the password something not easily guessed.
+2. _Set username and password_ is used to create the first user account. Make sure the username is set to _admin_ since this is what is required for the remaining installation steps. The password cannot be blank. Anything around eight characters is fine.
 3. _Configure wireless LAN_ will ger you automatically connected to the network you specify. Don't forget to set the country code in addition to the SSID and password.
 4. _Set locale settings_ makes sure you're in the right time zone and your clock is correct. It also ensures you don't get strange characters from your keyboard by configuring for your language.
 
