@@ -23,4 +23,6 @@ RUN rm /usr/lib/python3.*/EXTERNALLY-MANAGED
 RUN pip3 install esptool mpremote
 # Preinstall Python VS Code extension.
 RUN /app/code-server/bin/code-server --extensions-dir /config/extensions --install-extension ms-python.python
+RUN /app/code-server/bin/code-server --extensions-dir /config/extensions --install-extension DavesCodeMusings.mpremote
+RUN /app/code-server/bin/code-server --extensions-dir /config/extensions --install-extension DavesCodeMusings.esptool
 EXPOSE 8000
