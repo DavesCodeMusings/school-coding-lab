@@ -1,5 +1,5 @@
 FROM lscr.io/linuxserver/code-server:latest
-LABEL org.opencontainers.image.source = "https://github.com/DavesCodeMusings/school-coding-lab"
+LABEL org.opencontainers.image.source="https://github.com/DavesCodeMusings/school-coding-lab"
 # Make the default 'abc' user name a little more friendly.
 RUN sed -i -e 's/abc/student/g' /etc/passwd
 RUN sed -i -e 's/abc/student/g' /etc/group
