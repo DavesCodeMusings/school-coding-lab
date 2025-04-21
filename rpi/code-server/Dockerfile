@@ -21,8 +21,12 @@ RUN apt-get update && apt-get install -y \
 RUN rm /usr/lib/python3.*/EXTERNALLY-MANAGED
 # Add support for ESP32 microcontrollers and MicroPython
 RUN pip3 install esptool mpremote
-# Preinstall Python VS Code extension.
+# Preinstall Python VS Code extensions.
 RUN /app/code-server/bin/code-server --extensions-dir /config/extensions --install-extension ms-python.python
-RUN /app/code-server/bin/code-server --extensions-dir /config/extensions --install-extension DavesCodeMusings.mpremote
-RUN /app/code-server/bin/code-server --extensions-dir /config/extensions --install-extension DavesCodeMusings.esptool
+# VS Code marketplace is not available to code-server, so use vsix files for these:
+ADD https://raw.githubusercontent.com/DavesCodeMusings/mpremote-vscode/main/vsix/mpremote-1.21.20.vsix /tmp/mpremote-1.21.20.vsix
+RUN /app/code-server/bin/code-server --extensions-dir /config/extensions --install-extension /tmp/mpremote-1.21.20.vsix
+ADD https://raw.githubusercontent.com/DavesCodeMusings/esptool-vscode/main/vsix/esptool-1.2.0.vsix /tmp/esptool-1.2.0.vsix
+RUN /app/code-server/bin/code-server --extensions-dir /config/extensions --install-extension /tmp/esptool-1.2.0.vsix
+RUN rm /tmp/*.vsix
 EXPOSE 8000
