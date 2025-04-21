@@ -8,7 +8,16 @@ The steps here will require the following:
 
 > &#128161; If your Raspberry Pis were donated and you're not sure what you've got, see the page for [how to identify your Raspberry Pi](identify_rpi.md).
 
-## Creating a Raspberry Pi OS MicroSD Card
+## Summary of the Process
+There are three steps to go from a newly acquired Raspberry Pi and microSD card to a functioning MicroPython development environment students can use.
+
+1. Format the microSD card with the latest 64-bit Rasperry Pi OS Lite using [Raspberry Pi Imager](https://www.raspberrypi.com/software/).
+2. Boot the Pi.
+3. Download and run the [automated configuration script](https://raw.githubusercontent.com/DavesCodeMusings/school-coding-lab/main/rpi/fleet-automation/quickstart_dev_workstation.sh).
+
+If you're familiar with Raspberry Pi and using the Linux command prompt, this might be enough to go on. Just be sure to set up a user called 'admin' in the Raspberry Pi imager options. If you want more detail, including screenshots, keep reading.
+
+## Step 1: Creating a Raspberry Pi OS MicroSD Card
 Raspberry Pi Operating System installation is different than a typical PC or Mac. The procedure for Raspberry Pi is to write an operating system image to a microSD card and then use the microSD card to boot the device. This requires the following steps:
 
 1. Installing and running the Raspberry Pi Imager tool.
@@ -125,7 +134,7 @@ _Figure 10: Raspberry Pi Imager writing Raspberry Pi O.S. to microSD card_
 
 ___
 
-## Booting Your Raspberry Pi
+## Step 2: Booting Your Raspberry Pi
 After writing the Raspberry Pi OS image, you can remove the microSD card from your PC and insert it into the slot on the Raspberry Pi.
 
 **Always ensure the Raspberry Pi is not plugged into power when you insert or remove the microSD card.**
@@ -137,8 +146,8 @@ After writing the Raspberry Pi OS image, you can remove the microSD card from yo
 
 > &#128338; Booting takes about three minutes the first time. If you see a Raspberry Pi Desktop logo on the monitor, things are moving in the right direction. Just be patient.
 
-## Configuration of the Operating System
-Raspberry Pi OS will boot to text-based login prompt. You can log in as whatever user you configured in the _OS Customization_, _General_ tab of the Raspberry Pi imager tool. From here, you'll run a couple of commands that will automate the configuration of the operating system and its applications.
+## Step 3: Configuring the Operating System
+Raspberry Pi OS will boot to text-based login prompt. You can log in as the admin user you configured in the _OS Customization_, _General_ tab of the Raspberry Pi imager tool. From here, you'll run a couple of commands that will automate the configuration of the operating system and its applications.
 
 > &#128161; Advanced users can start a Secure Shell (SSH) session from a remote machine and log in as the preconfigured user.
 
