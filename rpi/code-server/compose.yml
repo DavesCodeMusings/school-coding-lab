@@ -4,6 +4,8 @@ services:
     image: ghcr.io/davescodemusings/code-server-python:latest
     container_name: code-server
     hostname: code-server
+    devices:
+      - /dev/ttyUSB0:/dev/ttyUSB0
     environment:
       - PUID=1001
       - PGID=1001
