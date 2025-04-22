@@ -1,6 +1,9 @@
 # School Coding Lab
 _Creating a student development environment on the cheap!_
 
+![image](https://github.com/user-attachments/assets/0de74331-cd0e-449d-b3ab-957610eb1574)
+
+## Explore Programming with MicroPython
 What you'll find here is a combination of documentation and code, and it's all about building a computing environment for hands-on learning.
 
 * If you already have a development machine and some microcontrollers, go straight to [the microcontroller labs](https://davescodemusings.github.io/school-coding-lab/lab-guides/) and start coding.
