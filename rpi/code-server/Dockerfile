@@ -30,5 +30,5 @@ ADD https://raw.githubusercontent.com/DavesCodeMusings/mpremote-vscode/main/vsix
 RUN /app/code-server/bin/code-server --extensions-dir /config/extensions --install-extension /tmp/mpremote-1.21.20.vsix
 ADD https://raw.githubusercontent.com/DavesCodeMusings/esptool-vscode/main/vsix/esptool-1.2.0.vsix /tmp/esptool-1.2.0.vsix
 RUN /app/code-server/bin/code-server --extensions-dir /config/extensions --install-extension /tmp/esptool-1.2.0.vsix
-RUN rm /tmp/*.vsix
+# RUN rm /tmp/*.vsix
 EXPOSE 8000
