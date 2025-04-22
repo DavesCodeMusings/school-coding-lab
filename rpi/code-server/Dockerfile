@@ -9,7 +9,7 @@ RUN sed -i -e 's/abc/student/g' /etc/s6-overlay/s6-rc.d/init-code-server/run
 RUN sed -i -e 's/abc/student/g' /etc/s6-overlay/s6-rc.d/init-crontab-config/run
 RUN sed -i -e 's/abc/student/g' /etc/s6-overlay/s6-rc.d/svc-cron/run
 # Allow user to access to USB serial devices
-RUN sed '/groupmod -o -g/a\    usermod -a -G dialout student' /etc/s6-overlay/s6-rc.d/init-adduser/run
+RUN sed -i -e '/groupmod -o -g/a\    usermod -a -G dialout student' /etc/s6-overlay/s6-rc.d/init-adduser/run
 # Change the port since 8443 implies TLS encrypted, but it's actually not.
 RUN sed -i -e 's/8443/8000/g' /etc/s6-overlay/s6-rc.d/svc-code-server/run
 # Add support for Python
