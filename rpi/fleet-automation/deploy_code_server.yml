@@ -25,3 +25,4 @@
       ansible.builtin.shell:
         chdir: /var/lib/docker/compose/code-server
         cmd: docker-compose up -d
+      ignore_errors: yes  # Container may fail if microcontroller not plugged into USB.
