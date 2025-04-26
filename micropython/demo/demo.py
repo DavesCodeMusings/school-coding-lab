@@ -6,9 +6,9 @@
 from machine import Pin
 from neopixel import NeoPixel
 from time import sleep, sleep_ms
-from random import randomrange
+from random import randint
 
-NEOPIXEL_GPIO = 8
+NEOPIXEL_GPIO = 10
 TOTAL_PIXELS = 6
 
 COLOR_OFF = (0, 0, 0)
@@ -40,11 +40,11 @@ def show_lightning(num_pixels):
     """
     for pixel_number in range(num_pixels):
         change_pixel(pixel_number, COLOR_WHITE)
-        sleep_ms(10)
+        sleep_ms(20)
         change_pixel(pixel_number, COLOR_OFF)
 
 
 while True:
     show_lightning(TOTAL_PIXELS)
-    delay = randomrange(1, 10)
+    delay = randint(1, 10)
     sleep(delay)
