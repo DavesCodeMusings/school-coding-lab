@@ -22,7 +22,8 @@ RUN apt-get update && apt-get install -y \
 # No need for this since package conflicts are highly unlikely in this configuration.
 RUN rm /usr/lib/python3.*/EXTERNALLY-MANAGED
 # Add support for ESP32 microcontrollers and MicroPython
-RUN pip3 install esptool mpremote
+RUN pip3 install esptool
+RUN pip3 install mpremote
 # Preinstall Python VS Code extensions.
 RUN /app/code-server/bin/code-server --extensions-dir /config/extensions --install-extension ms-python.python
 # VS Code marketplace is not available to code-server, so use vsix files for these:
