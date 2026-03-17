@@ -29,8 +29,8 @@ RUN ln -s /config/.local/bin/mpremote /usr/local/bin/mpremote
 # Preinstall Python VS Code extensions.
 RUN /app/code-server/bin/code-server --extensions-dir /config/extensions --install-extension ms-python.python
 # VS Code marketplace is not available to code-server, so use vsix files for these:
-ADD https://raw.githubusercontent.com/DavesCodeMusings/mpremote-vscode/main/vsix/mpremote-1.21.20.vsix /tmp/mpremote-1.21.20.vsix
-RUN /app/code-server/bin/code-server --extensions-dir /config/extensions --install-extension /tmp/mpremote-1.21.20.vsix
+ADD https://raw.githubusercontent.com/DavesCodeMusings/mpremote-vscode/main/vsix/mpremote-2.0.0.vsix /tmp/mpremote-2.0.0.vsix
+RUN /app/code-server/bin/code-server --extensions-dir /config/extensions --install-extension /tmp/mpremote-2.0.0.vsix
 ADD https://raw.githubusercontent.com/DavesCodeMusings/esptool-vscode/main/vsix/esptool-1.2.0.vsix /tmp/esptool-1.2.0.vsix
 RUN /app/code-server/bin/code-server --extensions-dir /config/extensions --install-extension /tmp/esptool-1.2.0.vsix
 # RUN rm /tmp/*.vsix
