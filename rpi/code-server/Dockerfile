@@ -23,9 +23,9 @@ RUN apt-get update && apt-get install -y \
 RUN rm /usr/lib/python3.*/EXTERNALLY-MANAGED
 # Add support for ESP32 microcontrollers and MicroPython
 RUN pip3 install esptool
-# Matches the UID/GID used by parent container (code-server)
-USER 1000:1000
 RUN pip3 install --user mpremote
+# Link mpremote to a directory in the user's $PATH
+RUN ln -s /config/.local/bin/mpremote /usr/local/bin/mpremote
 # Preinstall Python VS Code extensions.
 RUN /app/code-server/bin/code-server --extensions-dir /config/extensions --install-extension ms-python.python
 # VS Code marketplace is not available to code-server, so use vsix files for these:
