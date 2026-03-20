@@ -16,16 +16,18 @@ RUN sed -i -e 's/8443/8000/g' /etc/s6-overlay/s6-rc.d/svc-code-server/run
 RUN apt-get update && apt-get install -y \
   python3 \
   python3-pip \
+  python3-venv \
   pylint \
 && apt-get clean \
 && rm -rf /var/lib/apt/lists/*
 # No need for this since package conflicts are highly unlikely in this configuration.
 RUN rm /usr/lib/python3.*/EXTERNALLY-MANAGED
+# Install pipx using pip to get a more recent version than what's available with apt.
+RUN pip3 install pipx
 # Add support for ESP32 microcontrollers and MicroPython
-RUN pip3 install esptool
-RUN pip3 install --user mpremote
-# Link mpremote to a directory in the user's $PATH
-RUN ln -s /config/.local/bin/mpremote /usr/local/bin/mpremote
+RUN pipx install --global esptool
+RUN pipx install --global mpremote
+RUN pipx ensurepath --global
 # Preinstall Python VS Code extensions.
 RUN /app/code-server/bin/code-server --extensions-dir /config/extensions --install-extension ms-python.python
 # VS Code marketplace is not available to code-server, so use vsix files for these:
@@ -33,5 +35,5 @@ ADD https://raw.githubusercontent.com/DavesCodeMusings/mpremote-vscode/main/vsix
 RUN /app/code-server/bin/code-server --extensions-dir /config/extensions --install-extension /tmp/mpremote-2.0.0.vsix
 ADD https://raw.githubusercontent.com/DavesCodeMusings/esptool-vscode/main/vsix/esptool-1.2.0.vsix /tmp/esptool-1.2.0.vsix
 RUN /app/code-server/bin/code-server --extensions-dir /config/extensions --install-extension /tmp/esptool-1.2.0.vsix
-# RUN rm /tmp/*.vsix
+RUN rm /tmp/*.vsix
 EXPOSE 8000
